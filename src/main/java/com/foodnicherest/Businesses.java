@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Businesses.findByWebsite", query = "SELECT b FROM Businesses b WHERE b.website = :website"),
     @NamedQuery(name = "Businesses.findByDescription", query = "SELECT b FROM Businesses b WHERE b.description = :description")})
 public class Businesses implements Serializable {
+    test broken build
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
