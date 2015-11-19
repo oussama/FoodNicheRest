@@ -5,7 +5,10 @@
     <groupId>com</groupId>
     <artifactId>FoodNicheRest</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <modules>
+        <module>foodnicherest-core</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>FoodNicheRest</name>
 
