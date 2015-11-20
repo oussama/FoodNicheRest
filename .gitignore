@@ -15,3 +15,6 @@ hs_err_pid*
 *.iml
 .idea
 
+/foodnicherest-webserver/target/
+/target/
+/foodnicherest-core/target/
