@@ -1,0 +1,956 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,600,300,200,100);
+/*=======font-family: 'Raleway', sans-serif;===========*/
+
+* {
+    /* Universal reset: */
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+html, body {
+    background: #fff;
+    height: 100%;
+    font: normal 14px/22px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #333;
+}
+.wrapper_main {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -120px;
+}
+.footer, .push {
+    height: 120px;
+}
+a {
+    text-decoration: none;
+    color: #744c28;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+a:hover {
+    color: #666;
+}
+img {
+    max-width: 100%;
+}
+ul {
+    list-style: none;
+}
+h1 {
+    font: normal 30px/40px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #2e3192;
+    padding-bottom: 15px;
+}
+h2 {
+    font: normal 20px/24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin-bottom: 15px;
+}
+h3 {
+    font: normal 24px/35px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+h4 {
+    font: normal 18px/30px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+h4 a {
+    color: #999;
+}
+h4 a:hover {
+    color: #fff;
+}
+h5 {
+    font: normal 16px/30px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+h6 {
+    font: normal 14px/24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+.navbar-default {
+    border-bottom: 0px;
+    background: none;
+    margin: 0px;
+}
+.navbar-right {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.navbar-brand {
+    height: auto;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #000;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: #f6931e;
+}
+.header_main {
+    border-bottom: 2px solid #744c28;
+    background: #fff;
+}
+.bg-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+.banner {
+    min-height: 700px;
+}
+.banner-home {
+    position: relative;
+}
+.text-banner {
+    position: absolute;
+    top: 50%;
+    margin-top: -180px;
+    left: 0px;
+    width: 100%;
+    z-index: 10;
+}
+.login_page {
+    padding: 10px;
+    background:rgba(0,0,0,0.5)
+}
+.logholder_div {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.sub_but .facebook_but {
+    background: #3b579d;
+    font: 20px/50px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #fff;
+    border: 1px solid #3b579d;
+    border-bottom: 1px solid #1c1311;
+    border-radius: 5px;
+    text-align: center;
+    padding: 0;
+    display:block;
+}
+.sub_but .facebook_but:hover{
+    border: 1px solid #3b579d;
+    border-top: 1px solid #1c1311;
+}
+.login_page .form-group, .form-grey .form-group {
+    margin-bottom: 10px;
+}
+.login_page .form-control, .form-grey .form-control {
+    background: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    box-shadow: none !important;
+    font-size: 15px;
+    height: 50px;
+}
+.text-banner h1 {
+    text-align: center;
+    font: bolder 54px/60px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-shadow: 0 1px 3px #000;
+    text-transform: uppercase;
+}
+.rslides_container {
+    margin: 0px;
+}
+.padding-main {
+    padding: 40px 0px;
+    padding-bottom: 0px;
+}
+.centered-btns_tabs, .transparent-btns_tabs, .large-btns_tabs {
+    display: none;
+}
+.page_title {
+    margin: 0 auto;
+    padding: 40px 0;
+    background: url(../images/line2px.png) repeat-x center center;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    width: 60%;
+}
+.page_title .span_white_bg {
+    padding: 0 10px;
+    background: #fff;
+    color: #000;
+}
+.btn, .form-control {
+    border-radius: 3px;
+}
+.bottom_button  .btn {
+    width: 300px;
+}
+.btn {
+    padding: 5px 30px;
+}
+.btn-lg, .btn-group-lg > .btn {
+    padding: 10px 30px;
+}
+.btn-warning {
+    background: #f6931e;
+}
+.bottom_button {
+    text-align: center;
+    margin-top: 30px;
+}
+.item_holder h3{
+    margin-bottom: 0px;
+}
+.howitworks_part3 {
+    text-align: center;
+    position: relative;
+}
+.howitworks_number {
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    background: #424242;
+    box-shadow: inset 3px 0 8px rgba(0,0,0,0.7);
+    text-align: center;
+    font: 900 48px/90px 'Raleway', sans-serif;
+    color: #fff;
+    margin: 0 auto 15px;
+}
+.howitworks_arrow {
+    position: absolute;
+    z-index: 99;
+    right: -10px;
+    top: 30px;
+    font-size: 30px;
+}
+.howitworks_part3 h3 {
+    color: #744c28;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+}
+.step-how {
+    padding: 59px 15px;
+    background: #f5f5f5;
+}
+.feature-main .row, .feature-main {
+    margin: 0px;
+}
+.feature-main img {
+    width: 100%;
+}
+.feature-main .col-sm-6 {
+    padding: 0px;
+}
+.box-feature {
+    position: relative;
+    color: #fff;
+}
+.box-feature h3 {
+    font-size: 22px;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    left: 0px;
+}
+.feature-1 h3 {
+    font-size: 35px;
+}
+.a-feature {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    width: 100%;
+    font-size: 25px;
+    -ms-transform: translate(0%,-50%);
+    -webkit-transform: translate(0%,-50%);
+    transform: translate(0%,-50%);
+    color: #fff;
+    text-align: center;
+}
+.footer {
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    background: #744c28;
+    text-align: center;
+    margin-top: 50px;
+}
+.footer h3 {
+    color: #fff;
+}
+.footer a {
+    color: #fff;
+}
+.footer a:hover {
+    color: #eee;
+}
+.footer_top {
+    padding: 20px 0;
+}
+.footer_top ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+.footer_top ul li a {
+    display: inline-block;
+    padding: 3px;
+    display: block;
+}
+.content {
+    padding-top: 30px;
+}
+.banner-business {
+    margin-bottom: 30px;
+}
+.btn-grey {
+    background: #744c28;
+    border: 1px solid #744c28;
+    border-bottom: 1px solid #f58a0b;
+    color: #f58a0b;
+}
+.profile_image {
+    border: 1px solid #744c28;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.profile_image img {
+    width: 100%;
+}
+.profile-left {
+    text-align: center;
+}
+.m20 {
+    margin-bottom: 20px;
+}
+.left_menu ul li a {
+    padding: 10px;
+    color: #e6ddd5;
+    background: #744c28; /* Old browsers */
+    background: -moz-linear-gradient(top, #744c28 0%, #86582e 50%, #744c28 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #744c28), color-stop(50%, #86582e), color-stop(100%, #744c28)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #744c28 0%, #86582e 50%, #744c28 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #744c28 0%, #86582e 50%, #744c28 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #744c28 0%, #86582e 50%, #744c28 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #744c28 0%, #86582e 50%, #744c28 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#744c28', endColorstr='#744c28', GradientType=0 ); /* IE6-9 */
+    display: block;
+}
+.left_menu ul li a:hover {
+    background: #86582e; /* Old browsers */
+    background: -moz-linear-gradient(top, #86582e 0%, #744c28 50%, #86582e 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #86582e), color-stop(50%, #744c28), color-stop(100%, #86582e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #86582e 0%, #744c28 50%, #86582e 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #86582e 0%, #744c28 50%, #86582e 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #86582e 0%, #744c28 50%, #86582e 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #86582e 0%, #744c28 50%, #86582e 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#86582e', endColorstr='#86582e', GradientType=0 ); /* IE6-9 */
+    color: #fff;
+}
+.left_menu ul li a i {
+    margin-right: 10px;
+    width: 24px;
+    font-size: 16px;
+    text-align: center;
+}
+.left_menu ul li {
+    display: block;
+    border-bottom: 1px solid #5e3d1f;
+}
+.panel-grey {
+    border: 1px solid #5e3d1f;
+}
+.info-business {
+    margin: 0px;
+    line-height: 17px;
+}
+.info-business li {
+    list-style: none;
+    margin-bottom: 15px;
+}
+.info-business li:last-child {
+    margin-bottom: 0px;
+}
+.panel textarea {
+    border-radius: 0px;
+}
+.file-upload {
+    position: relative;
+    display: inline-block;
+}
+.file-upload input {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.upload-photo {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 15px;
+}
+.upload_img_loop {
+    border: 1px solid #744c28;
+    position: relative;
+}
+.cross_icon {
+    background: #f58a0b;
+    border: 1px solid #fff;
+    border-radius: 16px;
+    color: #fff;
+    display: block;
+    font-size: 11px;
+    height: 16px;
+    line-height: 13px;
+    position: absolute;
+    right: 2px;
+    text-align: center;
+    top: 2px;
+    width: 17px;
+    z-index: 99;
+}
+.upload_img {
+    margin: 0px -5px;
+}
+.upload_img .col-xs-4 {
+    padding: 0px 5px;
+}
+.p30 {
+    padding-top: 30px;
+}
+.panel {
+    border-radius: 0px;
+}
+.page_div_holder {
+    position: relative;
+    margin-bottom: 10px;
+}
+.left_icon_part {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.left_icon_part i {
+    font-size: 22px;
+    width: 30px;
+    text-align: center;
+    color: #666666;
+    margin-top: 8px;
+}
+.right_text_part {
+    margin-left: 40px;
+}
+.post_image img {
+    border: 2px solid #744c28;
+    display: list-item;
+}
+.slider-right .transparent-btns_tabs {
+    display: block;
+}
+.content .page_title {
+    width: auto;
+}
+.radio-business .radio {
+    color: #999;
+    margin-left: 10px;
+}
+.right_search {
+    float: right;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.right_search .form-control {
+    border-radius: 0px;
+}
+.search-top .form-control, .search-top .btn {
+    border-radius: 0px;
+}
+.dining_out_main_part_left {
+    border: 1px solid #744c28;
+    padding: 10px;
+    font-size: 13px;
+}
+.dining_out_main_part_left li {
+    border: 1px solid #744c28;
+    margin-bottom: 10px;
+
+}
+.dining_out_main_part_left li:last-child, .dining_out_main_part_left ul {
+    margin: 0px;
+}
+.dining_out_main_part_left  li .media {
+    padding: 10px;
+    margin: 0px;
+}
+.dining_out_main_part_left  li img {
+    width: 60px;
+    border: 1px solid #744c28;
+}
+.dining_out_main_part_left table {
+    width: 100%;
+}
+.dining_out_main_part_left table  td {
+    padding: 3px;
+}
+.bottom-li {
+    background: #eeeeee;
+    padding: 5px 10px;
+}
+.map-div {
+    border: 1px solid #744c28;
+}
+.profile_image_inn {
+    border: 1px solid #744c28;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+.connect_link_full {
+    background: rgba(116, 76, 40, 0.6);
+    padding: 10px;
+}
+.connect_link_full a {
+    color: #fff;
+    font: normal 18px/30px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+.content .title-width {
+    width: 60%;
+    margin: auto;
+}
+.stape_by_stape {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+.stape_by_stape ul {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.stape_by_stape ul li {
+    width: 33.333%;
+    float: left;
+    position: relative;
+}
+.stape_by_stape ul li a {
+    text-align: center;
+    display: block;
+    display: block;
+    background: #744c28;
+    color: #fff;
+    font-size: 24px;
+    line-height: 80px;
+    text-transform:uppercase;
+}
+.stape_by_stape ul li:hover a {
+    background: #f6931e;
+}
+.stape_by_stape ul li.select a {
+    background: #f6931e;
+    cursor:default;
+}
+.stape_by_stape ul li.stapemain a:after, .stape_by_stape ul li.stapemain a:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    z-index:999;
+}
+.stape_by_stape ul li.stapemain a:after {
+    border-color: rgba(116, 76, 40, 0);
+    border-left-color: #744c28;
+    border-width: 40px;
+    margin-top: -40px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.stape_by_stape ul li.stapemain:hover a:after {
+    border-color: rgba(116, 76, 40, 0);
+    border-left-color: #f6931e;
+    border-width: 40px;
+    margin-top: -40px;
+}
+.stape_by_stape ul li.stapemain.select a:after{
+    border-color: rgba(116, 76, 40, 0);
+    border-left-color: #f6931e;
+    border-width: 40px;
+    margin-top: -40px;
+}
+.stape_by_stape ul li.stapemain a:before {
+    border-color: rgba(255, 255, 255, 0);
+    border-left-color: #ffffff;
+    border-width: 68px;
+    margin-top: -68px;
+}
+.skip_this{
+    padding-bottom:30px;
+    text-align:center;
+}
+.skip_this span{
+    text-transform:uppercase;
+    color:#f6931e;
+    font-weight:bold;
+    font-style:italic;
+}
+.skip_this {
+    padding-bottom: 30px;
+    text-align: center;
+}
+.skip_this span {
+    text-transform: uppercase;
+    color: #f6931e;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.product-start {
+    background: #e0e0e0;
+    border: none;
+    margin-bottom: 20px;
+}
+.product-start img {
+    width: 100%;
+}
+.products_details {
+    text-align: center;
+    padding: 0 10px 10px;
+    background: rgba(116, 76, 40, 0.6);
+    color: #fff;
+}
+.products_details_main{
+    padding:25px 10px 15px;
+    text-align:center;
+    position:relative;
+}
+.products_details_main p{
+    padding-bottom:10px;
+}
+.products_details_main h3{
+    color:#744c28;
+    font: normal 18px/30px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-transform:uppercase;
+    margin: 0px;
+    margin-top: 10px;
+}
+.products_details_main h3 a{
+    color:#744c28;
+}
+.products_details_main h3 a:hover{
+    color:#f6931e;
+}
+.products_details_main .pop_icon{
+    position:absolute;
+    z-index:999;
+    top:-39px;
+    text-align:center;
+    left:50%;
+    margin-left:-34px;
+}
+.products_details_main .pop_icon i{
+    background:#fff;
+    width:68px;
+    height:68px;
+    text-align:center;
+    font-size:36px;
+    color:#bdbdbd;
+    box-shadow:0 0 5px #666;
+    margin:0 auto;
+    line-height:68px;
+    border-radius:100%;
+}
+.sub_but_white a {
+    background: #fff;
+    font: 20px/50px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #f6931e;
+    border: 1px solid #fff;
+    border-bottom: 1px solid #b3b3b3;
+    border-radius: 5px;
+    padding:0 40px;
+    text-align: center;
+    display:inline-block;
+}
+.sub_but_white a:hover {
+    border: 1px solid #fff;
+    border-top: 1px solid #b3b3b3;
+}
+.loadmore a{
+    background:#f6931e;
+    display:block;
+    height:297px;
+    line-height:290px;
+    text-align:center;
+    color:#fff;
+    font-size:16px;
+    font-style:italic;
+}
+.loadmore a{
+    background:#f6931e;
+}
+.users-carousel .owl-controls {
+    display: none;
+}
+.log_text_but{
+    background: #3b579d;
+    font: 20px/50px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    padding: 0;
+    display:block;
+    margin-bottom:5px;
+}
+
+.msn_but_text{
+    background: #167ab7;
+    border: 1px solid #167ab7;
+    border-bottom: 1px solid #1c1311;
+}
+.google_but_text{
+    background: #e1584b;
+    border: 1px solid #e1584b;
+    border-bottom: 1px solid #1c1311;
+}
+.yahoo_but_text{
+    background: #400090;
+    border: 1px solid #400090;
+    border-bottom: 1px solid #1c1311;
+}
+
+.log_text_but:hover{
+    color:#fff;
+}
+.msn_but_text:hover{
+    background: #167ab7;
+    border: 1px solid #167ab7;
+    border-top: 1px solid #1c1311;
+}
+.google_but_text:hover{
+    background: #e1584b;
+    border: 1px solid #e1584b;
+    border-top: 1px solid #1c1311;
+}
+.yahoo_but_text:hover{
+    background: #400090;
+    border: 1px solid #400090;
+    border-top: 1px solid #1c1311;
+}
+.box-product {
+    background: #fff;
+    border:1px solid #744c28;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.box-product img {
+    margin: 10px 0px;
+}
+.text-product {
+    background: rgba(116, 76, 40, 0.6);
+    padding: 20px;
+    color: #fff;
+}
+.text-product h3{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.box-recipe {
+    position: relative;
+    margin-bottom: 20px;
+    border:1px solid #744c28;
+}
+.box-recipe img {
+    width: 100%;
+}
+.box-recipe .connect_link_full_top {
+    background: rgba(116, 76, 40, 0.6);
+    padding: 10px;
+    position: absolute;
+    z-index: 99;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+.box-recipe .connect_link_full_top a {
+    color: #fff;
+    font: normal 18px/30px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+.registration2{
+    padding:30px 0;
+    text-align:center;
+}
+.registration2 ul li{
+    display:inline-block;
+    margin:0 15px;
+}
+.registration2 ul li a{
+    width:264px;
+    height:264px;
+    border-radius:100%;
+    display:block;
+    text-align:center;
+    line-height:264px;
+    font-size:24px;
+    color:#fff;
+    background:#f6931e;
+    font-weight:bold;
+}
+.registration2 ul li a:hover{
+    background:#744c28;
+}
+.form-grey .label-form {
+    font-weight: normal;
+    font-size: 15px;
+}
+.slider-business {
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 40px;
+    z-index: 0;
+}
+.slider-business .rslides li {
+    height: 380px;
+    overflow: hidden;
+}
+.slider-business .transparent-btns_nav {
+    display: none;
+}
+.slider-business .transparent-btns_tabs {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: block;
+    z-index: 100;
+    width: 100%;
+    background: #fff;
+    margin: 0px;
+    padding: 10px;
+}
+.text-slider-pro {
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    font-size: 20px;
+    padding: 10px;
+    background: rgba(92,59,30,0.7);
+
+}
+.text-slider-pro a {
+    color: #fff;
+}
+.slider-business .price {
+    background: #f6931e;
+    position: absolute;
+    padding: 15px;
+    bottom: 0px;
+    right: 15px;
+    font-size: 25px;
+    color: #fff;
+}
+.slider-business .price:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 10px 10px;
+    border-color: transparent transparent #8e5a2b transparent;
+    position: absolute;
+    top: 0px;
+    left: -10px;
+}
+.modal-content {
+    border:1px solid #5e3d1f;
+    box-shadow: 0px;
+}
+.modal-header {
+    background: #744c28;
+    border: 1px solid #744c28;
+    border-bottom: 1px solid #f58a0b;
+    color: #f58a0b;
+}
+.modal-small .modal-dialog {
+    width: 400px;
+}
+.like-product {
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    background: #fff;
+    padding: 5px 10px;
+}
+.like-product:hover {
+    background: #ddd;
+}
+.top-detail {
+    overflow: hidden;
+}
+.top-detail h3 {
+    margin-top: 0px;
+    float: left;
+}
+.top-detail .like-product {
+    position: relative;
+    float: right;
+    bottom: 0px;
+    background: #eee;
+    padding: 5px 15px;
+}
+.panel-heading{
+    margin: 0px;
+}
+.comment-list .media {
+    margin-bottom: 15px;
+}
+.comment-list .media .media-left {
+    padding-right: 15px;
+}
+.comment-list .media .media-left img {
+    width: 120px;
+}
+.comment-list .media-heading {
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.comment-list .media .media-heading a {
+    color: #744c28;
+    font-size: 15px;
+}
+.comment-list .media .media-heading span {
+    color: #999;
+    font-weight: normal;
+    font-size: 13px;
+}
+.price-detail {
+    font-size: 25px;
+    color: #f6931e;
+    display: inline-block;
+    vertical-align: middle;
+}
+.slider-right   .rslides li{
+    height: auto;
+}
+.slider-right .price {
+    font-size: 15px;
+}
+.slider-right .text-slider-pro{
+    font-size: 15px;
+}
