@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/recipes")
 @Api(value = "/recipes", description = "This Rest Service will contain Recipes Information")
 public class RecipesService extends AbstractFacade<Recipes> {
-    @PersistenceContext(unitName = "com_FoodNicheRest_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
     private EntityManager em;
 
     public RecipesService() {

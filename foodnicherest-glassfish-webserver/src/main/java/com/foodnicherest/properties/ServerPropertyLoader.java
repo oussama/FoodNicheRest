@@ -17,11 +17,15 @@ public interface ServerPropertyLoader {
 
     File getLogFile();
 
-    Integer getServerPort();
+    Integer getServerHttpPort();
 
     String getContextRoot();
 
     File getEmbeddedFileSystemRoot();
 
     File getDomainXmlFile();
+
+    Integer getServerHttpsPort();
+
+    File getDeployResource();
 }

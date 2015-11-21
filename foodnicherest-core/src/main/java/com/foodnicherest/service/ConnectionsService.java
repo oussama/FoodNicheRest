@@ -33,7 +33,7 @@ import javax.ws.rs.core.PathSegment;
 @Path("/connections")
 @Api(value = "/connections", description = "This Rest Service will contain Connections Information")
 public class ConnectionsService extends AbstractFacade<Connections> {
-    @PersistenceContext(unitName = "com_FoodNicheRest_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
     private EntityManager em;
 
     private ConnectionsPK getPrimaryKey(PathSegment pathSegment) {

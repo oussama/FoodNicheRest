@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/subscriptions")
 @Api(value = "/subscriptions", description = "This Rest Service will contain Subscriptions Information")
 public class SubscriptionsService extends AbstractFacade<Subscriptions> {
-    @PersistenceContext(unitName = "com_FoodNicheRest_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
     private EntityManager em;
 
     public SubscriptionsService() {

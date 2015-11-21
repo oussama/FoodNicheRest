@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/content")
 @Api(value = "/content", description = "This Rest Service will contain Content Information")
 public class ContentService extends AbstractFacade<Content> {
-    @PersistenceContext(unitName = "com_FoodNicheRest_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
     private EntityManager em;
 
     public ContentService() {

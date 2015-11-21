@@ -2,11 +2,9 @@ package com.foodnicherest;
 
 import com.foodnicherest.properties.ServerPropertyLoader;
 import com.foodnicherest.server.FoodNicheRestServer;
-import com.sun.enterprise.util.io.FileUtils;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.net.URL;
 
 /**
  * Created by ujuezeoke on 19/11/2015.
@@ -14,7 +12,7 @@ import java.nio.file.Files;
 public class FoodNicheRestDevRunner {
     public static void main(String[] args) {
         FoodNicheRestServer foodNicheRestServer = new FoodNicheRestServer(new TestServerPropertyLoader());
-
+        System.out.println("About to start");
         foodNicheRestServer.start();
     }
 
@@ -45,23 +43,33 @@ public class FoodNicheRestDevRunner {
         }
 
         @Override
-        public Integer getServerPort() {
-            return 2334;
+        public Integer getServerHttpPort() {
+            return 31831;
         }
 
         @Override
         public String getContextRoot() {
-            return "/test";
+            return "/";
         }
 
         @Override
         public File getEmbeddedFileSystemRoot() {
-            return new File("/Users/ujuezeoke/trunk/FoodNicheRest/test-emmbeded");
+           throw new UnsupportedOperationException("Nothing calls you");
         }
 
         @Override
         public File getDomainXmlFile() {
-            return new File("/Users/ujuezeoke/trunk/FoodNicheRest/foodnicherest-webserver/src/main/resources/domain.xml");
+            throw new UnsupportedOperationException("Nothing calls you");
+        }
+
+        @Override
+        public Integer getServerHttpsPort() {
+            return 31830;
+        }
+
+        @Override
+        public File getDeployResource() {
+            return new File("../", "artifacts/foodnicherest-core-1.0-SNAPSHOT.jar");
         }
     }
 }
