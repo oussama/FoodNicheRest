@@ -23,14 +23,14 @@ INSERT INTO foodniche.ContentTypes(ContentTypeID, Name) VALUES (2, 'Video');
 INSERT INTO foodniche.ContentTypes(ContentTypeID, Name) VALUES (3, 'Tuturial');
 INSERT INTO foodniche.ContentTypes(ContentTypeID, Name) VALUES (4, 'Menu Items');
 
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (0, 'Vegetarian');
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (1, 'Kosher');
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (2, 'Gluten-free');
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (3, 'Ethic cuisine');
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (4, 'American cuisine');
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (5, 'Steakhouse cuisine');
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (6, 'Seafood cuisine');
-INSERT INTO foodniche.FoodPreferneces(FoodPreferenceID, Name) VALUES (7, 'Other');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (0, 'Vegetarian');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (1, 'Kosher');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (2, 'Gluten-free');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (3, 'Ethic cuisine');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (4, 'American cuisine');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (5, 'Steakhouse cuisine');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (6, 'Seafood cuisine');
+INSERT INTO foodniche.foodpreferences(FoodPreferenceID, Name) VALUES (7, 'Other');
 
 
 
