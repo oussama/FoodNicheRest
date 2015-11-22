@@ -604,7 +604,7 @@ alter table foodniche.UserGroups
       references Groups (GroupID)
       on delete restrict on update restrict;
 
-alter table foodniche.UserGroupsa
+alter table foodniche.UserGroups
    add constraint FK_USERGROU_REFERENCE_USERS foreign key (UserID)
       references Users (UserID)
       on delete restrict on update restrict;
