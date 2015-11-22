@@ -118,7 +118,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Userfoodpreferences ")
     @ApiResponses(value = {
@@ -129,7 +129,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Userfoodpreferences ")
     @ApiResponses(value = {

@@ -93,7 +93,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Messages ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Messages ")
     @ApiResponses(value = {

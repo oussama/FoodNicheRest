@@ -118,7 +118,7 @@ public class ConnectionsService extends AbstractFacade<Connections> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of  Connections ")
     @ApiResponses(value = {
@@ -129,7 +129,7 @@ public class ConnectionsService extends AbstractFacade<Connections> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Connections ")
     @ApiResponses(value = {

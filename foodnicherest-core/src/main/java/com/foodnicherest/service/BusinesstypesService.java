@@ -93,7 +93,7 @@ public class BusinesstypesService extends AbstractFacade<Businesstypes> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Businesses Types ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class BusinesstypesService extends AbstractFacade<Businesstypes> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Businesses Types")
     @ApiResponses(value = {

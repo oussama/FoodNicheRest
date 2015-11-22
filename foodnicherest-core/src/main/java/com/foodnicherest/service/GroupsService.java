@@ -93,7 +93,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Groups ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Groups ")
     @ApiResponses(value = {

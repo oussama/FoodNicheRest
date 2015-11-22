@@ -93,7 +93,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of  Content ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Content ")
     @ApiResponses(value = {

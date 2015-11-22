@@ -93,7 +93,7 @@ public class UsersService extends AbstractFacade<Users> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Users ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class UsersService extends AbstractFacade<Users> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Users ")
     @ApiResponses(value = {

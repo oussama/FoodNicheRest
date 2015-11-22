@@ -93,7 +93,7 @@ public class CouponsService extends AbstractFacade<Coupons> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Coupons ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class CouponsService extends AbstractFacade<Coupons> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Coupons ")
     @ApiResponses(value = {

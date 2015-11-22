@@ -93,7 +93,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Subcsriptiontypes ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Subcsriptiontypes ")
     @ApiResponses(value = {
