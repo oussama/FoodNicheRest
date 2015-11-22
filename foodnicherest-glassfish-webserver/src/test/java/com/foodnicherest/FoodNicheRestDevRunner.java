@@ -70,8 +70,7 @@ public class FoodNicheRestDevRunner {
 
         @Override
         public File getDeployResource() {
-//            return new File("../", "artifacts/FoodNicheRest.jar");
-            return new File("/Users/ujuezeoke/trunk/FoodNicheRest/foodnicherest-core/target/FoodNicheRest.war");
+            return new File(".", "artifacts/FoodNicheRest.war");
         }
     }
 }

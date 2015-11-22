@@ -107,7 +107,7 @@
                                     <groupId>${project.groupId}</groupId>
                                     <artifactId>${project.artifactId}</artifactId>
                                     <version>${project.version}</version>
-                                    <type>jar</type>
+                                    <type>war</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>${main.basedir}/artifacts</outputDirectory>
                                 </artifactItem>

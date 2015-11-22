@@ -5,6 +5,7 @@ import org.glassfish.embeddable.*;
 
 import javax.ejb.embeddable.EJBContainer;
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -26,15 +27,29 @@ public class FoodNicheRestServer {
     }
 
     public void start() {
-        try {
-            glassfish = GlassFishRuntime.bootstrap().newGlassFish(glassfishProperties);
-            glassfish.start();
-            performAdminTasks();
-            glassfish.getDeployer().deploy(serverPropertyLoader.getDeployResource());
-        } catch (GlassFishException e) {
-            throw new RuntimeException(e);
+        if (serverPropertyLoader.getDeployResource().exists()) {
+            try {
+                glassfish = GlassFishRuntime.bootstrap().newGlassFish(glassfishProperties);
+                controllingTheLogs();
+
+                glassfish.start();
+                performAdminTasks();
+                glassfish.getDeployer().deploy(serverPropertyLoader.getDeployResource());
+            } catch (GlassFishException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.printf("Embedded Glassfish server has started at http://localhost:%d%nDeployed archive '%s'%n%n",serverPropertyLoader.getServerHttpPort(), serverPropertyLoader.getDeployResource().getName());
+        }else {
+            System.out.println("The Deployment file does not exist.");
+            System.exit(-1);
         }
-        System.out.printf("Embedded Glassfish server has started at http://localhost:%d%nDeployed archive '%s'%n%n",serverPropertyLoader.getServerHttpPort(), serverPropertyLoader.getDeployResource().getName());
+
+    }
+
+    private void controllingTheLogs() {
+        Logger.getLogger("").getHandlers()[0].setLevel(Level.OFF);
+        Logger.getLogger("javax.enterprise.system.tools.deployment").setLevel(Level.OFF);
+        Logger.getLogger("javax.enterprise.system").setLevel(Level.OFF);
     }
 
     private void performAdminTasks() throws GlassFishException {
@@ -44,9 +59,17 @@ public class FoodNicheRestServer {
                 "--datasourceclassname", "org.postgresql.ds.PGConnectionPoolDataSource",
                 "--restype" ,"javax.sql.ConnectionPoolDataSource", "postgress-connection-pool"));
 
-        commandResultPrinter(commandRunner.run("add-resources", "/Users/ujuezeoke/trunk/FoodNicheRest/foodnicherest-core/src/main/resources/META-INF/glassfish-resources.xml"));
+        commandResultPrinter(commandRunner.run("add-resources", glassfishResourceLocation()));
         commandResultPrinter(commandRunner.run("list-jdbc-resources"));
 
+    }
+
+    private String glassfishResourceLocation() {
+        try {
+            return new File(".", "foodnicherest-core/src/main/resources/META-INF/glassfish-resources.xml").getCanonicalPath();
+        } catch (IOException e) {
+            throw new RuntimeException("Could not find glassfish-resource.xml", e);
+        }
     }
 
     private void commandResultPrinter(CommandResult commandResult) {

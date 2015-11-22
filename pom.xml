@@ -8,8 +8,6 @@
     <modules>
         <module>foodnicherest-core</module>
         <module>foodnicherest-glassfish-webserver</module>
-        <!--<module>foodniche-war-ejb</module>-->
-        <module>foodniche-jetty-webserver</module>
     </modules>
     <packaging>pom</packaging>
 
