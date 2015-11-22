@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/subcsriptiontypes")
 @Api(value = "/subcsriptiontypes", description = "This Rest Service will contain Subcsription Types Information")
 public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public SubcsriptiontypesService() {

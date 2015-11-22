@@ -33,7 +33,7 @@ import javax.ws.rs.core.PathSegment;
 @Path("/userfoodpreferences")
 @Api(value = "/userfoodpreferences", description = "This Rest Service will contain Userfoodpreferences Information")
 public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferences> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     private UserfoodpreferencesPK getPrimaryKey(PathSegment pathSegment) {

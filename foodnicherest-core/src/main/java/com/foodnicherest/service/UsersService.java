@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/users")
 @Api(value = "/users", description = "This Rest Service will contain Users Information")
 public class UsersService extends AbstractFacade<Users> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public UsersService() {

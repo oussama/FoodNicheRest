@@ -27,11 +27,6 @@
             <artifactId>glassfish-embedded-nucleus</artifactId>
             <version>${glassfish.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish.main.extras</groupId>
-            <artifactId>glassfish-embedded-web</artifactId>
-            <version>3.1.2.2</version>
-        </dependency>
 
         <dependency>
             <groupId>org.glassfish.main.extras</groupId>
@@ -40,9 +35,20 @@
         </dependency>
 
         <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.22.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4-1205-jdbc42</version>
         </dependency>
 
 
@@ -62,5 +68,6 @@
             <artifactId>grizzly-npn-api</artifactId>
             <version>1.2</version>
         </dependency>
+
     </dependencies>
 </project>

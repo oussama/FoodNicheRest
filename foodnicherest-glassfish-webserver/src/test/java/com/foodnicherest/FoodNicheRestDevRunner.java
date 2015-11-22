@@ -2,6 +2,7 @@ package com.foodnicherest;
 
 import com.foodnicherest.properties.ServerPropertyLoader;
 import com.foodnicherest.server.FoodNicheRestServer;
+import com.foodnicherest.server.YetAnotherServer;
 
 import java.io.File;
 import java.net.URL;
@@ -69,7 +70,7 @@ public class FoodNicheRestDevRunner {
 
         @Override
         public File getDeployResource() {
-            return new File("../", "artifacts/foodnicherest-core-1.0-SNAPSHOT.jar");
+            return new File(".", "artifacts/FoodNicheRest.war");
         }
     }
 }

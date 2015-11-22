@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/foodpreferences")
 @Api(value = "/foodpreferences", description = "This Rest Service will contain Food Preferences Information")
 public class FoodpreferencesService extends AbstractFacade<Foodpreferences> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public FoodpreferencesService() {
