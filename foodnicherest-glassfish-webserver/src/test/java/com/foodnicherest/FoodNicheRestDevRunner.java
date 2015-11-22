@@ -2,7 +2,6 @@ package com.foodnicherest;
 
 import com.foodnicherest.properties.ServerPropertyLoader;
 import com.foodnicherest.server.FoodNicheRestServer;
-import com.foodnicherest.server.YetAnotherServer;
 
 import java.io.File;
 import java.net.URL;
