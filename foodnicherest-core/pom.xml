@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <packaging>war</packaging>
     <artifactId>foodnicherest-core</artifactId>
     <name>Food Niche Rest Core</name>
 
@@ -20,7 +21,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
+            <version>6.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -47,16 +48,10 @@
             <artifactId>jetty-servlet</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4-1205-jdbc42</version>
-        </dependency>
-
     </dependencies>
 
     <build>
+        <finalName>FoodNicheRest</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -80,7 +75,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.1</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -94,7 +88,7 @@
                                 <artifactItem>
                                     <groupId>javax</groupId>
                                     <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
+                                    <version>6.0</version>
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>

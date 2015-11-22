@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/payments")
 @Api(value = "/payments", description = "This Rest Service will contain Payments Information")
 public class PaymentsService extends AbstractFacade<Payments> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public PaymentsService() {

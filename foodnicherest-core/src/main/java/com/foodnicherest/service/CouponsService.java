@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/coupons")
 @Api(value = "/coupons", description = "This Rest Service will contain Coupons Information")
 public class CouponsService extends AbstractFacade<Coupons> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public CouponsService() {

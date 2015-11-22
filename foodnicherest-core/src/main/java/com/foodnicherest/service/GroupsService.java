@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/groups")
 @Api(value = "/groups", description = "This Rest Service will contain Groups Information")
 public class GroupsService extends AbstractFacade<Groups> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public GroupsService() {

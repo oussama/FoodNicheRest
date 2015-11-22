@@ -10,5 +10,5 @@
         <property name="DatabaseName" value="foodnicherest"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource jndi-name="java:app/JDBC/FoodNiche1" pool-name="foodnicherest-connection-pool" enabled="true" />
+    <jdbc-resource jndi-name="JDBC/FoodNiche1" pool-name="foodnicherest-connection-pool" enabled="true" />
 </resources>
