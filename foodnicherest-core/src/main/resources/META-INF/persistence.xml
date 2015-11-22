@@ -10,15 +10,7 @@
             <property name="eclipselink.deploy-on-startup" value="true"/>
             <property name="eclipselink.target-database" value="PostgreSQL"/>
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
-            <!--<property name="eclipselink.create-ddl-jdbc-file-name" value="Resources/createDDL_ddlGeneration.jdbc"/>-->
-            <!--<property name="eclipselink.drop-ddl-jdbc-file-name" value="Resources/dropDDL_ddlGeneration.jdbc"/>-->
             <property name="eclipselink.ddl-generation.output-mode" value="both"/>
-            <!--<property name="org.eclipse.persistence.platform.server" value="GlassfishPlatform" />-->
-            <property name="URL" value="jdbc:postgresql://localhost:5432/foodnicherest"/>
-            <property name="User" value="postgres"/>
-            <property name="Password" value="password"/>
-            <property name="DatabaseName" value="foodnicherest"/>
-            <property name="driverClass" value="org.postgresql.Driver"/>
         </properties>
     </persistence-unit>
 </persistence>
