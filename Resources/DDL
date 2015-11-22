@@ -441,7 +441,7 @@ create table foodniche.UploadedFiles (
    FileName             VARCHAR(255)         not null,
    СontentType          VARCHAR(80)          not null,
    FileType             VARCHAR(80)          not null,
-   FileSize             bigint               not null
+   FileSize             bigint               not null,
    constraint PK_UPLOADED_FILES primary key (FileID)
 );
 
