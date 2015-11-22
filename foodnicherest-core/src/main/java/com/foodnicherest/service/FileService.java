@@ -38,7 +38,7 @@ import java.util.UUID;
 @Api(value = "/files", description = "This Rest Service for uploading images and video")
 public class FileService {
 
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     private File imagesFolder;
