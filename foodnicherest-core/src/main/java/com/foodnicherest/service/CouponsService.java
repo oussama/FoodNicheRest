@@ -50,7 +50,7 @@ public class CouponsService extends AbstractFacade<Coupons> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Coupons ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class CouponsService extends AbstractFacade<Coupons> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Coupons ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class CouponsService extends AbstractFacade<Coupons> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Coupons ")
     @ApiResponses(value = {

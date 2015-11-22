@@ -50,7 +50,7 @@ public class UsersService extends AbstractFacade<Users> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Users ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class UsersService extends AbstractFacade<Users> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Users ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class UsersService extends AbstractFacade<Users> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Users ")
     @ApiResponses(value = {

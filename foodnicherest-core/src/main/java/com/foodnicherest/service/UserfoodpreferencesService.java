@@ -73,7 +73,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Userfoodpreferences ")
     @ApiResponses(value = {
@@ -84,7 +84,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Userfoodpreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -95,7 +95,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Userfoodpreferences ")
     @ApiResponses(value = {

@@ -73,7 +73,7 @@ public class ConnectionsService extends AbstractFacade<Connections> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Connections ")
     @ApiResponses(value = {
@@ -84,7 +84,7 @@ public class ConnectionsService extends AbstractFacade<Connections> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove  Connections ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -95,7 +95,7 @@ public class ConnectionsService extends AbstractFacade<Connections> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Connections ")
     @ApiResponses(value = {

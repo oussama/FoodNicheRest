@@ -50,7 +50,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Messages ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Messages ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Messages ")
     @ApiResponses(value = {

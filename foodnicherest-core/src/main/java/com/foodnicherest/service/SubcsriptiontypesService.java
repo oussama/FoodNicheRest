@@ -50,7 +50,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Subcsriptiontypes ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Subcsriptiontypes ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Subcsriptiontypes ")
     @ApiResponses(value = {

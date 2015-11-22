@@ -50,7 +50,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Subscriptions ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Subscriptions ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Subscriptions ")
     @ApiResponses(value = {

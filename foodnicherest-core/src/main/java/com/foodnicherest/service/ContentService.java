@@ -50,7 +50,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Content ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Content ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Content ")
     @ApiResponses(value = {

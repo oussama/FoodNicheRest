@@ -50,7 +50,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Groups ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Groups ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Groups ")
     @ApiResponses(value = {

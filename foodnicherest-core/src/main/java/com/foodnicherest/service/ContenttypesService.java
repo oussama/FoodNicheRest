@@ -50,7 +50,7 @@ public class ContenttypesService extends AbstractFacade<Contenttypes> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Contenttypes ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class ContenttypesService extends AbstractFacade<Contenttypes> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Contenttypes ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class ContenttypesService extends AbstractFacade<Contenttypes> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Contenttypes ")
     @ApiResponses(value = {

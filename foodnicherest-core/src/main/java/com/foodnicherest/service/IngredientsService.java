@@ -50,7 +50,7 @@ public class IngredientsService extends AbstractFacade<Ingredients> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Ingredients ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class IngredientsService extends AbstractFacade<Ingredients> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Ingredients ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class IngredientsService extends AbstractFacade<Ingredients> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Ingredients ")
     @ApiResponses(value = {

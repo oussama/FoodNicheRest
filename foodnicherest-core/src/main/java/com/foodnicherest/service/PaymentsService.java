@@ -50,7 +50,7 @@ public class PaymentsService extends AbstractFacade<Payments> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Payments ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class PaymentsService extends AbstractFacade<Payments> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Payments ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class PaymentsService extends AbstractFacade<Payments> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Payments ")
     @ApiResponses(value = {
