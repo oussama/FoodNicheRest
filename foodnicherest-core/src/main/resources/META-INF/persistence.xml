@@ -5,15 +5,5 @@
     <persistence-unit  name="foodnicherest-core-1.0-SNAPSHOT" transaction-type="JTA">
         <jta-data-source>java:app/JDBC/FoodNiche1</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        <properties>
-            <property name="metadata-complete" value="true"/>
-            <property name="eclipselink.deploy-on-startup" value="true"/>
-            <property name="eclipselink.target-database" value="PostgreSQL"/>
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
-            <!--<property name="eclipselink.create-ddl-jdbc-file-name" value="Resources/createDDL_ddlGeneration.jdbc"/>-->
-            <!--<property name="eclipselink.drop-ddl-jdbc-file-name" value="Resources/dropDDL_ddlGeneration.jdbc"/>-->
-            <property name="eclipselink.ddl-generation.output-mode" value="both"/>
-            <property name="org.eclipse.persistence.platform.server" value="GlassfishPlatform" />
-        </properties>
     </persistence-unit>
 </persistence>
