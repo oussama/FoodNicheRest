@@ -30,7 +30,7 @@ public class FoodNicheRestServer {
         if (serverPropertyLoader.getDeployResource().exists()) {
             try {
                 glassfish = GlassFishRuntime.bootstrap().newGlassFish(glassfishProperties);
-                controllingTheLogs();
+//                controllingTheLogs();
 
                 glassfish.start();
                 performAdminTasks();
