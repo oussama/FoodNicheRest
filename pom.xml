@@ -8,6 +8,7 @@
     <modules>
         <module>foodnicherest-core</module>
         <module>foodnicherest-glassfish-webserver</module>
+        <module>foddniche-ui</module>
     </modules>
     <packaging>pom</packaging>
 
