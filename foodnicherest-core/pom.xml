@@ -14,8 +14,6 @@
 
     <properties>
         <commons.io.version>2.4</commons.io.version>
-
-        <main.basedir>${project.parent.basedir}</main.basedir>
     </properties>
 
     <dependencies>
@@ -130,26 +128,6 @@
                                             <artifactId>javaee-endorsed-api</artifactId>
                                     <version>6.0</version>
                                             <type>jar</type>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-
-                            <execution>
-                                <id>copy</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>${project.groupId}</groupId>
-                                            <artifactId>${project.artifactId}</artifactId>
-                                            <version>${project.version}</version>
-                                            <type>war</type>
-                                            <overWrite>true</overWrite>
-                                            <outputDirectory>${main.basedir}/artifacts</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
                                 </configuration>

@@ -41,7 +41,7 @@
         window.SwaggerTranslator.translate();
       }
       window.swaggerUi = new SwaggerUi({
-        url: "http://localhost:31831/FoodNicheRest/rest/api-docs",
+        url: $(location).attr('href') + "rest/api-docs",
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){

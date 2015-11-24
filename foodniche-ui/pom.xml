@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
 
-    <artifactId>foodnicheui</artifactId>
+    <artifactId>foodniche-ui</artifactId>
 
     <properties>
         <maven.compiler.plugin>3.3</maven.compiler.plugin>

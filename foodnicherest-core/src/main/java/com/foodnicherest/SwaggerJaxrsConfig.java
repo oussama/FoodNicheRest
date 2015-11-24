@@ -26,7 +26,7 @@ public class SwaggerJaxrsConfig extends HttpServlet {
             super.init(servletConfig);
             SwaggerConfig swaggerConfig = new SwaggerConfig();
             ConfigFactory.setConfig(swaggerConfig);
-            swaggerConfig.setBasePath("http://localhost:31831/FoodNicheRest/rest");
+            swaggerConfig.setBasePath("http://localhost:8080/FoodNicheRest/rest");
             swaggerConfig.setApiVersion("1.0.0");
             ScannerFactory.setScanner(new DefaultJaxrsScanner());
             ClassReaders.setReader(new DefaultJaxrsApiReader());
