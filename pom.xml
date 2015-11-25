@@ -112,4 +112,16 @@
         </plugins>
 
     </build>
+
+    <profiles>
+        <profile>
+            <id>deployToCi</id>
+            <dependencies>
+
+            </dependencies>
+            <build>
+
+            </build>
+        </profile>
+    </profiles>
 </project>
