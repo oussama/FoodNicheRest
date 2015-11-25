@@ -2,6 +2,7 @@ package com.foodnicherest.properties;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ujuezeoke on 19/11/2015.

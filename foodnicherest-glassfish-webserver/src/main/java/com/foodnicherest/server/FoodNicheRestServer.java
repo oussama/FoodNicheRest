@@ -38,19 +38,21 @@ public class FoodNicheRestServer {
                     .stream()
                     .filter(File::exists)
                     .forEach(deployFile(deployer));
-        } catch (GlassFishException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
-        System.out.printf("Embedded Glassfish server has started at http://localhost:%d %n%n", serverPropertyLoader.getServerHttpPort());
     }
 
 
     private Consumer<File> deployFile(Deployer deployer) {
         return file -> {
             try {
-                deployer.deploy(file);
-            } catch (GlassFishException e) {
-                throw new RuntimeException(String.format("Cannot deploy '%s'", file.getName()),e);
+                String contextroot = deployer.deploy(file);
+                System.out.printf("%s deployed to http://localhost:%d/%s%n", file.getName(), serverPropertyLoader.getServerHttpPort(), contextroot);
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(String.format("Cannot deploy '%s'", file.getName()), e);
             }
         };
     }

@@ -8,6 +8,7 @@ import java.io.FileFilter;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ujuezeoke on 19/11/2015.
@@ -74,5 +75,6 @@ public class FoodNicheRestDevRunner {
         public List<File> getDeployResources() {
             return Arrays.asList(new File(".", "artifacts").listFiles(pathname -> pathname.getName().endsWith(".war")));
         }
+
     }
 }

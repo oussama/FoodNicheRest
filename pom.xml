@@ -48,35 +48,15 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>6.0</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Embedded Jetty for tests -->
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-    </dependencies>
 
     <build>
         <pluginManagement>
@@ -116,10 +96,25 @@
     <profiles>
         <profile>
             <id>deployToCi</id>
-            <dependencies>
-
-            </dependencies>
             <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.glassfish.maven.plugin</groupId>
+                        <artifactId>maven-glassfish-plugin</artifactId>
+                        <version>2.1</version>
+                        <configuration>
+                            <glassfishDirectory>jump</glassfishDirectory>
+                            <user>why</user>
+                            <adminPassword>me</adminPassword>
+                            <domain>
+                                <name>${project.artifactId}</name>
+                                <adminPort>4848</adminPort>
+                                <httpPort>8080</httpPort>
+                                <httpsPort>8443</httpsPort>
+                            </domain>
+                        </configuration>
+                    </plugin>
+                </plugins>
 
             </build>
         </profile>
