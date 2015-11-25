@@ -74,7 +74,7 @@
         <!-- Swagger config -->
         <dependency>
             <groupId>io.swagger</groupId>
-            <artifactId>swagger-jaxrs</artifactId>
+            <artifactId>swagger-jersey2-jaxrs</artifactId>
             <version>${swagger.version}</version>
         </dependency>
 
@@ -111,7 +111,16 @@
                     <httpConnector>
                         <port>8080</port>
                     </httpConnector>
+                    <jettyXml>${basedir}/src/main/webapp/META-INF/jetty-env.xml</jettyXml>
                 </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>9.4-1201-jdbc41</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

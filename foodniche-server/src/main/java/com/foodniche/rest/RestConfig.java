@@ -1,10 +1,11 @@
 package com.foodniche.rest;
 
+import com.foodniche.rest.config.CorsFilter;
+import io.swagger.jaxrs.config.BeanConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import javax.ejb.Stateless;
 
 /**
  * @author Alexey Dubrov
@@ -20,10 +21,9 @@ public class RestConfig extends ResourceConfig {
         register(MultiPartFeature.class);
         register(JacksonFeature.class);
 
-        // resources
-        packages("com.foodniche.rest.services", "com.foodniche.rest.services.entities");
+        register(CorsFilter.class);
 
-        // swagger
-        packages("io.swagger.jaxrs.listing");
+        // resources
+        packages("com.foodniche.rest.services", "com.foodniche.rest.services.entities", "io.swagger.jaxrs.listing");
     }
 }

@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -27,7 +26,6 @@ import java.util.Map;
  *
  */
 
-@Stateless
 @Path("/")
 @Api(value = "/auth", description = "Authentication service")
 public class AuthService extends UsersService {
