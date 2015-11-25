@@ -23,11 +23,10 @@
         <maven.compiler.plugin>3.3</maven.compiler.plugin>
         <maven.war.plugin>2.6</maven.war.plugin>
 
-        <jetty.plugin.version>9.3.6.v20151106</jetty.plugin.version>
+        <jetty.plugin.version>9.3.0.M2</jetty.plugin.version>
 
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jetty.version>9.3.6.v20151106</jetty.version>
     </properties>
 
     <dependencies>
