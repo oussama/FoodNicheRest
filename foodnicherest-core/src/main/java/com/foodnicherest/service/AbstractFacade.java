@@ -6,7 +6,9 @@
 package com.foodnicherest.service;
 
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -59,5 +61,20 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
+    public List<T> execNamedQuery(String queryName, Map<String, Object> params) {
+        Query qr = getEntityManager().createNamedQuery(queryName, entityClass);
+
+        params.forEach((name, value) -> {
+            qr.setParameter(name, value);
+        });
+
+        return qr.getResultList();
+    }
+
+    public T execSingleResult(String queryName, Map<String, Object> params) {
+        List<T> entities = execNamedQuery(queryName, params);
+
+        return entities.size() > 0 ? entities.get(0) : null;
+    }
 }
