@@ -3,7 +3,7 @@
 
     <groupId>com.foodniche</groupId>
     <artifactId>foodnicherest</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.3-SNAPSHOT</version>
     <modules>
         <module>foodniche-ui</module>
         <module>foodniche-server</module>
@@ -102,6 +102,6 @@
     
     <scm>
         <developerConnection>scm:git:https://github.com/FoodNicheGIT/FoodNiche.git</developerConnection>
-      <tag>foodnicherest-1.0.4</tag>
+      <tag>foodnicherest-1.0.1</tag>
   </scm>
 </project>
