@@ -8,5 +8,6 @@
        <context:component-scan base-package="com.foodniche.rest.services"/>
 
        <import resource="classpath:/META-INF/db-context.xml"/>
+       <import resource="classpath:/META-INF/security/security-context.xml"/>
 
 </beans>
