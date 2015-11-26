@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+       <security:global-method-security pre-post-annotations="enabled"/>
+
+       <bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>
+
+       <security:authentication-manager alias="authenticationManager">
+       </security:authentication-manager>
+
+       <bean class="com.foodniche.rest.security.TokenAuthenticationFilter"
+             id="authenticationTokenProcessingFilter">
+              <constructor-arg type="java.lang.String"><value>/api/**</value></constructor-arg>
+              <property name="authenticationManager" ref="authenticationManager"/>
+       </bean>
+
+       <security:http pattern="/**" use-expressions="true" auto-config="false" entry-point-ref="restAuthenticationEntryPoint" create-session="stateless">
+              <security:intercept-url pattern="/auth/**" access="permitAll()"/>
+              <security:intercept-url pattern="/api/**" access="isAuthenticated()"/>
+
+              <security:logout logout-url="/auth/logout"/>
+
+              <security:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER"/>
+
+              <security:csrf disabled="true"/>
+       </security:http>
+
+       <context:component-scan base-package="com.foodniche.rest.security"/>
+
+</beans>
