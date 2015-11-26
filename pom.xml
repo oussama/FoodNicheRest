@@ -84,6 +84,6 @@
     </build>
     
     <scm>
-        <developerConnection>scm:git:https://github.com/FoodNicheGIT</developerConnection>
+        <developerConnection>scm:git:https://github.com/FoodNicheGIT/FoodNiche.git</developerConnection>
     </scm>
 </project>
