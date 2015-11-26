@@ -60,7 +60,7 @@ public class TokenRepository {
 
             cl.add(Calendar.HOUR, liveHours);
 
-            return now.before(cl.getTime());
+            return now.after(cl.getTime());
         }
 
         public void setUser(Users user) {
@@ -92,7 +92,7 @@ public class TokenRepository {
         }
     }
 
-    private ConcurrentMap<String, Token> tokenMap = new ConcurrentHashMap<>();
+    private volatile Map<String, Token> tokenMap = new ConcurrentHashMap<>();
     private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
     @PostConstruct

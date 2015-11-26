@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <jdbc-connection-pool
+            name="foodnicherest-connection-pool" datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource" res-type="javax.sql.ConnectionPoolDataSource">
+        <!--Change these values to match your configuration-->
+        <property name="URL" value="jdbc:postgresql://localhost:5432/food_niche"/>
+        <property name="User" value="fniche"/>
+        <property name="Password" value="fniche"/>
+        <property name="DatabaseName" value="food_niche"/>
+        <property name="driverClass" value="org.postgresql.Driver"/>
+    </jdbc-connection-pool>
+    <jdbc-resource jndi-name="java:app/JDBC/FoodNiche1" pool-name="foodnicherest-connection-pool" enabled="true" />
+</resources>

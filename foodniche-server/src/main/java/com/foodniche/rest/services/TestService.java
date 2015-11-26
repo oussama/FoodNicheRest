@@ -16,7 +16,7 @@ import javax.ws.rs.QueryParam;
  */
 
 @Component
-@Path("/test")
+@Path("/api")
 public class TestService {
 
     @Autowired
