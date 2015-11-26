@@ -3,7 +3,7 @@
 
     <groupId>com.foodniche</groupId>
     <artifactId>foodnicherest</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <modules>
         <module>foodniche-ui</module>
         <module>foodniche-server</module>
