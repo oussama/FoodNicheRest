@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/content")
 @Api(value = "/content", description = "This Rest Service will contain Content Information")
 public class ContentService extends AbstractFacade<Content> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public ContentService() {
@@ -50,7 +50,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Content ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Content ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Content ")
     @ApiResponses(value = {
@@ -93,7 +93,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of  Content ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class ContentService extends AbstractFacade<Content> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Content ")
     @ApiResponses(value = {

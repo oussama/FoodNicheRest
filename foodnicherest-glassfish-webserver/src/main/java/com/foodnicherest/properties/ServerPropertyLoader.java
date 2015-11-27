@@ -1,6 +1,7 @@
 package com.foodnicherest.properties;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by ujuezeoke on 19/11/2015.
@@ -27,5 +28,5 @@ public interface ServerPropertyLoader {
 
     Integer getServerHttpsPort();
 
-    File getDeployResource();
+    List<File> getDeployResources();
 }

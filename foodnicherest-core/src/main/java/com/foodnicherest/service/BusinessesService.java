@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/businesses")
 @Api(value = "/businesses", description = "This Rest Service will contain Businesses Information")
 public class BusinessesService extends AbstractFacade<Businesses> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public BusinessesService() {
@@ -50,7 +50,7 @@ public class BusinessesService extends AbstractFacade<Businesses> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({ "application/json"})
     @ApiOperation(value = "Edit Businesses ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class BusinessesService extends AbstractFacade<Businesses> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Businesses ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class BusinessesService extends AbstractFacade<Businesses> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Businesses ")
     @ApiResponses(value = {
@@ -93,7 +93,7 @@ public class BusinessesService extends AbstractFacade<Businesses> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Businesses ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class BusinessesService extends AbstractFacade<Businesses> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Businesses ")
     @ApiResponses(value = {

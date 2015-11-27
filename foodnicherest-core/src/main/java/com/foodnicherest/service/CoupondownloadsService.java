@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/coupondownloads")
 @Api(value = "/coupondownloads", description = "This Rest Service will contain Coupon Downloads Information")
 public class CoupondownloadsService extends AbstractFacade<Coupondownloads> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public CoupondownloadsService() {
@@ -50,7 +50,7 @@ public class CoupondownloadsService extends AbstractFacade<Coupondownloads> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Coupondownloads ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class CoupondownloadsService extends AbstractFacade<Coupondownloads> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Coupondownloads ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class CoupondownloadsService extends AbstractFacade<Coupondownloads> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Coupondownloads ")
     @ApiResponses(value = {
@@ -93,7 +93,7 @@ public class CoupondownloadsService extends AbstractFacade<Coupondownloads> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Coupondownloads ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class CoupondownloadsService extends AbstractFacade<Coupondownloads> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Coupondownloads ")
     @ApiResponses(value = {

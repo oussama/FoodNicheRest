@@ -33,7 +33,7 @@ import javax.ws.rs.core.PathSegment;
 @Path("/userfoodpreferences")
 @Api(value = "/userfoodpreferences", description = "This Rest Service will contain Userfoodpreferences Information")
 public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferences> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     private UserfoodpreferencesPK getPrimaryKey(PathSegment pathSegment) {
@@ -73,7 +73,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Userfoodpreferences ")
     @ApiResponses(value = {
@@ -84,7 +84,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Userfoodpreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -95,7 +95,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Userfoodpreferences ")
     @ApiResponses(value = {
@@ -118,7 +118,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Userfoodpreferences ")
     @ApiResponses(value = {
@@ -129,7 +129,7 @@ public class UserfoodpreferencesService extends AbstractFacade<Userfoodpreferenc
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Userfoodpreferences ")
     @ApiResponses(value = {

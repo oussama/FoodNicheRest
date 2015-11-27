@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/groups")
 @Api(value = "/groups", description = "This Rest Service will contain Groups Information")
 public class GroupsService extends AbstractFacade<Groups> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public GroupsService() {
@@ -50,7 +50,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Groups ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Groups ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Groups ")
     @ApiResponses(value = {
@@ -93,7 +93,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Groups ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class GroupsService extends AbstractFacade<Groups> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Groups ")
     @ApiResponses(value = {

@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/messages")
 @Api(value = "/messages", description = "This Rest Service will contain Messages Information")
 public class MessagesService extends AbstractFacade<Messages> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public MessagesService() {
@@ -50,7 +50,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Messages ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Messages ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Messages ")
     @ApiResponses(value = {
@@ -93,7 +93,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Messages ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class MessagesService extends AbstractFacade<Messages> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Messages ")
     @ApiResponses(value = {

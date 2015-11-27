@@ -5,6 +5,9 @@
  */
 package org.netbeans.rest.application.config;
 
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+
+import java.util.ResourceBundle;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
@@ -33,7 +36,11 @@ public class ApplicationConfig extends Application {
         resources.add(com.wordnik.swagger.jaxrs.listing.ApiDeclarationProvider.class);
         resources.add(com.wordnik.swagger.jaxrs.listing.ApiListingResourceJSON.class);
         resources.add(com.wordnik.swagger.jaxrs.listing.ResourceListingProvider.class);
+
+        resources.add(MultiPartFeature.class);
+
         addRestResourceClasses(resources);
+
         return resources;
     }
 
@@ -61,6 +68,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.foodnicherest.service.SubscriptionsService.class);
         resources.add(com.foodnicherest.service.UserfoodpreferencesService.class);
         resources.add(com.foodnicherest.service.UsersService.class);
+        resources.add(com.foodnicherest.service.FileService.class);
     }
 
 }

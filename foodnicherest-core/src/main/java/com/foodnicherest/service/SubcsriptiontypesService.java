@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/subcsriptiontypes")
 @Api(value = "/subcsriptiontypes", description = "This Rest Service will contain Subcsription Types Information")
 public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public SubcsriptiontypesService() {
@@ -50,7 +50,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Subcsriptiontypes ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Subcsriptiontypes ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Subcsriptiontypes ")
     @ApiResponses(value = {
@@ -93,7 +93,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Subcsriptiontypes ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class SubcsriptiontypesService extends AbstractFacade<Subcsriptiontypes> 
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Subcsriptiontypes ")
     @ApiResponses(value = {

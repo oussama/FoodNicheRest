@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Path("/subscriptions")
 @Api(value = "/subscriptions", description = "This Rest Service will contain Subscriptions Information")
 public class SubscriptionsService extends AbstractFacade<Subscriptions> {
-    @PersistenceContext(unitName = "foodnicherest-core-1.0-SNAPSHOT")
+    @PersistenceContext(unitName = "FoodNicheRest")
     private EntityManager em;
 
     public SubscriptionsService() {
@@ -50,7 +50,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("/{id}")
     @Consumes({"application/json"})
     @ApiOperation(value = "Edit Subscriptions ")
     @ApiResponses(value = {
@@ -61,7 +61,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @ApiOperation(value = "Remove Subscriptions ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
@@ -71,7 +71,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Subscriptions ")
     @ApiResponses(value = {
@@ -93,7 +93,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @GET
-    @Path("{from}/{to}")
+    @Path("/{from}/{to}")
     @Produces({"application/json"})
     @ApiOperation(value = "Find Range of Subscriptions ")
     @ApiResponses(value = {
@@ -104,7 +104,7 @@ public class SubscriptionsService extends AbstractFacade<Subscriptions> {
     }
 
     @GET
-    @Path("count")
+    @Path("/count")
     @Produces("text/plain")
     @ApiOperation(value = "Count Subscriptions ")
     @ApiResponses(value = {

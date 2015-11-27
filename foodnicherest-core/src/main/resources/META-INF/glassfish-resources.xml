@@ -4,11 +4,11 @@
     <jdbc-connection-pool
             name="foodnicherest-connection-pool" datasource-classname="org.postgresql.ds.PGConnectionPoolDataSource" res-type="javax.sql.ConnectionPoolDataSource">
         <!--Change these values to match your configuration-->
-        <property name="URL" value="jdbc:postgresql://localhost:5432/foodnicherest"/>
+        <property name="URL" value="jdbc:postgresql://localhost:5432/postgres"/>
         <property name="User" value="postgres"/>
         <property name="Password" value="password"/>
-        <property name="DatabaseName" value="foodnicherest"/>
+        <property name="DatabaseName" value="postgres"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
-    <jdbc-resource jndi-name="java:app/JDBC/FoodNiche1" pool-name="foodnicherest-connection-pool" enabled="true" />
+    <jdbc-resource jndi-name="JDBC/FoodNiche1" pool-name="foodnicherest-connection-pool" enabled="true" />
 </resources>

@@ -4,7 +4,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.ear
 
@@ -15,6 +15,6 @@ hs_err_pid*
 *.iml
 .idea
 
-/foodnicherest-webserver/target/
+*/target/
 /target/
-/foodnicherest-core/target/
+/artifacts/
