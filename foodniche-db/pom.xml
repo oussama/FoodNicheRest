@@ -9,6 +9,7 @@
     <packaging>jar</packaging>
 
     <artifactId>foodniche-db</artifactId>
+    <name>Food Niche Database</name>
 
     <properties>
         <hibernate.version>4.3.11.Final</hibernate.version>
