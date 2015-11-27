@@ -3,5 +3,5 @@ GlassFish Application Server 3.1 Servlet 3.0//EN"
                 "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
 <glassfish-web-app>
     <!--<class-loader delegate="false"/>-->
-    <context-root>foodniche-ui-1.0-SNAPSHOT</context-root>
+    <context-root>foodniche-ui</context-root>
 </glassfish-web-app>
