@@ -7,20 +7,10 @@ package com.foodniche.rest.model;
  */
 
 public class AuthData {
-    private Integer userId;
     private String token;
 
-    public AuthData(Integer userId, String token) {
-        this.userId = userId;
+    public AuthData(String token) {
         this.token = token;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getToken() {
