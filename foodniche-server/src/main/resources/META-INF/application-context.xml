@@ -4,17 +4,26 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-       <!--loading system environment properties - if not present - will be taken from default.properties-->
-       <context:property-placeholder order="-1000"/>
-       <context:property-placeholder order="0" location="classpath:default.properties"/>
+       <!--<bean id="requiredProperties"-->
+             <!--class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+              <!--<property name="properties">-->
+                     <!--<value>-->
+                            <!--&lt;!&ndash; Environment variable overrides (only if present). No need to customize these. &ndash;&gt;-->
+                            <!--&lt;!&ndash;app.env=#{ systemEnvironment['FOOD_NICHE_ENV'] ?: 'DEV' }&ndash;&gt;-->
+                            <!--app.env='DEV'-->
+                     <!--</value>-->
+              <!--</property>-->
+       <!--</bean>-->
 
+       <!--<context:property-placeholder system-properties-mode="OVERRIDE" properties-ref="requiredProperties"/>-->
        <context:property-placeholder location="classpath:dbConfig.properties"/>
        <context:property-placeholder location="classpath:config.properties"/>
 
        <context:annotation-config/>
        <context:component-scan base-package="com.foodniche.rest.services"/>
 
-       <import resource="classpath:/META-INF/db-context.${FOOD_NICHE_ENV}.xml"/>
+       <import resource="classpath:/META-INF/db-context.CI-PROD.xml"/>
+       <import resource="classpath:/META-INF/db-context.DEV.xml"/>
        <import resource="classpath:/META-INF/security/security-context.xml"/>
 
 </beans>
