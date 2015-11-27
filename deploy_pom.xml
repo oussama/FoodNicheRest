@@ -10,7 +10,7 @@
 
     <properties>
         <foodNiche.version>1.0.4</foodNiche.version>
-        <glassfish.autodeploy.dir>/opt/glassfish4.1.1/glassfish/domains/domain1/autodeploy/</glassfish.autodeploy.dir>
+        <glassfish.autodeploy.dir>/opt/glassfish/glassfish/domains/domain1/autodeploy/</glassfish.autodeploy.dir>
     </properties>
 
     <dependencies>
