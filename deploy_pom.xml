@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.foodniche</groupId>
-    <artifactId>foodnicherest</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <artifactId>deploy</artifactId>
+    <version>1.0</version>
 
     <packaging>pom</packaging>
 
     <properties>
-        <foodNiche.version>1.0.3-SNAPSHOT</foodNiche.version>
+        <foodNiche.version>1.0.4</foodNiche.version>
         <glassfish.autodeploy.dir>/opt/glassfish4.1.1/glassfish/domains/domain1/autodeploy/</glassfish.autodeploy.dir>
     </properties>
 
