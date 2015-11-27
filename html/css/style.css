@@ -109,6 +109,7 @@ h6 {
 }
 .banner-home {
     position: relative;
+    z-index: 1;
 }
 .text-banner {
     position: absolute;
@@ -126,6 +127,10 @@ h6 {
     background: #fff;
     padding: 10px;
     margin-bottom: 10px;
+}
+.logholder_div h3 {
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 .sub_but .facebook_but {
     background: #3b579d;
@@ -151,6 +156,9 @@ h6 {
     box-shadow: none !important;
     font-size: 15px;
     height: 50px;
+}
+.form-grey textarea.form-control {
+    height: auto;
 }
 .text-banner h1 {
     text-align: center;
@@ -318,7 +326,7 @@ h6 {
 }
 .profile_image {
     border: 1px solid #744c28;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -778,6 +786,8 @@ h6 {
 }
 .box-recipe img {
     width: 100%;
+    height: 190px;
+    object-fit: cover
 }
 .box-recipe .connect_link_full_top {
     background: rgba(116, 76, 40, 0.6);
@@ -953,4 +963,52 @@ h6 {
 }
 .slider-right .text-slider-pro{
     font-size: 15px;
+}
+
+
+.hours-input {
+    position: relative;
+}
+.hours-input .form-control {
+    padding-right: 70px;
+}
+.hours-input label {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    font-weight: normal;
+}
+.text-small {
+    font-size: 11px;
+}
+.clear {
+    clear: both;
+}
+.top-recipe h3 {
+    float: none;
+    margin-bottom: 0px;
+}
+.top-recipe {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.list-group img {
+    width: 100%;
+    height: 82px;
+    object-fit: cover;
+    border: 1px solid #5e3d1f;
+}
+.list-group li, .list-album li {
+    margin-bottom: 15px;
+}
+.list-album li img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+     border: 1px solid #5e3d1f;
+}
+.modal-backdrop {
+    z-index: 10;
 }
