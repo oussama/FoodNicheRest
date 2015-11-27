@@ -7,9 +7,33 @@
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-       <jee:jndi-lookup id="dataSource" jndi-name="java:app/JDBC/FoodNiche1" expected-type="javax.sql.DataSource" resource-ref="true"/>
+    <bean id="dataSource"
+          destroy-method="close"
+          class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl"
+                  value="${hibernate.connection.url}"/>
+        <property name="driverClass"
+                  value="${hibernate.connection.driver_class}"/>
+        <property name="user"
+                  value="${hibernate.connection.username}"/>
+        <property name="password"
+                  value="${hibernate.connection.password}"/>
+        <property name="maxPoolSize"
+                  value="${datasource.c3p0.maxPoolSize}"/>
+        <property name="preferredTestQuery"
+                  value="${datasource.c3p0.preferredTestQuery}"/>
+        <property name="idleConnectionTestPeriod"
+                  value="${datasource.c3p0.idleConnectionTestPeriod}"/>
+        <property name="testConnectionOnCheckin"
+                  value="${datasource.c3p0.testConnectionOnCheckin}"/>
+        <property name="unreturnedConnectionTimeout"
+                  value="${datasource.c3p0.unreturnedConnectionTimeout}"/>
+        <property name="debugUnreturnedConnectionStackTraces"
+                  value="${datasource.c3p0.debugUnreturnedConnectionStackTraces}"/>
+    </bean>
 
-       <bean id="mainEntityManagerFactory"
+
+    <bean id="mainEntityManagerFactory"
              class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
               <property name="jpaVendorAdapter">
                      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
