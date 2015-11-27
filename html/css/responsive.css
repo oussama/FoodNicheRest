@@ -1,0 +1,84 @@
+
+@media all and (min-width: 320px) and (max-width: 1000px) {
+    .container {
+        width:auto;
+        padding: 0px 15px;
+    }
+}
+@media all and (min-width: 320px) and (max-width: 768px) {
+    .navbar-brand > img {
+        width: 200px;
+    }
+    .navbar-default .navbar-brand {
+        padding: 10px;
+    }
+    .navbar-toggle {
+        margin-top: 11px;
+        margin-right: 10px;
+    }
+    .text-banner {
+        top: 30px;
+        margin: 0px;
+    }
+    .text-banner h1 {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .page_title {
+        width: auto;
+        padding: 0px;
+        margin-bottom: 30px;
+    }
+    .step-how {
+        padding: 0px;
+    }
+    .howitworks_arrow {
+        top: auto;
+        bottom: -15px;
+        left: 50%;
+        right: auto;
+    }
+    .footer_top {
+        padding-bottom: 0px;
+    }
+    .p30 {
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+    .right_search {
+        float: none;
+        margin-left: 0px;
+    }
+    .search-top .col-sm-2 {
+        margin-top: 10px;
+    }
+    .stape_by_stape ul li a {
+        font-size: 17px;
+    }
+    .registration2 ul li {
+        margin: 0px;
+    }
+    .registration2 ul li a {
+        width: 130px;
+        height: 130px;
+        line-height: 130px;
+        font-size: 18px;
+        margin: 3px;
+    }
+    .content .title-width {
+        width: auto;
+    }
+    .slider-business .rslides li {
+        height: 200px;
+    }
+    .slider-business .price, .text-slider-pro {
+        font-size: 17px
+    }
+    .modal-small .modal-dialog {
+        width: auto;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1000px) {
+
+}
