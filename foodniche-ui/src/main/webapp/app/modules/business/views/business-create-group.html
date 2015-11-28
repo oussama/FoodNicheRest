@@ -1,0 +1,62 @@
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <h1 class="page_title"><span class="span_white_bg">Create Groups</span></h1>
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-8">
+            <div class="form-grey">
+              <form name="form" ng-submit="submit(form)" novalidate>
+                <div class="form-group" ng-class="{'has-error': form.name.$invalid && submitted}">
+                  <input type="text" placeholder="Group Name" class="form-control input-lg"
+                         name="name" ng-model="group.name" required>
+                  <div class="help-block" ng-if="form.name.$error.required && submitted">Group name is required</div>
+                </div>
+                <div class="form-group">
+                  <textarea placeholder="Description" class="form-control input-lg" style="height: 100px"
+                            name="description" ng-model="group.description"></textarea>
+                </div>
+                <div class="form-group radio-business">
+                  <div class="radio">
+                    <label>
+                      <input name="approvedmembership" ng-model="group.approvedmembership" ng-value="false" type="radio" value="">
+                      Approval not required to join
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input name="approvedmembership" ng-model="group.approvedmembership" ng-value="true" type="radio" value="">
+                      Approval required to join
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group text-center">
+                  <div class="file-upload">
+                    <a href="#" class="btn btn-grey">Upload Pictures</a>
+                    <input type="file" uploader="uploader" nv-file-select>
+                    <div class="img-preview" ng-repeat="item in uploader.queue">
+                      <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%" />
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': form.agree.$invalid && submitted}">
+                  <div class="checkbox">
+                    <label>
+                      <input name="agree" type="checkbox" value="" ng-model="user.agree" required>
+                      I agree with Foodniche terms and conditions
+                    </label>
+                  </div>
+                </div>
+                <div class="holder_form sub_but margin_top25">
+                  <button name="" type="submit" class="btn btn-warning btn-lg btn-block">SUBMIT</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

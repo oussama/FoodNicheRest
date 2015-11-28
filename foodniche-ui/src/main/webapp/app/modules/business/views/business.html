@@ -1,0 +1,132 @@
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+
+        <div class="panel panel-grey">
+          <div class="panel-body">
+            <ul class="info-business">
+              <li class="row">
+                <div class="col-sm-4"><strong>Business Name:</strong></div>
+                <div class="col-sm-8">Lorem Ipsum is simply dummy</div>
+              </li>
+              <li class="row">
+                <div class="col-sm-4"><strong>Contact Information:</strong></div>
+                <div class="col-sm-8">Lorem Ipsum is simply dummy</div>
+              </li>
+              <li class="row">
+                <div class="col-sm-4"><strong>Business hours:</strong></div>
+                <div class="col-sm-8">6.00 AM to 9 PM</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="profile-left m20">
+          <div class="profile_image"><img src="images/profile.png" alt="0"></div>
+          <!--<a href="#" class="btn btn-warning btn-grey">Connect</a>-->
+        </div>
+        <div class="panel panel-grey">
+          <div class="panel-body">
+            <div class="form-group"><button class="btn btn-grey btn-block" fn-rave-modal>Rave</button></div>
+            <p><strong>Type of Food:</strong> Sea Food</p>
+            <p><strong>Special Discount:</strong> 10%</p>
+          </div>
+        </div>
+
+        <div class="left_menu">
+          <ul>
+            <li><a href="javascript:;" fn-invite-friend-modal><i class="fa fa-group"></i> Invite Friends</a></li>
+            <li><a ui-sref="business.createGroup"><i class="fa fa-cogs"></i>Create groups</a></li>
+            <li><a href="#"><i class="fa fa-th"></i>My Groups</a></li>
+            <li><a ui-sref="business.connection"><i class="fa fa-link"></i>My connections</a></li>
+            <li><a ui-sref="business.album"><i class="fa fa-picture-o"></i>My albums</a></li>
+            <li><a ui-sref="business.edit"><i class="fa fa-edit"></i>Edit Profile</a></li>
+            <li><a href="#"><i class="fa fa-money"></i>Account details</a></li>
+            <li><a href="#"><i class="fa fa-sign-out"></i>Log out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="rslides_container slider-business">
+          <ul class="rslides" id="slider2" fn-responsive-slider>
+            <li>
+              <a href="product-detail.html"><img src="images/food.jpg" alt=""></a>
+              <div class="text-slider-pro"><a href="#">True Food Kitchen</a></div>
+              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 4 likes</a>
+              <div class="price">$100</div>
+            </li>
+            <li>
+              <a href="product-detail.html"><img src="images/food1.jpg" alt=""></a>
+              <div class="text-slider-pro"><a href="#">True Food Kitchen 1</a></div>
+              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 1 likes</a>
+              <div class="price">$200</div>
+            </li>
+            <li>
+              <a href="product-detail.html"><img src="images/food.jpg" alt=""></a>
+              <div class="text-slider-pro"><a href="#">True Food Kitchen 2</a></div>
+              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 6 likes</a>
+              <div class="price">$300</div>
+            </li>
+            <li>
+              <a href="product-detail.html"><img src="images/food1.jpg" alt=""></a>
+              <div class="text-slider-pro"><a href="#">True Food Kitchen 3</a></div>
+              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 5 likes</a>
+              <div class="price">$400</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel panel-grey">
+          <div class="panel-body">
+            <textarea class="form-control" rows="5" placeholder="Tell us about yourself..."></textarea>
+
+            <div class="upload-photo">
+              <div class="row">
+                <div class="col-sm-4 p30">
+                  Upload Photos/Video:
+                </div>
+                <div class="col-sm-3 p30">
+                  <div class="file-upload">
+                    <a href="#" class="btn btn-warning btn-grey btn-block">Upload</a>
+                    <input type="file" uploader="uploader" nv-file-select multiple>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="row upload_img">
+                    <div class="col-xs-4" ng-repeat="item in uploader.queue">
+                      <div class="upload_img_loop">
+                        <span class="cross_icon" ng-click="removePhoto($index)"><i class="fa fa-times"></i></span>
+                        <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="m20 text-right">
+          <a href="#" class="btn btn-warning">Submit</a>
+        </div>
+
+        <div class="panel panel-grey">
+          <div class="panel-body">
+            <div class="page_div_holder">
+              <div class="left_icon_part"><i class="fa fa-file-text-o"></i></div>
+              <div class="right_text_part">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+            </div>
+
+            <div class="post_image"><img src="images/side_dishes.jpg" alt="0"></div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

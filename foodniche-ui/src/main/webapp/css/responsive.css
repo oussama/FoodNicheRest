@@ -68,15 +68,6 @@
     .content .title-width {
         width: auto;
     }
-    .slider-business .rslides li {
-        height: 200px;
-    }
-    .slider-business .price, .text-slider-pro {
-        font-size: 17px
-    }
-    .modal-small .modal-dialog {
-        width: auto;
-    }
 }
 
 @media all and (min-width: 768px) and (max-width: 1000px) {

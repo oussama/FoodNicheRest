@@ -1,0 +1,13 @@
+.navbar-default {
+    border-bottom: 0px;
+    background: none;
+    margin: 0px;
+}
+
+.owl-nav {
+    display: none
+}
+
+.has-error .form-control {
+    border-color: #a94442 !important;
+}
