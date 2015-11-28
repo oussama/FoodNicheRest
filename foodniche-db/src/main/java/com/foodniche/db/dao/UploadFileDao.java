@@ -6,12 +6,15 @@ import com.foodniche.db.entities.Users;
 import com.foodniche.db.repositories.UploadedFilesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by agdubrov on 11/27/15.
  */
+
+@Repository
 public class UploadFileDao extends BaseDao<UploadedFiles, Integer> {
 
     @Autowired

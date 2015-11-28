@@ -19,18 +19,24 @@ public class UploadedFiles implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "fileid")
     private Integer fileId;
 
     @XmlTransient
+    @Column(name = "serverfilename")
     private String serverFileName;
 
+    @Column(name = "filename")
     private String fileName;
 
+    @Column(name = "contenttype")
     private String contentType;
 
+    @Column(name = "filesize")
     private Long fileSize;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(name = "filetype")
     private FileType fileType;
 
     @ManyToOne

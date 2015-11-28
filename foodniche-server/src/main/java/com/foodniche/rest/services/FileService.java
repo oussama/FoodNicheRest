@@ -1,5 +1,6 @@
 package com.foodniche.rest.services;
 
+import com.foodniche.db.dao.UploadFileDao;
 import com.foodniche.db.entities.FileType;
 import com.foodniche.db.entities.UploadedFiles;
 import com.foodniche.rest.security.SecurityService;
@@ -36,9 +37,8 @@ import java.util.UUID;
 @Path("/api/files")
 @Api(value = "/files", description = "This Rest Service for uploading images and video")
 public class FileService {
-
-    @PersistenceContext
-    private EntityManager em;
+    @Autowired
+    private UploadFileDao uploadFileDao;
 
     private File imagesFolder;
     private File videosFolder;
@@ -83,7 +83,7 @@ public class FileService {
         File file = new File(imagesFolder, entity.getServerFileName());
         if (storeToFileSystem(file, fileInputStream)) {
             entity.setFileSize(FileUtils.sizeOf(file));
-            em.persist(entity);
+            uploadFileDao.save(entity);
         } else {
             entity = null;
         }
@@ -118,7 +118,7 @@ public class FileService {
         File file = new File(videosFolder, entity.getServerFileName());
         if (storeToFileSystem(file, fileInputStream)) {
             entity.setFileSize(FileUtils.sizeOf(file));
-            em.persist(entity);
+            uploadFileDao.save(entity);
         } else {
             entity = null;
         }
@@ -142,7 +142,7 @@ public class FileService {
      * @return response
      */
     protected Response getFileResponse(Integer id) {
-        UploadedFiles fileEntity = em.find(UploadedFiles.class, id);
+        UploadedFiles fileEntity = uploadFileDao.get(id);
 
         File file = null;
         if (fileEntity != null) {

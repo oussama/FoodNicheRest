@@ -24,7 +24,7 @@ public class UserFoodPreferencesPK implements Serializable {
 
     @NotNull
     @ManyToOne
-    @Column(name = "foodpreferenceid")
+    @JoinColumn(name = "foodpreferenceid")
     private FoodPreferences foodPreferences;
 
     public UserFoodPreferencesPK() {
