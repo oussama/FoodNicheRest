@@ -55,6 +55,10 @@
                     <artifactId>javassist</artifactId>
                     <groupId>jboss</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>javassist</artifactId>
+                    <groupId>javassist</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
     </dependencies>
