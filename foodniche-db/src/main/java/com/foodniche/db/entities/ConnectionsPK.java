@@ -5,9 +5,7 @@
  */
 package com.foodniche.db.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -17,66 +15,61 @@ import java.io.Serializable;
  */
 @Embeddable
 public class ConnectionsPK implements Serializable {
-    @Basic(optional = false)
+
     @NotNull
-    @Column(name = "fromuserid")
-    private int fromuserid;
-    @Basic(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "fromuserid")
+    private Users fromUser;
+
+
     @NotNull
-    @Column(name = "touserid")
-    private int touserid;
+    @ManyToOne
+    @JoinColumn(name = "touserid")
+    private Users toUser;
 
     public ConnectionsPK() {
     }
 
-    public ConnectionsPK(int fromuserid, int touserid) {
-        this.fromuserid = fromuserid;
-        this.touserid = touserid;
+    public Users getFromUser() {
+        return fromUser;
     }
 
-    public int getFromuserid() {
-        return fromuserid;
+    public void setFromUser(Users fromUser) {
+        this.fromUser = fromUser;
     }
 
-    public void setFromuserid(int fromuserid) {
-        this.fromuserid = fromuserid;
+    public Users getToUser() {
+        return toUser;
     }
 
-    public int getTouserid() {
-        return touserid;
+    public void setToUser(Users toUser) {
+        this.toUser = toUser;
     }
 
-    public void setTouserid(int touserid) {
-        this.touserid = touserid;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ConnectionsPK that = (ConnectionsPK) o;
+
+        if (!fromUser.equals(that.fromUser)) return false;
+        return toUser.equals(that.toUser);
+
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (int) fromuserid;
-        hash += (int) touserid;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ConnectionsPK)) {
-            return false;
-        }
-        ConnectionsPK other = (ConnectionsPK) object;
-        if (this.fromuserid != other.fromuserid) {
-            return false;
-        }
-        if (this.touserid != other.touserid) {
-            return false;
-        }
-        return true;
+        int result = fromUser.hashCode();
+        result = 31 * result + toUser.hashCode();
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.foodnicherest.ConnectionsPK[ fromuserid=" + fromuserid + ", touserid=" + touserid + " ]";
+        return "ConnectionsPK{" +
+                "fromUser=" + fromUser +
+                ", toUser=" + toUser +
+                '}';
     }
-    
 }

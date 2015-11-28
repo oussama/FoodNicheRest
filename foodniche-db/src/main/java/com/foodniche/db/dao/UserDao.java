@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 @Repository
-public class UserDao extends BaseDao<Users> {
+public class UserDao extends BaseDao<Users, Integer> {
 
     @PersistenceContext
     private EntityManager em;

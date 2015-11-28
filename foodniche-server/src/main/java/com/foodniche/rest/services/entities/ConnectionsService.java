@@ -7,6 +7,7 @@ package com.foodniche.rest.services.entities;
 
 import com.foodniche.db.entities.Connections;
 import com.foodniche.db.entities.ConnectionsPK;
+import com.foodniche.db.entities.Users;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -42,11 +43,11 @@ public class ConnectionsService extends AbstractFacade<Connections> {
         javax.ws.rs.core.MultivaluedMap<String, String> map = pathSegment.getMatrixParameters();
         List<String> fromuserid = map.get("fromuserid");
         if (fromuserid != null && !fromuserid.isEmpty()) {
-            key.setFromuserid(new Integer(fromuserid.get(0)));
+            key.setFromUser(em.find(Users.class, fromuserid.get(0)));
         }
         List<String> touserid = map.get("touserid");
         if (touserid != null && !touserid.isEmpty()) {
-            key.setTouserid(new Integer(touserid.get(0)));
+            key.setToUser(em.find(Users.class, touserid.get(0)));
         }
         return key;
     }

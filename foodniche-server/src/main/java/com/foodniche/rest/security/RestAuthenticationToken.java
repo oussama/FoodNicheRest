@@ -26,6 +26,10 @@ public class RestAuthenticationToken extends AbstractAuthenticationToken {
         setAuthenticated(true);
     }
 
+    public Users getUser() {
+        return user;
+    }
+
     @Override
     public Object getCredentials() {
         return "";

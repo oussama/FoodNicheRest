@@ -18,35 +18,29 @@ import java.io.Serializable;
 @Table(name = "userfoodpreferences")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Userfoodpreferences.findAll", query = "SELECT u FROM Userfoodpreferences u"),
-    @NamedQuery(name = "Userfoodpreferences.findByUserid", query = "SELECT u FROM Userfoodpreferences u WHERE u.userfoodpreferencesPK.userid = :userid"),
-    @NamedQuery(name = "Userfoodpreferences.findByFoodpreferenceid", query = "SELECT u FROM Userfoodpreferences u WHERE u.userfoodpreferencesPK.foodpreferenceid = :foodpreferenceid"),
-    @NamedQuery(name = "Userfoodpreferences.findByDescription", query = "SELECT u FROM Userfoodpreferences u WHERE u.description = :description")})
-public class Userfoodpreferences implements Serializable {
+    @NamedQuery(name = "Userfoodpreferences.findAll", query = "SELECT u FROM UserFoodPreferences u"),
+    @NamedQuery(name = "Userfoodpreferences.findByDescription", query = "SELECT u FROM UserFoodPreferences u WHERE u.description = :description")})
+public class UserFoodPreferences implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected UserfoodpreferencesPK userfoodpreferencesPK;
+    protected UserFoodPreferencesPK userFoodPreferencesPK;
     @Size(max = 2147483647)
     @Column(name = "description")
     private String description;
 
-    public Userfoodpreferences() {
+    public UserFoodPreferences() {
     }
 
-    public Userfoodpreferences(UserfoodpreferencesPK userfoodpreferencesPK) {
-        this.userfoodpreferencesPK = userfoodpreferencesPK;
+    public UserFoodPreferences(UserFoodPreferencesPK userFoodPreferencesPK) {
+        this.userFoodPreferencesPK = userFoodPreferencesPK;
     }
 
-    public Userfoodpreferences(int userid, int foodpreferenceid) {
-        this.userfoodpreferencesPK = new UserfoodpreferencesPK(userid, foodpreferenceid);
+    public UserFoodPreferencesPK getUserFoodPreferencesPK() {
+        return userFoodPreferencesPK;
     }
 
-    public UserfoodpreferencesPK getUserfoodpreferencesPK() {
-        return userfoodpreferencesPK;
-    }
-
-    public void setUserfoodpreferencesPK(UserfoodpreferencesPK userfoodpreferencesPK) {
-        this.userfoodpreferencesPK = userfoodpreferencesPK;
+    public void setUserFoodPreferencesPK(UserFoodPreferencesPK userFoodPreferencesPK) {
+        this.userFoodPreferencesPK = userFoodPreferencesPK;
     }
 
     public String getDescription() {
@@ -58,28 +52,30 @@ public class Userfoodpreferences implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (userfoodpreferencesPK != null ? userfoodpreferencesPK.hashCode() : 0);
-        return hash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserFoodPreferences that = (UserFoodPreferences) o;
+
+        if (userFoodPreferencesPK != null ? !userFoodPreferencesPK.equals(that.userFoodPreferencesPK) : that.userFoodPreferencesPK != null)
+            return false;
+        return !(description != null ? !description.equals(that.description) : that.description != null);
+
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Userfoodpreferences)) {
-            return false;
-        }
-        Userfoodpreferences other = (Userfoodpreferences) object;
-        if ((this.userfoodpreferencesPK == null && other.userfoodpreferencesPK != null) || (this.userfoodpreferencesPK != null && !this.userfoodpreferencesPK.equals(other.userfoodpreferencesPK))) {
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        int result = userFoodPreferencesPK != null ? userFoodPreferencesPK.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.foodnicherest.Userfoodpreferences[ userfoodpreferencesPK=" + userfoodpreferencesPK + " ]";
+        return "UserFoodPreferences{" +
+                "userFoodPreferencesPK=" + userFoodPreferencesPK +
+                ", description='" + description + '\'' +
+                '}';
     }
-    
 }

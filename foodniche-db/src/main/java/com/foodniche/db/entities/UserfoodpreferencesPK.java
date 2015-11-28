@@ -5,9 +5,7 @@
  */
 package com.foodniche.db.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -16,67 +14,62 @@ import java.io.Serializable;
  * @author User
  */
 @Embeddable
-public class UserfoodpreferencesPK implements Serializable {
-    @Basic(optional = false)
+public class UserFoodPreferencesPK implements Serializable {
+
     @NotNull
-    @Column(name = "userid")
-    private int userid;
-    @Basic(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private Users user;
+
+
     @NotNull
+    @ManyToOne
     @Column(name = "foodpreferenceid")
-    private int foodpreferenceid;
+    private FoodPreferences foodPreferences;
 
-    public UserfoodpreferencesPK() {
+    public UserFoodPreferencesPK() {
     }
 
-    public UserfoodpreferencesPK(int userid, int foodpreferenceid) {
-        this.userid = userid;
-        this.foodpreferenceid = foodpreferenceid;
+    public Users getUser() {
+        return user;
     }
 
-    public int getUserid() {
-        return userid;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public FoodPreferences getFoodPreferences() {
+        return foodPreferences;
     }
 
-    public int getFoodpreferenceid() {
-        return foodpreferenceid;
+    public void setFoodPreferences(FoodPreferences foodPreferences) {
+        this.foodPreferences = foodPreferences;
     }
 
-    public void setFoodpreferenceid(int foodpreferenceid) {
-        this.foodpreferenceid = foodpreferenceid;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserFoodPreferencesPK that = (UserFoodPreferencesPK) o;
+
+        if (user != null ? !user.equals(that.user) : that.user != null) return false;
+        return !(foodPreferences != null ? !foodPreferences.equals(that.foodPreferences) : that.foodPreferences != null);
+
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (int) userid;
-        hash += (int) foodpreferenceid;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UserfoodpreferencesPK)) {
-            return false;
-        }
-        UserfoodpreferencesPK other = (UserfoodpreferencesPK) object;
-        if (this.userid != other.userid) {
-            return false;
-        }
-        if (this.foodpreferenceid != other.foodpreferenceid) {
-            return false;
-        }
-        return true;
+        int result = user != null ? user.hashCode() : 0;
+        result = 31 * result + (foodPreferences != null ? foodPreferences.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "com.foodnicherest.UserfoodpreferencesPK[ userid=" + userid + ", foodpreferenceid=" + foodpreferenceid + " ]";
+        return "UserFoodPreferencesPK{" +
+                "user=" + user +
+                ", foodPreferences=" + foodPreferences +
+                '}';
     }
-    
 }

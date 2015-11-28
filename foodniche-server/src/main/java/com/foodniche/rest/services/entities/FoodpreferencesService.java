@@ -5,7 +5,7 @@
  */
 package com.foodniche.rest.services.entities;
 
-import com.foodniche.db.entities.Foodpreferences;
+import com.foodniche.db.entities.FoodPreferences;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -25,39 +25,39 @@ import java.util.List;
 @Component
 @Path("/foodpreferences")
 @Api(value = "/foodpreferences", description = "This Rest Service will contain Food Preferences Information")
-public class FoodpreferencesService extends AbstractFacade<Foodpreferences> {
+public class FoodpreferencesService extends AbstractFacade<FoodPreferences> {
     @PersistenceContext
     private EntityManager em;
 
     public FoodpreferencesService() {
-        super(Foodpreferences.class);
+        super(FoodPreferences.class);
     }
 
     @POST
     @Override
     @Consumes({"application/json"})
-    @ApiOperation(value = "Create Foodpreferences ")
+    @ApiOperation(value = "Create FoodPreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
-    public void create(Foodpreferences entity) {
+    public void create(FoodPreferences entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("/{id}")
     @Consumes({"application/json"})
-    @ApiOperation(value = "Edit Foodpreferences ")
+    @ApiOperation(value = "Edit FoodPreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
-    public void edit(@PathParam("id") Integer id, Foodpreferences entity) {
+    public void edit(@PathParam("id") Integer id, FoodPreferences entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("/{id}")
-    @ApiOperation(value = "Remove Foodpreferences ")
+    @ApiOperation(value = "Remove FoodPreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
@@ -68,40 +68,40 @@ public class FoodpreferencesService extends AbstractFacade<Foodpreferences> {
     @GET
     @Path("/{id}")
     @Produces({"application/json"})
-    @ApiOperation(value = "Find Foodpreferences ")
+    @ApiOperation(value = "Find FoodPreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
-    public Foodpreferences find(@PathParam("id") Integer id) {
+    public FoodPreferences find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/json"})
-    @ApiOperation(value = "Find All Foodpreferences ")
+    @ApiOperation(value = "Find All FoodPreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
-    public List<Foodpreferences> findAll() {
+    public List<FoodPreferences> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("/{from}/{to}")
     @Produces({"application/json"})
-    @ApiOperation(value = "Find Range of Foodpreferences ")
+    @ApiOperation(value = "Find Range of FoodPreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
-    public List<Foodpreferences> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<FoodPreferences> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
     @GET
     @Path("/count")
     @Produces("text/plain")
-    @ApiOperation(value = "Count Foodpreferences ")
+    @ApiOperation(value = "Count FoodPreferences ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})

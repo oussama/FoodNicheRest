@@ -1,7 +1,8 @@
-package com.foodniche.rest.services.entities;
+package com.foodniche.rest.services;
 
 import com.foodniche.db.entities.FileType;
 import com.foodniche.db.entities.UploadedFiles;
+import com.foodniche.rest.security.SecurityService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -10,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -31,7 +33,7 @@ import java.util.UUID;
  */
 
 @Component
-@Path("/files")
+@Path("/api/files")
 @Api(value = "/files", description = "This Rest Service for uploading images and video")
 public class FileService {
 
@@ -40,6 +42,9 @@ public class FileService {
 
     private File imagesFolder;
     private File videosFolder;
+
+    @Autowired
+    private SecurityService securityService;
 
     public FileService() {
         // creates folders in withing glassfish for file upload videos and images
@@ -200,6 +205,7 @@ public class FileService {
         entity.setServerFileName(serverFileName);
         entity.setFileName(filename);
         entity.setFileType(fileType);
+        entity.setUser(securityService.getCurrentUser());
 
         return entity;
     }

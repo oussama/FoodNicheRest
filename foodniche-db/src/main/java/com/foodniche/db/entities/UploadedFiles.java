@@ -33,6 +33,18 @@ public class UploadedFiles implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private FileType fileType;
 
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private Users user;
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
     public Integer getFileId() {
         return fileId;
     }

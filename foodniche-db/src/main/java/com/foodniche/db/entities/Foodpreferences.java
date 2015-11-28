@@ -18,10 +18,10 @@ import java.io.Serializable;
 @Table(name = "foodpreferences")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Foodpreferences.findAll", query = "SELECT f FROM Foodpreferences f"),
-    @NamedQuery(name = "Foodpreferences.findByFoodpreferenceid", query = "SELECT f FROM Foodpreferences f WHERE f.foodpreferenceid = :foodpreferenceid"),
-    @NamedQuery(name = "Foodpreferences.findByName", query = "SELECT f FROM Foodpreferences f WHERE f.name = :name")})
-public class Foodpreferences implements Serializable {
+    @NamedQuery(name = "Foodpreferences.findAll", query = "SELECT f FROM FoodPreferences f"),
+    @NamedQuery(name = "Foodpreferences.findByFoodpreferenceid", query = "SELECT f FROM FoodPreferences f WHERE f.foodpreferenceid = :foodpreferenceid"),
+    @NamedQuery(name = "Foodpreferences.findByName", query = "SELECT f FROM FoodPreferences f WHERE f.name = :name")})
+public class FoodPreferences implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,10 @@ public class Foodpreferences implements Serializable {
     @Column(name = "name")
     private String name;
 
-    public Foodpreferences() {
+    public FoodPreferences() {
     }
 
-    public Foodpreferences(Integer foodpreferenceid) {
+    public FoodPreferences(Integer foodpreferenceid) {
         this.foodpreferenceid = foodpreferenceid;
     }
 
@@ -65,10 +65,10 @@ public class Foodpreferences implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Foodpreferences)) {
+        if (!(object instanceof FoodPreferences)) {
             return false;
         }
-        Foodpreferences other = (Foodpreferences) object;
+        FoodPreferences other = (FoodPreferences) object;
         if ((this.foodpreferenceid == null && other.foodpreferenceid != null) || (this.foodpreferenceid != null && !this.foodpreferenceid.equals(other.foodpreferenceid))) {
             return false;
         }
@@ -77,7 +77,7 @@ public class Foodpreferences implements Serializable {
 
     @Override
     public String toString() {
-        return "com.foodnicherest.Foodpreferences[ foodpreferenceid=" + foodpreferenceid + " ]";
+        return "com.foodnicherest.FoodPreferences[ foodpreferenceid=" + foodpreferenceid + " ]";
     }
     
 }

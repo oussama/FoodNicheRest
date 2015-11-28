@@ -5,7 +5,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Alexey Dubrov
@@ -14,17 +20,27 @@ import javax.transaction.Transactional;
  */
 
 @Transactional
-public abstract class BaseDao<T> {
+public abstract class BaseDao<T, ID extends Serializable> {
+    private Class<T> entityClass;
+
     @PersistenceContext
     private EntityManager em;
 
-    private JpaRepository<T, Integer> baseRepository;
+    private JpaRepository<T, ID> baseRepository;
 
-    abstract protected JpaRepository<T, Integer> getRepository();
+    abstract protected JpaRepository<T, ID> getRepository();
 
     @PostConstruct
     public void init() {
         baseRepository = getRepository();
+
+        Type mySuperclass = this.getClass().getGenericSuperclass();
+        Type tType = ((ParameterizedType)mySuperclass).getActualTypeArguments()[0];
+
+        try {
+            entityClass = (Class<T>) Class.forName(tType.toString());
+        } catch (ClassNotFoundException e) {
+        }
     }
 
     public T save(T entity) {
@@ -35,7 +51,23 @@ public abstract class BaseDao<T> {
         baseRepository.delete(entity);
     }
 
-    public T get(Integer id) {
+    public T get(ID id) {
         return baseRepository.findOne(id);
+    }
+
+    /**
+     * Execute named query with parameters
+     * @param namedQuery named query
+     * @param params parameters
+     * @return list of entities
+     */
+    public List<T> executeNamedQuery(String namedQuery, Map<String, Object> params) {
+        Query query = em.createNamedQuery(namedQuery, entityClass);
+
+        params.forEach((name, value) -> {
+            query.setParameter(name, value);
+        });
+
+        return query.getResultList();
     }
 }

@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 @Component
-@Path("/groups")
+@Path("/api/groups")
 @Api(value = "/groups", description = "This Rest Service will contain Groups Information")
 public class GroupsService extends AbstractFacade<Groups> {
     @PersistenceContext
