@@ -7,6 +7,7 @@ package com.foodniche.rest.services.entities;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import java.util.Map;
  *
  * @author User
  */
+@Transactional
 public abstract class AbstractFacade<T> {
     private Class<T> entityClass;
 
