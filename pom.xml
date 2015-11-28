@@ -50,6 +50,12 @@
             <artifactId>swagger-jaxrs_2.10</artifactId>
             <version>1.3.2</version>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>javassist</artifactId>
+                    <groupId>jboss</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
