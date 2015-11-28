@@ -9,10 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-/**
- *
- * @author User
- */
 @Embeddable
 public class UserFoodPreferencesPK implements Serializable {
 
