@@ -1,0 +1,17 @@
+<div class="content">
+  <div class="container">
+    <h1 class="page_title title-width"><span class="span_white_bg">Individual Registration</span></h1>
+
+    <div class="stape_by_stape">
+      <ul>
+        <li class="stapemain"><a href="#step1"><i class="fa fa-check"></i> Step 1</a></li>
+        <li ng-class="{'select' : $state.current.name === 'individualReg.step2'}"class="stapemain"><a href="#step2"><i class="fa fa-warning"></i> Step 2</a></li>
+        <li ng-class="{'select' : $state.current.name === 'individualReg.step3'}" class="stapemain"><a href="#step3"><i class="fa fa-warning"></i> Step 3</a></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+
+    <ui-view></ui-view>
+
+  </div>
+</div>

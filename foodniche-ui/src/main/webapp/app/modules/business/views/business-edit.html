@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="container">
+    <h1 class="page_title title-width"><span class="span_white_bg">EDIT PROFILE</span></h1>
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+        <div class="form-grey">
+          <form name="form" ng-submit="submit(form)" novalidate>
+            <div class="form-group" ng-class="{'has-error': form.fullName.$invalid && submitted}">
+              <label for="fullName" class="control-label label-form">Full name</label>
+              <input id="fullName" type="text" class="form-control input-lg"
+                     name="fullName" ng-model="user.fullName" required>
+              <div class="help-block" ng-if="form.fullName.$error.required && submitted">Full name is required</div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': form.country.$invalid && submitted}">
+              <label for="country" class="control-label label-form">Country</label>
+              <input id="country" type="text" class="form-control input-lg"
+                     name="country" ng-model="user.country" required>
+              <div class="help-block" ng-if="form.country.$error.required && submitted">Country is required</div>
+            </div>
+            <div class="form-group">
+              Vegetarian diet? &nbsp;&nbsp;
+              <div class="radio-inline">
+                <label><input name="vegetarianDiet" type="radio" ng-value="true"> Yes</label>
+              </div>
+              <div class="radio-inline">
+                <label><input name="vegetarianDiet" type="radio" ng-value="false"> No</label>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': form.zipcode.$invalid && submitted}">
+              <label for="zipcode" class="control-label label-form">Zipcode</label>
+              <input id="zipcode" type="text" value="084" class="form-control input-lg"
+                     name="zipcode" ng-model="user.zipcode" required>
+              <div class="help-block" ng-if="form.zipcode.$error.required && submitted">Zip code is required</div>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': form.aboutMe.$invalid && submitted}">
+              <label for="aboutMe" class="control-label label-form">About Me (Up to 300 Characters)</label>
+              <textarea id="aboutMe" class="form-control input-lg" style="height: 100px;"
+                        name="aboutMe" ng-model="aboutMe"></textarea>
+            </div>
+            <div class="form-group">
+              <input name="" type="submit" value="Update" class="btn btn-warning btn-block btn-lg">
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

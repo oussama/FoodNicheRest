@@ -9,6 +9,9 @@
     border: none;
     box-sizing: border-box;
 }
+a:focus {
+    outline: none;
+}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -109,7 +112,6 @@ h6 {
 }
 .banner-home {
     position: relative;
-    z-index: 1;
 }
 .text-banner {
     position: absolute;
@@ -119,6 +121,12 @@ h6 {
     width: 100%;
     z-index: 10;
 }
+
+.login-modal .modal-content {
+    background-color: transparent;
+    border: none !important;
+}
+
 .login_page {
     padding: 10px;
     background:rgba(0,0,0,0.5)
@@ -156,9 +164,6 @@ h6 {
     box-shadow: none !important;
     font-size: 15px;
     height: 50px;
-}
-.form-grey textarea.form-control {
-    height: auto;
 }
 .text-banner h1 {
     text-align: center;
@@ -326,10 +331,26 @@ h6 {
 }
 .profile_image {
     border: 1px solid #744c28;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     margin-bottom: 10px;
 }
+
+.upload-image {
+    position: relative;
+}
+
+.upload-image input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
 .profile_image img {
     width: 100%;
 }
@@ -385,14 +406,17 @@ h6 {
     margin-bottom: 15px;
 }
 .info-business li:last-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 .panel textarea {
-    border-radius: 0px;
+    border-radius: 0;
 }
 .file-upload {
     position: relative;
     display: inline-block;
+}
+.file-upload .img-preview{
+    margin-top: 10px;
 }
 .file-upload input {
     opacity: 0;
@@ -426,6 +450,7 @@ h6 {
     top: 2px;
     width: 17px;
     z-index: 99;
+    cursor: pointer;
 }
 .upload_img {
     margin: 0px -5px;
@@ -532,6 +557,9 @@ h6 {
     font: normal 18px/30px "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-transform: uppercase;
 }
+.profile_image_inn img {
+    margin: 10px 0px;
+}
 .content .title-width {
     width: 60%;
     margin: auto;
@@ -617,6 +645,7 @@ h6 {
     color:#f6931e;
     font-weight:bold;
     font-style:italic;
+    cursor: pointer;
 }
 .skip_this {
     padding-bottom: 30px;
@@ -786,8 +815,6 @@ h6 {
 }
 .box-recipe img {
     width: 100%;
-    height: 190px;
-    object-fit: cover
 }
 .box-recipe .connect_link_full_top {
     background: rgba(116, 76, 40, 0.6);
@@ -830,6 +857,7 @@ h6 {
     font-weight: normal;
     font-size: 15px;
 }
+
 .slider-business {
     margin-bottom: 20px;
     position: relative;
@@ -887,19 +915,22 @@ h6 {
     top: 0px;
     left: -10px;
 }
-.modal-content {
+
+.modal-small .modal-dialog {
+    width: 400px;
+}
+
+.modal-small .modal-dialog .modal-content {
     border:1px solid #5e3d1f;
     box-shadow: 0px;
 }
-.modal-header {
+.modal-small .modal-dialog .modal-header {
     background: #744c28;
     border: 1px solid #744c28;
     border-bottom: 1px solid #f58a0b;
     color: #f58a0b;
 }
-.modal-small .modal-dialog {
-    width: 400px;
-}
+
 .like-product {
     position: absolute;
     bottom: 50px;
@@ -965,50 +996,3 @@ h6 {
     font-size: 15px;
 }
 
-
-.hours-input {
-    position: relative;
-}
-.hours-input .form-control {
-    padding-right: 70px;
-}
-.hours-input label {
-    position: absolute;
-    top: 15px;
-    right: 10px;
-    font-weight: normal;
-}
-.text-small {
-    font-size: 11px;
-}
-.clear {
-    clear: both;
-}
-.top-recipe h3 {
-    float: none;
-    margin-bottom: 0px;
-}
-.top-recipe {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-.list-group img {
-    width: 100%;
-    height: 82px;
-    object-fit: cover;
-    border: 1px solid #5e3d1f;
-}
-.list-group li, .list-album li {
-    margin-bottom: 15px;
-}
-.list-album li img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-     border: 1px solid #5e3d1f;
-}
-.modal-backdrop {
-    z-index: 10;
-}
