@@ -32,26 +32,4 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       authenticate: true,
       isBusiness: true
     })
-    .state('business.createGroup',{
-      url: '/group/create',
-      templateUrl: 'app/modules/business/views/business-create-group.html',
-      controller: 'BusinessCreateGroupCtrl',
-      authenticate: true,
-      isBusiness: true
-    })
-    .state('business.myGroup',{
-      url: '/group/',
-      templateUrl: 'app/modules/business/views/business-my-group.html',
-      controller: 'BusinessMyGroupCtrl',
-      authenticate: true,
-      isBusiness: true,
-      resolve: {
-        groups: [
-          'Group',
-          function(Group) {
-            return Group.get();
-          }
-        ]
-      }
-    })
 }]);

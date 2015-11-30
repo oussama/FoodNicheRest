@@ -8,8 +8,11 @@ angular.module('fnApp')
         create: function(groupObj) {
           return _rest.customPOST(groupObj);
         },
-        get: function() {
-          return _rest.one('/').get();
+        getAll: function() {
+          return _rest.get("");
+        },
+        getOne: function(id) {
+          return _rest.get(id);
         }
       };
     }]);
