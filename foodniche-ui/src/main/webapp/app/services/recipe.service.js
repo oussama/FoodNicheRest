@@ -8,7 +8,7 @@ angular.module('fnApp')
         create: function(receipeObj) {
           return _rest.customPOST(receipeObj);
         },
-        get: function() {
+        getAll: function() {
           return _rest.get("");
         }
       };

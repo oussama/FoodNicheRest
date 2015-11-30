@@ -8,7 +8,15 @@ angular.module('fnApp').config(['$stateProvider', function($stateProvider) {
      url: '/',
      templateUrl: 'app/modules/recipe/views/recipe-list.html',
      controller: 'RecipeListCtrl',
-     authenticate: true
+     authenticate: true,
+     resolve: {
+       recipes: [
+         'Recipe',
+         function(Recipe) {
+           return Recipe.getAll();
+         }
+       ]
+     }
    })
    .state('recipe.detail',{
      url: '/detail',

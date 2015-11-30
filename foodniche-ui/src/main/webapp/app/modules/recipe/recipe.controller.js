@@ -1,8 +1,8 @@
 angular.module('fnApp')
   .controller('RecipeListCtrl',[
-    '$scope',
-    function($scope) {
-
+    '$scope','recipes',
+    function($scope,recipes) {
+      $scope.recipes = recipes;
     }
   ])
   .controller('RecipeDetailCtrl',[
