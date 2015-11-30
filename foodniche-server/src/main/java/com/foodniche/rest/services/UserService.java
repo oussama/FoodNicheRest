@@ -41,31 +41,27 @@ public class UserService {
     private UploadFileDao uploadFileDao;
 
     @GET
-    @Path("/profile/{id}")
+    @Path("/profile")
     @ApiOperation(value = "Get user profile")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 204, message = "User not found")})
-    public Response getUserProfile(@PathParam("id") Integer id) {
-        if (id == null) {
-            id = securityService.getCurrentUser().getUserid();
-        }
-
-        Users user = userDao.get(id);
+    public Response getUserProfile() {
+        Users user = userDao.get(securityService.getCurrentUser().getUserid());
 
         return user != null ? Response.ok().entity(user).build() :
                 Response.status(Response.Status.NO_CONTENT).entity("User not found").build();
     }
 
     @PUT
-    @Path("/profile/{id}")
+    @Path("/profile")
     @Consumes({"application/json"})
     @ApiOperation(value = "Update user profile")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 204, message = "User not found")})
-    public Response updateProfile(@PathParam("id") Integer id, Users user) {
-        user.setUserid(id);
+    public Response updateProfile(Users user) {
+        user.setUserid(securityService.getCurrentUser().getUserid());
 
         user = userDao.save(user);
 

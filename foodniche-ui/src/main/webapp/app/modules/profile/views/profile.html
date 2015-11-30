@@ -1,0 +1,97 @@
+<div class="content">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="profile-left m20">
+          <div class="profile_image upload-image">
+            <img ng-if="profileUploader.queue <= 0" src="images/profile.png" alt="0">
+            <div ng-repeat="item in profileUploader.queue">
+              <img ng-show="profileUploader.isHTML5" ng-thumb="item._file"/>
+            </div>
+            <input type="file" uploader="profileUploader" nv-file-select>
+          </div>
+          <a href="#" class="btn btn-warning btn-grey">Connect</a>
+        </div>
+
+        <div class="left_menu">
+          <ul>
+            <li><a href="javascript:;" fn-invite-friend-modal><i class="fa fa-group"></i> Invite Friends</a ng-click="inviteFriend()" href="javascript:;"></li>
+            <li><a ui-sref="profile.connection"><i class="fa fa-link"></i>My connections</a></li>
+            <li><a ui-sref="profile.album"><i class="fa fa-picture-o"></i>My albums</a></li>
+            <li><a ui-sref="profile.edit"><i class="fa fa-edit"></i>Edit Profile</a></li>
+            <li><a ui-sref="logout"><i class="fa fa-sign-out"></i>Log out</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="col-sm-7">
+
+        <div class="panel panel-grey">
+          <div class="panel-body">
+            <textarea class="form-control" rows="5" placeholder="Tell us about yourself..."></textarea>
+
+            <div class="upload-photo">
+              <div class="row">
+                <div class="col-sm-4 p30">
+                  Upload Photos/Video:
+                </div>
+                <div class="col-sm-3 p30">
+                  <div class="file-upload">
+                    <a href="#" class="btn btn-warning btn-grey btn-block">Upload</a>
+                    <input type="file" uploader="uploader" nv-file-select multiple>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="row upload_img">
+                    <div class="col-xs-4" ng-repeat="item in uploader.queue">
+                      <div class="upload_img_loop">
+                        <span class="cross_icon" ng-click="removePhoto($index)"><i class="fa fa-times"></i></span>
+                        <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="m20 text-right">
+          <a href="#" class="btn btn-warning">Submit</a>
+        </div>
+
+        <div class="panel panel-grey">
+          <div class="panel-body">
+            <div class="page_div_holder">
+              <div class="left_icon_part"><i class="fa fa-file-text-o"></i></div>
+              <div class="right_text_part">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+            </div>
+
+            <div class="post_image"><img src="images/side_dishes.jpg" alt="0"></div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-2">
+        <h2 style="margin-top: 0px">Our Product</h2>
+        <div class="rslides_container slider-right">
+          <ul class="rslides" id="slider2" fn-responsive-slider>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+            <li><img src="images/6.jpg" alt=""></li>
+            <li><img src="images/7.jpg" alt=""></li>
+            <li><img src="images/8.jpg" alt=""></li>
+            <li><img src="images/9.jpg" alt=""></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

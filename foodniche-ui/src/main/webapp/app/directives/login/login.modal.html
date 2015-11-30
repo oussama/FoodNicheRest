@@ -1,0 +1,30 @@
+<div class="login_page">
+
+  <form name="form" ng-submit="submit(form)" novalidate class="login-form">
+    <div class="logholder_div">
+      <h3>Member Sign In <button type="button" ng-click="$dismiss()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></h3>
+      <div class="form-group" ng-class="{'has-error': form.username.$invalid && submitted}">
+        <input type="text" class="form-control" placeholder="Username"
+               name="username" ng-model="user.username" required>
+        <div class="help-block" ng-if="form.username.$error.required && submitted">Username is required</div>
+      </div>
+      <div class="form-group" ng-class="{'has-error': form.password.$invalid && submitted}">
+        <input type="password" class="form-control" placeholder="Password"
+               name="password" ng-model="user.password" required>
+        <div class="help-block" ng-if="form.password.$error.required && submitted">Password is required</div>
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="user.remember"> Remember me
+          </label>
+        </div>
+      </div>
+      <div class="form-group holder_form sub_but">
+        <button class="btn btn-warning btn-lg btn-block">SIGN IN</button>
+      </div>
+      <a href="#">Forgot Password?</a>
+    </div>
+  </form>
+  <div class="holder_form sub_but"> <a href="#" class="facebook_but"><i class="fa fa-facebook-f"></i> Sign in with Facebook</a> </div>
+</div>

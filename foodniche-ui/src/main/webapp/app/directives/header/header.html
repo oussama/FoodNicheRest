@@ -1,0 +1,49 @@
+<header class="header_main">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ui-sref="home"><img src="images/logo.png"></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <div ng-if="!isLoggedIn()">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="javascript:;" fn-login>SIGN IN</a></li>
+            <li><a href="../navbar-fixed-top/">HOW IT WORKS</a></li>
+          </ul>
+        </div>
+
+        <div ng-if="isLoggedIn()">
+          <div class="right_search">
+            <form action="" method="get">
+              <select name="" class="form-control">
+                <option value="Appetizers">Appetizers</option>
+                <option value="Breads">Breads</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Cakes">Cakes</option>
+                <option value="Entrees">Entrees</option>
+                <option value="Salads">Salads</option>
+                <option value="Sandwich">Sandwich</option>
+                <option value="Sidedishes">Side dishes</option>
+                <option value="SoupsStews">Soups / Stews</option>
+              </select>
+            </form>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ng-if="user.accounttype === 0" ui-sref="profile.view">HOME</a></li>
+            <li><a ng-if="user.accounttype === 1" ui-sref="business.view">HOME</a></li>
+            <li><a ui-sref="recipe.list">RECIPE</a></li>
+            <li><a ui-sref="dining.list">DINING OUT</a></li>
+            <li><a ui-sref="logout">LOG OUT</a></li>
+          </ul>
+        </div>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav>
+</header>

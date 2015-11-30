@@ -4,7 +4,7 @@
 <Configure id="Server" class="org.eclipse.jetty.server.Server">
 
     <New id="jdbcId" class="org.eclipse.jetty.plus.jndi.Resource">
-        <Arg>java:app/JDBC/FoodNiche1</Arg>
+        <Arg>jdbc/FoodNiche1</Arg>
         <Arg>
             <New class="org.postgresql.ds.PGSimpleDataSource">
                 <Set name="User">fniche</Set>

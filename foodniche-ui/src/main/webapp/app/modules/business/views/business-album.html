@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="container">
+    <ul class="row">
+      <li class="col-sm-3" ng-repeat="album in albums">
+        <div class="profile_image_inn">
+          <img ng-src="{{IMAGE_URL  + album.fileId}}" alt="0">
+          <div class="connect_link_full"><a href="#"> Salads </a></div>
+        </div>
+      </li>
+    </ul>
+    <div class="text-right">
+      <button fn-go-home="business.view" class="btn btn-warning">Back to Home</button>
+    </div>
+  </div>
+</div>

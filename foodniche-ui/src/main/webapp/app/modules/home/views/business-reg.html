@@ -1,0 +1,73 @@
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <h1 class="page_title"><span class="span_white_bg">Business registration</span></h1>
+        <div class="row">
+          <div class="col-sm-offset-2 col-sm-8">
+            <div class="form-grey">
+              <form name="form" ng-submit="submit(form)" novalidate>
+                <div class="form-group" ng-class="{'has-error': form.businessName.$invalid && submitted}">
+                  <input type="text" placeholder="Business name" class="form-control input-lg"
+                         name="businessName" ng-model="user.businessName" required>
+                  <div class="help-block" ng-if="form.businessName.$error.required && submitted">Business name is required</div>
+                </div>
+                <div class="form-group radio-business">Which category does your business belong?<br>
+                  <div class="radio">
+                    <label>
+                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="'restaurant'">
+                      Restaurant
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="'bakeries'">
+                      Bakeries
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="'manufacturer'">
+                      Manufacturer
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.address.$invalid && submitted}">
+                  <input type="text" placeholder="Address" class="form-control input-lg"
+                         name="address" ng-model="user.address" required>
+                  <div class="help-block" ng-if="form.address.$error.required && submitted">Address is required</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.zipCode.$invalid && submitted}">
+                  <input type="text" placeholder="Zip Code" class="form-control input-lg"
+                         name="zipCode" ng-model="user.zipCode" required>
+                  <div class="help-block" ng-if="form.zipCode.$error.required && submitted">Zip code is required</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.hours.$invalid && submitted}">
+                  <input type="text" placeholder="Hours" class="form-control input-lg"
+                         name="hours" ng-model="user.hours" required>
+                  <div class="help-block" ng-if="form.hours.$error.required && submitted">Hours is required</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.businessEmail.$invalid && submitted}">
+                  <input type="email" placeholder="Business email address" class="form-control input-lg"
+                         name="businessEmail" ng-model="user.businessEmail" required>
+                  <div class="help-block" ng-if="form.businessEmail.$error.required && submitted">Business email is required</div>
+                  <div class="help-block" ng-if="form.businessEmail.$error.email && submitted">Wrong email format</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.businessName.$invalid && submitted}">
+                  <div class="checkbox">
+                    <label>
+                      <input name="" type="checkbox" value="">
+                      I agree with the business terms and conditions
+                    </label>
+                  </div>
+                </div>
+                <div class="holder_form sub_but margin_top25">
+                  <button name="" type="submit" class="btn btn-warning btn-lg btn-block">SUBMIT</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

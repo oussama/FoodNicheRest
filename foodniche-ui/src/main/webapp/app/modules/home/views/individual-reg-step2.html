@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-offset-4 col-sm-4">
+    <div class="form-grey">
+      <form name="form" ng-submit="submit(form)" novalidate>
+        <div class="form-group" ng-class="{'has-error': form.country.$invalid && submitted}">
+          <input type="text" placeholder="Country" class="form-control input-lg"
+                 name="country" ng-model="user.country" required>
+          <div class="help-block" ng-if="form.country.$error.required && submitted">Country is required</div>
+        </div>
+        <div class="form-group">
+          Vegetarian diet? &nbsp;&nbsp;
+          <div class="radio-inline">
+            <label><input type="radio" name="vegetarianDiet" ng-model="user.vegetarianDiet"  ng-value="true"> Yes</label>
+          </div>
+          <div class="radio-inline">
+            <label><input type="radio" name="vegetarianDiet"  ng-model="user.vegetarianDiet"  ng-value="false" checked> No</label>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': form.zipcode.$invalid && submitted}">
+          <input type="text" placeholder="Zip Code" class="form-control input-lg"
+                 name="zipcode" ng-model="user.zipcode" required>
+          <div class="help-block" ng-if="form.zipcode.$error.required && submitted">Zip code is required</div>
+        </div>
+        <div class="form-group text-center" style="margin: 20px 0px">
+          <div class="file-upload">
+            <a href="#" class="btn btn-warning btn-grey">Upload Profile Photo</a>
+            <input type="file" uploader="uploader" nv-file-select>
+            <div class="img-preview" ng-repeat="item in uploader.queue">
+              <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-warning btn-lg btn-block">NEXT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

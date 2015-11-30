@@ -1,0 +1,259 @@
+<div class="banner-home">
+  <div class="rslides_container">
+    <ul class="rslides" id="slider2" fn-responsive-slider>
+      <li><div class="bg-cover banner" style="background-image: url(images/home_bg1.jpg)"></div></li>
+      <li><div class="bg-cover banner" style="background-image: url(images/home_bg2.jpg)"></div></li>
+      <li><div class="bg-cover banner" style="background-image: url(images/home_bg3.jpg)"></div></li>
+    </ul>
+  </div>
+
+  <div class="text-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h1>CONNECT WITH PEOPLE YOU KNOW AND TURN MEAL TIME TO ADVENTURE TIME</h1>
+        </div>
+        <div class="col-sm-4" ng-if="showForm">
+          <div class="login_page">
+            <form name="form" method="post" novalidate ng-submit="submit(form)">
+              <div class="logholder_div">
+                <div class="form-group" ng-class="{'has-error': form.fullName.$invalid && submitted}">
+                  <input type="text" placeholder="Full Name" class="form-control input-lg"
+                         name="fullName" ng-model="user.fullName" required>
+                  <div class="help-block" ng-if="form.fullName.$error.required && submitted">Full name is required</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.email.$invalid && submitted}">
+                  <input type="email" placeholder="Email Address" class="form-control input-lg"
+                         name="email" ng-model="user.email" required>
+                  <div class="help-block" ng-if="form.email.$error.required && submitted">Email is required</div>
+                  <div class="help-block" ng-if="form.email.$error.email && submitted">Wrong email format</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.password.$invalid && submitted}">
+                  <input type="password" placeholder="Password" class="form-control input-lg"
+                         name="password" ng-model="user.password" required>
+                  <div class="help-block" ng-if="form.password.$error.required && submitted">Password is required</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.agree.$invalid && submitted}">
+                  <div class="checkbox">
+                    <label>
+                      <input name="agree" type="checkbox" value="" ng-model="user.agree" required>
+                      I agree with website terms and conditions
+                    </label>
+                  </div>
+
+                </div>
+                <div class="holder_form sub_but">
+                  <button class="btn btn-warning btn-lg btn-block">JOIN FREE!</button>
+                </div>
+              </div>
+            </form>
+            <div class="holder_form sub_but"> <a href="#" class="facebook_but"><i class="fa fa-facebook-f"></i> Sign in with Facebook</a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="padding-main">
+  <div class="container">
+    <h1 class="page_title"><span class="span_white_bg">featured users</span></h1>
+
+
+    <div class="owl-carousel users-carousel" fn-owl-carousel autoplay="true" autoplay-timeout="2000">
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb1.png" alt="0">
+          <h3>Jane Roe</h3>
+          <p>Food Lover, USA</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb2.png" alt="0">
+          <h3>John Doe</h3>
+          <p>Chef, Italy</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb3.png" alt="0">
+          <h3>Janee Lee</h3>
+          <p>Food Critic, UK</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb1.png" alt="0">
+          <h3>Jane Roe</h3>
+          <p>Food Lover, USA</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb2.png" alt="0">
+          <h3>John Doe</h3>
+          <p>Chef, Italy</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb3.png" alt="0">
+          <h3>Janee Lee</h3>
+          <p>Food Critic, UK</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb1.png" alt="0">
+          <h3>Jane Roe</h3>
+          <p>Food Lover, USA</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb2.png" alt="0">
+          <h3>John Doe</h3>
+          <p>Chef, Italy</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb3.png" alt="0">
+          <h3>Janee Lee</h3>
+          <p>Food Critic, UK</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb1.png" alt="0">
+          <h3>Jane Roe</h3>
+          <p>Food Lover, USA</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb2.png" alt="0">
+          <h3>John Doe</h3>
+          <p>Chef, Italy</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item_holder"> <img src="images/thumb3.png" alt="0">
+          <h3>Janee Lee</h3>
+          <p>Food Critic, UK</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="padding-main">
+  <div class="container">
+    <h1 class="page_title"><span class="span_white_bg">HOW IT WORKS</span></h1>
+
+    <div class="row">
+      <div class="col-sm-5">
+        <a href="#"><img src="images/how_it_works_video.jpg" alt="0" width="100%"></a>
+      </div>
+      <div class="col-sm-7">
+        <div class="step-how">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="howitworks_part3">
+                <div class="howitworks_number">1</div>
+                <h3>Icon Title</h3>
+                <p>Lorem ipsum dolor</p>
+                <div class="howitworks_arrow"><i class="fa fa-arrow-right"></i></div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="howitworks_part3">
+                <div class="howitworks_number">1</div>
+                <h3>Icon Title</h3>
+                <p>Lorem ipsum dolor</p>
+                <div class="howitworks_arrow"><i class="fa fa-arrow-right"></i></div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="howitworks_part3">
+                <div class="howitworks_number">1</div>
+                <h3>Icon Title</h3>
+                <p>Lorem ipsum dolor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="padding-main">
+  <div class="container">
+    <h1 class="page_title"><span class="span_white_bg">FEATURED BUSINESSES</span></h1>
+
+    <div class="owl-carouselfull owl-carousel" fn-owl-carousel>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+      <div class="item">
+        <div class="item_holder"><img src="images/client_logo.png" alt="0"></div>
+      </div>
+    </div>
+
+    <div class="bottom_button"> <a ui-sref="registration" class="btn btn-warning btn-lg">FIND MORE BUSINESSES</a> </div>
+  </div>
+</div>
