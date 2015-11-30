@@ -26,9 +26,9 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       isBusiness: true,
       resolve: {
         connections: [
-          'ApiUser',
-          function(ApiUser) {
-            return ApiUser.getMyConnection();
+          'User',
+          function(User) {
+            return User.getMyConnection();
           }
         ]
       }
@@ -41,9 +41,9 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       isBusiness: true,
       resolve: {
         albums: [
-          'ApiUser',
-          function(ApiUser) {
-            return ApiUser.getMyAlbum();
+          'User',
+          function(User) {
+            return User.getMyAlbum();
           }
         ]
       }

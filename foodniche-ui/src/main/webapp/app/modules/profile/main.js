@@ -20,12 +20,28 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       url: '/my-connection',
       templateUrl: 'app/modules/profile/views/profile-connection.html',
       controller: 'ProfileConnectionCtrl',
-      authenticate: true
+      authenticate: true,
+      resolve: {
+        connections: [
+          'User',
+          function(User) {
+            return User.getMyConnection();
+          }
+        ]
+      }
     })
     .state('profile.album',{
       url: '/my-album',
       templateUrl: 'app/modules/profile/views/profile-album.html',
       controller: 'ProfileAlbumCtrl',
-      authenticate: true
+      authenticate: true,
+      resolve: {
+        albums: [
+          'User',
+          function(User) {
+            return User.getMyAlbum();
+          }
+        ]
+      }
     })
 }]);
