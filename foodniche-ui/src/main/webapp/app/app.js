@@ -12,6 +12,7 @@ angular.module('fnApp', [
 ]);
 angular.module('fnApp').constant('API_URL', 'http://localhost:8080/frest/');
 angular.module('fnApp').constant('UPLOAD_URL', 'http://localhost:8080/frest/api/files/image');
+angular.module('fnApp').constant('IMAGE_URL', 'http://localhost:8080/frest/api/files/image/');
 
 angular.module('fnApp').factory('authInterceptor', function ($rootScope, $q, $cookieStore) {
   return {
@@ -55,9 +56,10 @@ angular.module('fnApp').config([
 
 
 angular.module('fnApp').run([
-  '$rootScope','$state','$window','Auth',
-  function($rootScope,$state,$window,Auth ) {
+  '$rootScope','$state','$window','Auth','IMAGE_URL',
+  function($rootScope,$state,$window,Auth,IMAGE_URL ) {
     $rootScope.$state = $state;
+    $rootScope.IMAGE_URL = IMAGE_URL;
 
     $rootScope.$on("$stateChangeSuccess", function (event, toState, fromState) {
       $window.scrollTo(0, 0);

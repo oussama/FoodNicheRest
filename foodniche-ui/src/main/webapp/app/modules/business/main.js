@@ -23,13 +23,29 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       templateUrl: 'app/modules/business/views/business-connection.html',
       controller: 'BusinessConnectionCtrl',
       authenticate: true,
-      isBusiness: true
+      isBusiness: true,
+      resolve: {
+        connections: [
+          'ApiUser',
+          function(ApiUser) {
+            return ApiUser.getMyConnection();
+          }
+        ]
+      }
     })
     .state('business.album',{
       url: '/my-album',
       templateUrl: 'app/modules/business/views/business-album.html',
       controller: 'BusinessAlbumCtrl',
       authenticate: true,
-      isBusiness: true
+      isBusiness: true,
+      resolve: {
+        albums: [
+          'ApiUser',
+          function(ApiUser) {
+            return ApiUser.getMyAlbum();
+          }
+        ]
+      }
     })
 }]);

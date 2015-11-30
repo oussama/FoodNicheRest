@@ -37,9 +37,9 @@ angular.module('fnApp')
   ])
 
   .controller('BusinessAlbumCtrl',[
-    '$scope','$state',
-    function($scope,$state) {
-
+    '$scope','$state','albums',
+    function($scope,$state,albums) {
+      $scope.albums = albums;
     }
   ])
 
