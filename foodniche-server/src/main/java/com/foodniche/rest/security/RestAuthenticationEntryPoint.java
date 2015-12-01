@@ -20,10 +20,13 @@ import java.io.IOException;
 @Component
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
+    static Logger LOGGER = LoggerFactory.getLogger(RestAuthenticationEntryPoint.class);
+
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException ) throws IOException, ServletException {
+        LOGGER.debug("Hit com.foodniche.rest.security.RestAuthenticationEntryPoint.commence");
         String contentType = request.getContentType();
         logger.info(contentType);
         response.sendError( HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized" );
