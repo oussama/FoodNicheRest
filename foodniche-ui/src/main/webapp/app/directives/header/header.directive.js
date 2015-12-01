@@ -6,6 +6,7 @@ angular.module('fnApp')
       controller: [
         '$scope','Auth',
         function($scope,Auth) {
+          console.log(Auth.getCurrentUserInAsync());
           Auth.getCurrentUserInAsync(function(user) {
             $scope.user = user;
           });
