@@ -55,6 +55,10 @@ public abstract class BaseDao<T, ID extends Serializable> {
         return baseRepository.findOne(id);
     }
 
+    public List<T> getAll() {
+        return baseRepository.findAll();
+    }
+
     /**
      * Execute named query with parameters
      * @param namedQuery named query

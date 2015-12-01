@@ -20,9 +20,7 @@ import java.io.Serializable;
 @NamedQueries({
     @NamedQuery(name = "Businesses.findAll", query = "SELECT b FROM Businesses b"),
     @NamedQuery(name = "Businesses.findByBusinessid", query = "SELECT b FROM Businesses b WHERE b.businessid = :businessid"),
-    @NamedQuery(name = "Businesses.findByBusinesstypeid", query = "SELECT b FROM Businesses b WHERE b.businesstypeid = :businesstypeid"),
     @NamedQuery(name = "Businesses.findByName", query = "SELECT b FROM Businesses b WHERE b.name = :name"),
-    @NamedQuery(name = "Businesses.findByZipcode", query = "SELECT b FROM Businesses b WHERE b.zipcode = :zipcode"),
     @NamedQuery(name = "Businesses.findByWebsite", query = "SELECT b FROM Businesses b WHERE b.website = :website"),
     @NamedQuery(name = "Businesses.findByDescription", query = "SELECT b FROM Businesses b WHERE b.description = :description")})
 public class Businesses implements Serializable {
@@ -33,14 +31,17 @@ public class Businesses implements Serializable {
     @Basic(optional = false)
     @Column(name = "businessid")
     private Integer businessid;
-    @Column(name = "businesstypeid")
-    private Integer businesstypeid;
+
+    @ManyToOne
+    @JoinColumn(name = "businesstypeid")
+    private Businesstypes businessType;
+
     @Size(max = 80)
     @Column(name = "name")
     private String name;
     @Size(max = 80)
     @Column(name = "zipcode")
-    private String zipcode;
+    private String zipCode;
     @Size(max = 255)
     @Column(name = "website")
     private String website;
@@ -63,12 +64,12 @@ public class Businesses implements Serializable {
         this.businessid = businessid;
     }
 
-    public Integer getBusinesstypeid() {
-        return businesstypeid;
+    public Businesstypes getBusinessType() {
+        return businessType;
     }
 
-    public void setBusinesstypeid(Integer businesstypeid) {
-        this.businesstypeid = businesstypeid;
+    public void setBusinessType(Businesstypes businessType) {
+        this.businessType = businessType;
     }
 
     public String getName() {
@@ -79,12 +80,12 @@ public class Businesses implements Serializable {
         this.name = name;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setZipCode(String zipcode) {
+        this.zipCode = zipcode;
     }
 
     public String getWebsite() {
