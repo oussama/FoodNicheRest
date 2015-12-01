@@ -4,12 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -27,13 +30,13 @@ import java.text.MessageFormat;
  *
  */
 
-public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+public class TokenAuthenticationFilter extends GenericFilterBean {
     private static final Logger logger = LoggerFactory.getLogger(TokenAuthenticationFilter.class);
 
-    public TokenAuthenticationFilter(String defaultFilterProcessesUrl) {
-        super(defaultFilterProcessesUrl);
-        super.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(defaultFilterProcessesUrl));
-        setAuthenticationSuccessHandler(new TokenSimpleUrlAuthenticationSuccessHandler());
+    private AuthenticationManager authenticationManager;
+
+    public TokenAuthenticationFilter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
 
@@ -46,12 +49,24 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
      * Attempt to authenticate request - basically just pass over to another method to authenticate request headers
      */
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        String token = request.getHeader(HEADER_SECURITY_TOKEN);
-        logger.info("token found:"+token);
-        AbstractAuthenticationToken userAuthenticationToken = authUserByToken(token);
-        if(userAuthenticationToken == null) throw new AuthenticationServiceException(MessageFormat.format("Error | {0}", "Bad Token"));
-        return userAuthenticationToken;
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+
+        String token = httpRequest.getHeader(HEADER_SECURITY_TOKEN);
+
+        if (token != null && token.length() > 0) {
+            logger.info("token found:" + token);
+
+            AbstractAuthenticationToken userAuthenticationToken = authUserByToken(token);
+            if (userAuthenticationToken == null) {
+                throw new AuthenticationServiceException(MessageFormat.format("Error | {0}", "Bad Token"));
+            }
+
+            SecurityContextHolder.getContext().setAuthentication(authenticationManager.authenticate(userAuthenticationToken));
+        }
+
+        chain.doFilter(request, response);
     }
 
 
@@ -73,10 +88,4 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
         return authToken;
     }
 
-
-    @Override
-    public void doFilter(ServletRequest req, ServletResponse res,
-                         FilterChain chain) throws IOException, ServletException {
-        super.doFilter(req, res, chain);
-    }
 }
