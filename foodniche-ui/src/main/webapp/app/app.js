@@ -84,6 +84,18 @@ angular.module('fnApp').run([
           }
         });
       }
+
+      if (toState.isBusiness || toState.isIndividual) {
+        Auth.getCurrentUserInAsync(function(user) {
+          if (user && user.userid) {
+            if (user.accounttype === 0 && toState.isBusiness) {
+              $state.go('profile.view');
+            } else if (user.accounttype === 1 && toState.isIndividual) {
+              $state.go('business.view');
+            }
+          }
+        });
+      }
     });
   }
 ]);

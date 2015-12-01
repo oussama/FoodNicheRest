@@ -995,4 +995,105 @@ h6 {
 .slider-right .text-slider-pro{
     font-size: 15px;
 }
+.top-detail {
+    overflow: hidden;
+}
+.top-detail h3 {
+    margin-top: 0px;
+    float: left;
+}
+.top-detail .like-product {
+    position: relative;
+    float: right;
+    bottom: 0px;
+    background: #eee;
+    padding: 5px 15px;
+}
+.panel-heading{
+    margin: 0px;
+}
+.comment-list .media {
+    margin-bottom: 15px;
+}
+.comment-list .media .media-left {
+    padding-right: 15px;
+}
+.comment-list .media .media-left img {
+    width: 120px;
+}
+.comment-list .media-heading {
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.comment-list .media .media-heading a {
+    color: #744c28;
+    font-size: 15px;
+}
+.comment-list .media .media-heading span {
+    color: #999;
+    font-weight: normal;
+    font-size: 13px;
+}
+.price-detail {
+    font-size: 25px;
+    color: #f6931e;
+    display: inline-block;
+    vertical-align: middle;
+}
+.slider-right   .rslides li{
+    height: auto;
+}
+.slider-right .price {
+    font-size: 15px;
+}
+.slider-right .text-slider-pro{
+    font-size: 15px;
+}
 
+
+.hours-input {
+    position: relative;
+}
+.hours-input .form-control {
+    padding-right: 70px;
+}
+.hours-input label {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    font-weight: normal;
+}
+.text-small {
+    font-size: 11px;
+}
+.clear {
+    clear: both;
+}
+.top-recipe h3 {
+    float: none;
+    margin-bottom: 0px;
+}
+.top-recipe {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.list-group img {
+    width: 100%;
+    height: 82px;
+    object-fit: cover;
+    border: 1px solid #5e3d1f;
+}
+.list-group li, .list-album li {
+    margin-bottom: 15px;
+}
+.list-album li img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid #5e3d1f;
+}
+.modal-backdrop {
+    z-index: 10;
+}

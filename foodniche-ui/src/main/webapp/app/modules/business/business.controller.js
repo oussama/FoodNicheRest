@@ -6,15 +6,14 @@ angular.module('fnApp')
         url: UPLOAD_URL,
         headers: {
           'X-Auth-Token': $cookieStore.get('token')
+        },
+        onAfterAddingFile: function() {
+          if (uploader.queue.length > 3) {
+            uploader.queue.shift();
+          }
+
         }
       });
-
-      uploader.onAfterAddingFile = function() {
-        if (uploader.queue.length > 3) {
-          uploader.queue.shift();
-        }
-    
-      };
     }
   ])
 

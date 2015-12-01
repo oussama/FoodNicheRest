@@ -10,6 +10,9 @@ angular.module('fnApp')
         },
         getAll: function() {
           return _rest.get("");
+        },
+        getOne: function(id) {
+          return _rest.get(id);
         }
       };
     }]);
