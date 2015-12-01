@@ -1,12 +1,12 @@
 package com.foodniche.rest.services;
 
-import com.foodniche.db.dao.ConnectionsDao;
-import com.foodniche.db.dao.UploadFileDao;
-import com.foodniche.db.dao.UserDao;
+import com.foodniche.db.dao.*;
+import com.foodniche.db.entities.Groups;
 import com.foodniche.db.entities.UploadedFiles;
+import com.foodniche.db.entities.UserGroupStatus;
 import com.foodniche.db.entities.Users;
+import com.foodniche.rest.model.BaseResponse;
 import com.foodniche.rest.security.SecurityService;
-import com.foodniche.rest.services.entities.ConnectionsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -39,6 +39,12 @@ public class UserService {
 
     @Autowired
     private UploadFileDao uploadFileDao;
+
+    @Autowired
+    private GroupsDao groupsDao;
+
+    @Autowired
+    private UserGroupsDao userGroupsDao;
 
     @GET
     @Path("/profile")
@@ -87,5 +93,52 @@ public class UserService {
             @ApiResponse(code = 500, message = "Server internal error")})
     public List<UploadedFiles> getMyAlbum() {
         return uploadFileDao.getUserImages(securityService.getCurrentUser());
+    }
+
+    @POST
+    @Path("/group/{id}")
+    @Produces("application/json")
+    @ApiOperation(value = "Add user to group")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 204, message = "Group not found"),
+            @ApiResponse(code = 500, message = "Server internal error")})
+    public Response addUserToGroup(@PathParam("id") Integer id) {
+        Groups groups = groupsDao.get(id);
+
+        if (groups != null) {
+            userGroupsDao.addUserToGroup(groups, securityService.getCurrentUser());
+
+            return Response.status(Response.Status.OK).entity(new BaseResponse("User was added to group")).build();
+        } else {
+            return Response.status(Response.Status.NO_CONTENT).entity(new BaseResponse("Failed to find group by id")).build();
+        }
+    }
+
+    @PUT
+    @Path("/group/{status}/{id}")
+    @Produces("application/json")
+    @ApiOperation(value = "approve/decline user group")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 204, message = "Group not found"),
+            @ApiResponse(code = 500, message = "Server internal error")})
+    public Response userGroupStatus(@PathParam("status")String status, @PathParam("id") Integer id) {
+        Groups groups = groupsDao.get(id);
+
+        if (groups != null) {
+            if (status == null || !status.equals("approve") || status.equals("decline")) {
+                return Response.status(Response.Status.NO_CONTENT).entity(new BaseResponse("Wrong status. Use 'approve' or 'decline'")).build();
+            }
+            UserGroupStatus ugStatus = status.equals("approve") ? UserGroupStatus.APPROVED : UserGroupStatus.DECLINED;
+
+            if (!userGroupsDao.updateUserStatus(groups, securityService.getCurrentUser(), ugStatus)) {
+                return Response.status(Response.Status.NO_CONTENT).entity(new BaseResponse("User was " + ugStatus.toString().toLowerCase())).build();
+            } else {
+                return Response.status(Response.Status.OK).entity(new BaseResponse("User was added to group")).build();
+            }
+        } else {
+            return Response.status(Response.Status.NO_CONTENT).entity(new BaseResponse("Failed to find group by id")).build();
+        }
     }
 }
