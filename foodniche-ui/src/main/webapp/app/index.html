@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
   <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css">
+  <link rel="stylesheet" href="bower_components/angular-growl/build/angular-growl.min.css">
   <!-- Our css-->
   <link rel="stylesheet" href="app/components/modal/modal.css">
   <link rel="stylesheet" href="css/style.css">
@@ -27,7 +28,7 @@
 </head>
 <body>
 
-
+  <div growl></div>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -56,6 +57,7 @@
   <script src="bower_components/restangular/dist/restangular.js"></script>
   <script src="bower_components/owl.carousel/dist/owl.carousel.js"></script>
   <script src="bower_components/angular-file-upload/dist/angular-file-upload.js"></script>
+  <script src="bower_components/angular-growl/build/angular-growl.js"></script>
 
   <script src="scripts/responsiveslides.min.js"></script>
 
@@ -68,6 +70,7 @@
   <script src="app/directives/header/header.directive.js"></script>
   <script src="app/directives/footer/footer.directive.js"></script>
   <script src="app/directives/login/login.directive.js"></script>
+  <script src="app/directives/create-content/create-content.directive.js"></script>
   <script src="app/directives/directives.js"></script>
 
   <!-- Filters -->
@@ -78,6 +81,7 @@
   <script src="app/services/user.service.js"></script>
   <script src="app/services/group.service.js"></script>
   <script src="app/services/recipe.service.js"></script>
+  <script src="app/services/content.service.js"></script>
 
   <!-- Modules -->
   <script src="app/modules/home/main.js"></script>

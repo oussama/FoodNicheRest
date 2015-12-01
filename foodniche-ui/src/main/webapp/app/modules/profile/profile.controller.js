@@ -2,21 +2,6 @@ angular.module('fnApp')
   .controller('ProfileViewCtrl',[
     '$scope','FileUploader','$cookieStore','UPLOAD_URL',
     function($scope,FileUploader,$cookieStore,UPLOAD_URL) {
-      var uploader = $scope.uploader = new FileUploader({
-        url: UPLOAD_URL,
-        onAfterAddingFile: function (file) {
-          if (uploader.queue.length > 3) {
-            uploader.queue.shift();
-          }
-          file.upload();
-        },
-        onBeforeUploadItem: function (fileItem) {
-          fileItem.headers = {
-            fileName: fileItem.name
-          };
-        }
-      });
-
       var profileUploader = $scope.profileUploader = new FileUploader({
         url: UPLOAD_URL,
         headers: {
@@ -56,8 +41,8 @@ angular.module('fnApp')
   ])
 
   .controller('ProfileAlbumCtrl',[
-    '$scope','$state',
-    function($scope,$state) {
-
+    '$scope','$state','albums',
+    function($scope,$state,albums) {
+      $scope.albums = albums;
     }
   ]);

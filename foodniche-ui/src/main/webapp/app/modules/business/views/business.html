@@ -43,7 +43,7 @@
             <li><a ui-sref="business.album"><i class="fa fa-picture-o"></i>My albums</a></li>
             <li><a ui-sref="business.edit"><i class="fa fa-edit"></i>Edit Profile</a></li>
             <li><a href="#"><i class="fa fa-money"></i>Account details</a></li>
-            <li><a href="#"><i class="fa fa-sign-out"></i>Log out</a></li>
+            <li><a ui-sref="logout"><i class="fa fa-sign-out"></i>Log out</a></li>
           </ul>
         </div>
       </div>
@@ -77,40 +77,7 @@
           </ul>
         </div>
 
-        <div class="panel panel-grey">
-          <div class="panel-body">
-            <textarea class="form-control" rows="5" placeholder="Tell us about yourself..."></textarea>
-
-            <div class="upload-photo">
-              <div class="row">
-                <div class="col-sm-4 p30">
-                  Upload Photos/Video:
-                </div>
-                <div class="col-sm-3 p30">
-                  <div class="file-upload">
-                    <a href="#" class="btn btn-warning btn-grey btn-block">Upload</a>
-                    <input type="file" uploader="uploader" nv-file-select multiple>
-                  </div>
-                </div>
-                <div class="col-sm-5">
-                  <div class="row upload_img">
-                    <div class="col-xs-4" ng-repeat="item in uploader.queue">
-                      <div class="upload_img_loop">
-                        <span class="cross_icon" ng-click="removePhoto($index)"><i class="fa fa-times"></i></span>
-                        <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="m20 text-right">
-          <a href="#" class="btn btn-warning">Submit</a>
-        </div>
+        <div fn-create-content="business"></div>
 
         <div class="panel panel-grey">
           <div class="panel-body">

@@ -19,9 +19,17 @@ angular.module('fnApp').config(['$stateProvider', function($stateProvider) {
      }
    })
    .state('recipe.detail',{
-     url: '/detail',
+     url: '/detail/:id',
      templateUrl: 'app/modules/recipe/views/recipe-detail.html',
      controller: 'RecipeDetailCtrl',
-     authenticate: true
+     authenticate: true,
+     resolve: {
+       recipe: [
+         'Recipe','$stateParams',
+         function(Recipe,$stateParams) {
+           return Recipe.getOne($stateParams.id);
+         }
+       ]
+     }
    })
 }]);
