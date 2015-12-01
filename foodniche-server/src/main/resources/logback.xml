@@ -1,7 +1,7 @@
 <configuration>
     <!--file output-->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>/var/log/foodniche.log</file>
+        <file>/var/log/tomcat7/foodniche.log</file>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
