@@ -37,7 +37,7 @@ angular.module('fnApp')
         onAfterAddingFile: function() {
           if (uploader.queue.length > 1) {
             uploader.queue.shift();
-          };
+          }
         },
         onCompleteItem: function (fileItem, response, status) {
           createGroup();
@@ -48,7 +48,7 @@ angular.module('fnApp')
         $scope.submitted = true;
         if (form.$valid) {
           if (uploader.queue.length > 1) {
-            uploader.upload();
+            uploader.uploadAll();
           } else {
             createGroup();
           }

@@ -1097,3 +1097,7 @@ h6 {
 .modal-backdrop {
     z-index: 10;
 }
+
+.growl {
+    z-index: 1;
+}

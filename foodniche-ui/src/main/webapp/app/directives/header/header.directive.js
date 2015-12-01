@@ -8,7 +8,6 @@ angular.module('fnApp')
         function($scope,Auth) {
           Auth.getCurrentUserInAsync(function(user) {
             $scope.user = user;
-            console.log($scope.user);
           });
           $scope.isLoggedIn = Auth.isLoggedIn;
         }
