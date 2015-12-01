@@ -48,6 +48,11 @@ public class Content implements Serializable {
     private Integer businessid;
     @Column(name = "groupid")
     private Integer groupid;
+
+    @ManyToOne
+    @JoinColumn(name = "productid")
+    private Product product;
+
     @Column(name = "contentdate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date contentdate;
@@ -135,6 +140,14 @@ public class Content implements Serializable {
 
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override

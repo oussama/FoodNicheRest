@@ -106,6 +106,7 @@ create table Content (
    UserID               INT4                 null,
    BusinessID           INT4                 null,
    GroupID              INT4                 null,
+   ProductID            INT4                 null,
    ContentDate          TIMESTAMP            null,
    Content              TEXT                 null,
    FileName             VARCHAR(255)         null,
@@ -446,6 +447,19 @@ create table UploadedFiles (
    constraint PK_UPLOADED_FILES primary key (FileID)
 );
 
+/*==============================================================*/
+/* Table: Product                                               */
+/*==============================================================*/
+create table Product (
+   ProductID            SERIAL               not null,
+   price                INT4                 not null,
+   likes                INT4                 not null,
+   photoUrl             VARCHAR(100)         not null,
+   description          VARCHAR(500)         not null,
+   BusinessID           INT4                 not null,
+   constraint PK_PRODUCT primary key (ProductID)
+);
+
 comment on table Users is
 'Users table';
 
@@ -511,6 +525,11 @@ alter table Content
 alter table Content
    add constraint FK_CONTENT_REFERENCE_BUSINESS foreign key (BusinessID)
       references Businesses (BusinessID)
+      on delete restrict on update restrict;
+
+alter table Content
+   add constraint FK_CONTENT_REFERENCE_PRODUCT foreign key (ProductID)
+      references Product (ProductID)
       on delete restrict on update restrict;
 
 alter table Content
@@ -628,3 +647,7 @@ alter table UploadedFiles
       references Users (UserID)
       on delete restrict on update restrict;
 
+alter table Product
+   add constraint FK_PRODUCT_REFERENCE_BUSINESS foreign key (BusinessID)
+      references Businesses (BusinessID)
+      on delete restrict on update restrict;
