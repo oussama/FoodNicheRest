@@ -11,8 +11,12 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MultivaluedMap;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CorsFilter implements ContainerResponseFilter {
+
+    static Logger LOGGER = LoggerFactory.getLogger(CorsFilter.class);
 
     private Set<String> allowedOrigins = new HashSet<>(Arrays.asList(
             "http://localhost:8082",
@@ -25,6 +29,9 @@ public class CorsFilter implements ContainerResponseFilter {
 
     @Override
     public void filter(ContainerRequestContext req, ContainerResponseContext res) throws IOException {
+
+        LOGGER.debug("Started com.foodniche.rest.config.CorsFilter.filter");
+
         String origin = req.getHeaderString("Origin");
         if (origin != null && allowedOrigins.contains(origin)) {
 
