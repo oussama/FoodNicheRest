@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.event.InteractiveAuthenticationSuccessEvent;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
@@ -35,8 +38,13 @@ public class TokenAuthenticationFilter extends GenericFilterBean {
 
     private AuthenticationManager authenticationManager;
 
+    private AuthenticationFailureHandler failureHandler;
+    private TokenSimpleUrlAuthenticationSuccessHandler successHandler;
+
     public TokenAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
+        this.successHandler = new TokenSimpleUrlAuthenticationSuccessHandler();
+        this.failureHandler = new SimpleUrlAuthenticationFailureHandler();
     }
 
 
@@ -52,6 +60,7 @@ public class TokenAuthenticationFilter extends GenericFilterBean {
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         String token = httpRequest.getHeader(HEADER_SECURITY_TOKEN);
 
@@ -60,15 +69,26 @@ public class TokenAuthenticationFilter extends GenericFilterBean {
 
             AbstractAuthenticationToken userAuthenticationToken = authUserByToken(token);
             if (userAuthenticationToken == null) {
-                throw new AuthenticationServiceException(MessageFormat.format("Error | {0}", "Bad Token"));
+                unsuccessfulAuthentication(httpRequest, httpResponse, new AuthenticationServiceException(MessageFormat.format("Error | {0}", "Bad Token")));
+            } else {
+                successfulAuthentication(httpRequest, httpResponse, chain, userAuthenticationToken);
             }
-
-            SecurityContextHolder.getContext().setAuthentication(authenticationManager.authenticate(userAuthenticationToken));
+        } else {
+            chain.doFilter(request, response);
         }
-
-        chain.doFilter(request, response);
     }
 
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+        SecurityContextHolder.clearContext();
+
+        failureHandler.onAuthenticationFailure(request, response, failed);
+    }
+
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+        SecurityContextHolder.getContext().setAuthentication(authResult);
+
+        this.successHandler.onAuthenticationSuccess(request, response, authResult);
+    }
 
     /**
      * authenticate the user based on token

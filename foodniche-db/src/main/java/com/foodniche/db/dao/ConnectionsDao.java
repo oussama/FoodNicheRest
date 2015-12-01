@@ -33,7 +33,8 @@ public class ConnectionsDao extends BaseDao<Connections, ConnectionsPK> {
     public List<Users> getConnections(Users user) {
 
         Map<String, Object> params = new HashMap<>();
-        List<Connections> connectionsList = executeNamedQuery("Сonnections.findByFromuserid", params);
+        params.put("user", user);
+        List<Connections> connectionsList = executeNamedQuery("Connections.findByFromUser", params);
 
         return connectionsList.stream().map((collection) -> {
             return collection.getConnectionsPK().getToUser();

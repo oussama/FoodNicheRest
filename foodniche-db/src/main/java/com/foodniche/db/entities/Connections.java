@@ -19,7 +19,7 @@ import java.util.Date;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Connections.findAll", query = "SELECT c FROM Connections c"),
-    @NamedQuery(name = "Connections.findByFromuserid", query = "SELECT c FROM Connections c WHERE c.connectionsPK.fromUser = :user"),
+    @NamedQuery(name = "Connections.findByFromUser", query = "SELECT c FROM Connections c WHERE c.connectionsPK.fromUser = :user"),
     @NamedQuery(name = "Connections.findByTouserid", query = "SELECT c FROM Connections c WHERE c.connectionsPK.toUser = :user"),
     @NamedQuery(name = "Connections.findByStatus", query = "SELECT c FROM Connections c WHERE c.status = :status"),
     @NamedQuery(name = "Connections.findByCreateddate", query = "SELECT c FROM Connections c WHERE c.createddate = :createddate"),
