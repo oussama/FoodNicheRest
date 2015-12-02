@@ -4,11 +4,13 @@ angular.module('fnApp')
     function($scope,$rootScope,$state,Auth) {
       $scope.isLoggedIn = Auth.isLoggedIn;
       $scope.submitted = false;
+      $scope.user = {};
 
       $scope.submit = function(form) {
         $scope.submitted = true;
         if (form.$valid) {
           $rootScope.tempUser = $scope.user;
+          console.log($rootScope.tempUser);
           $state.go('registration');
         }
       }

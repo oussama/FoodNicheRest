@@ -34,9 +34,9 @@ angular.module('fnApp')
   ])
 
   .controller('ProfileConnectionCtrl',[
-    '$scope','$state',
-    function($scope,$state) {
-
+    '$scope','$state','connections',
+    function($scope,$state,connections) {
+      $scope.connections = connections
     }
   ])
 
