@@ -39,7 +39,7 @@ angular.module('fnApp').factory('authInterceptor', function ($rootScope, $q, $co
       }
     }
   };
-})
+});
 
 angular.module('fnApp').config([
   '$urlRouterProvider','$locationProvider','$httpProvider','RestangularProvider','growlProvider','API_URL',
@@ -66,7 +66,6 @@ angular.module('fnApp').run([
       $window.scrollTo(0, 0);
     });
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams,fromState) {
-      console.log(toState);
       if (toState.authenticate) {
         Auth.getCurrentUserInAsync(function(user) {
           if (!user || !user.userid) {
