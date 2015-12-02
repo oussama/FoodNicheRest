@@ -13,7 +13,7 @@
         <div class="col-sm-8">
           <h1>CONNECT WITH PEOPLE YOU KNOW AND TURN MEAL TIME TO ADVENTURE TIME</h1>
         </div>
-        <div class="col-sm-4" ng-if="showForm">
+        <div class="col-sm-4" ng-if="!isLoggedIn()">
           <div class="login_page">
             <form name="form" method="post" novalidate ng-submit="submit(form)">
               <div class="logholder_div">
