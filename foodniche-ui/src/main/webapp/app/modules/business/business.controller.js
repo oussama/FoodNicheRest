@@ -18,9 +18,9 @@ angular.module('fnApp')
   ])
 
   .controller('BusinessConnectionCtrl',[
-    '$scope','$state',
-    function($scope,$state) {
-
+    '$scope','$state','connections',
+    function($scope,$state,connections) {
+      $scope.connections = connections;
     }
   ])
 

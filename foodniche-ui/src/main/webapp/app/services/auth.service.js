@@ -62,8 +62,8 @@ angular.module('fnApp')
         getCurrentUser: function () {
           return currentUser;
         },
-        getCurrentUserInAsync: function(cb) {
-
+        getCurrentUserInAsync: function(callback) {
+          var cb = callback || angular.noop;
           if (currentUser.hasOwnProperty('$promise')) {
             currentUser.$promise.then(function() {
               cb(currentUser);
@@ -71,7 +71,7 @@ angular.module('fnApp')
               cb(null);
             });
           } else if (currentUser.hasOwnProperty('userid')) {
-            cb(currentUser);
+            cb(currentUser) ;
           } else {
             cb(null);
           }

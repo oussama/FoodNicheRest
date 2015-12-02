@@ -120,4 +120,17 @@ angular.module('fnApp')
         reader.readAsDataURL(file);
       }
     };
+  }])
+  .directive('fnOnlyDigits',[ function() {
+    return {
+      restrict: 'A',
+      link: function (scope, element, attrs) {
+        element.bind('keypress', function ($event) {
+          console.log($event.keyCode)
+          if($event.keyCode !== 46 && isNaN(String.fromCharCode($event.keyCode)) ){
+            $event.preventDefault();
+          }
+        })
+      }
+    }
   }]);

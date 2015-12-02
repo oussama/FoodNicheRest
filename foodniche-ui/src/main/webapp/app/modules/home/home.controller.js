@@ -2,21 +2,15 @@ angular.module('fnApp')
   .controller('HomeCtrl',[
     '$scope','$rootScope','$state','Auth',
     function($scope,$rootScope,$state,Auth) {
-      Auth.getCurrentUserInAsync(function(user) {
-        if (user) {
-          $scope.user = user;
-          $scope.showForm = false;
-        } else {
-          $scope.user = {};
-          $scope.showForm = true;
-        }
-      });
+      $scope.isLoggedIn = Auth.isLoggedIn;
       $scope.submitted = false;
+      $scope.user = {};
 
       $scope.submit = function(form) {
         $scope.submitted = true;
         if (form.$valid) {
           $rootScope.tempUser = $scope.user;
+          console.log($rootScope.tempUser);
           $state.go('registration');
         }
       }
@@ -47,7 +41,9 @@ angular.module('fnApp')
 
       $scope.submit = function(form) {
         $scope.submitted = true;
-        $state.go('individualReg.step3')
+        if (form.$valid) {
+          $state.go('individualReg.step3')
+        }
       }
     }
   ])
@@ -65,13 +61,13 @@ angular.module('fnApp')
         user = _.omit(user,'fullName','agree','email','vegetarianDiet','country');
       }
 
-      $scope.createUser = function() {;
-        Auth.register(user)
-          .then(function() {
-            console.log('success');
-          },function(err) {
-            console.log(err);
-          });
+      $scope.createUser = function() {
+        Auth.register(user,function(err) {
+          if (err) {
+
+          }
+          $state.go('home')
+        })
       }
     }
   ])
