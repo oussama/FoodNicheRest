@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -50,14 +51,16 @@ public class ProductService {
     }
 
     @POST
-    @Path("/{id}")
-    @Consumes({"application/json"})
-    @Produces({"application/json"})
+    @Path("/comment/{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
     @ApiOperation(value = "Add comment to product")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 500, message = "Something wrong in Server")})
     public Content addComment(@PathParam("id") Integer id, Comment comment) {
-        return productDao.addContent(comment.getName(), comment.getContent(), "Review", id);
+        Content cn = productDao.addContent(comment.getName(), comment.getContent(), "Review", id);
+
+        return cn;
     }
 }

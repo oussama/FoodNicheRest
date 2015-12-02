@@ -5,6 +5,8 @@
  */
 package com.foodniche.db.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,8 +35,7 @@ import java.util.Date;
 public class Content implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contentid")
     private Integer contentid;
     @Column(name = "contenttypeid")
@@ -49,6 +50,7 @@ public class Content implements Serializable {
     @Column(name = "groupid")
     private Integer groupid;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "productid")
     private Product product;
