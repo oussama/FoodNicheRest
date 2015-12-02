@@ -100,7 +100,7 @@ comment on column Connections.Status is
 /* Table: Content                                               */
 /*==============================================================*/
 create table Content (
-   ContentID            INT4                 not null,
+   ContentID            SERIAL               not null,
    ContentTypeID        INT4                 null,
    Name                 VARCHAR(255)         null,
    UserID               INT4                 null,
@@ -440,7 +440,7 @@ create table UploadedFiles (
    FileID               SERIAL               not null,
    ServerFileName       VARCHAR(255)         not null,
    FileName             VARCHAR(255)         not null,
-   СontentType          VARCHAR(80)          not null,
+   сontentType          VARCHAR(80)          not null,
    FileType             VARCHAR(80)          not null,
    FileSize             bigint               not null,
    UserID               INT4                 not null,
