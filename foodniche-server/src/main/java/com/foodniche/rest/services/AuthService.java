@@ -8,6 +8,7 @@ import com.foodniche.rest.model.BaseResponse;
 import com.foodniche.rest.model.DataResponse;
 import com.foodniche.rest.model.LoginData;
 import com.foodniche.rest.security.TokenAuthService;
+import com.foodniche.rest.services.email.EmailAPI;
 import com.foodniche.rest.services.entities.UsersService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,6 +47,9 @@ public class AuthService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private EmailAPI emailAPI;
+
     @POST
     @Path("register")
     @Consumes("application/json")
@@ -57,7 +61,7 @@ public class AuthService {
     public BaseResponse register(Users user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
-
+        emailAPI.sendUserRegistrationMail(user);
         return new BaseResponse("Account registered success");
     }
 
