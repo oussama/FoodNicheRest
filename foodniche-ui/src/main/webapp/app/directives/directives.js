@@ -51,26 +51,6 @@ angular.module('fnApp')
       }
     }
   }])
-  .directive('fnRaveModal',['Modal',function(Modal) {
-    return {
-      restrict: 'AE',
-      link: function($scope,element) {
-        element.bind('click',function() {
-          Modal.rave();
-        })
-      }
-    }
-  }])
-  .directive('fnInviteFriendModal',['Modal',function(Modal) {
-    return {
-      restrict: 'AE',
-      link: function($scope,element) {
-        element.bind('click',function() {
-          Modal.inviteFriend();
-        })
-      }
-    }
-  }])
   .directive('fnGoHome',['$state',function($state) {
     return {
       restrict: 'AE',
@@ -111,7 +91,6 @@ angular.module('fnApp')
         if (!helper.isImage(file)) {
           return;
         }
-
         var reader = new FileReader();
 
         reader.onload = function (event) {

@@ -920,11 +920,13 @@ h6 {
     width: 400px;
 }
 
-.modal-small .modal-dialog .modal-content {
+.modal-small .modal-dialog .modal-content,
+.fn-modal .modal-dialog .modal-content {
     border:1px solid #5e3d1f;
-    box-shadow: 0px;
+    box-shadow: 0;
 }
-.modal-small .modal-dialog .modal-header {
+.modal-small .modal-dialog .modal-header,
+.fn-modal .modal-dialog .modal-header {
     background: #744c28;
     border: 1px solid #744c28;
     border-bottom: 1px solid #f58a0b;

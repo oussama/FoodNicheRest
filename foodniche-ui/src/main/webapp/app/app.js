@@ -9,8 +9,12 @@ angular.module('fnApp', [
   'ui.router',
   'angular-loading-bar',
   'angularFileUpload',
-  'angular-growl'
+  'angular-growl',
+  // Our module
+  'fnAppModal'
 ]);
+angular.module('fnAppModal',[]);
+
 angular.module('fnApp').constant('API_URL', '/frest/');
 angular.module('fnApp').constant('UPLOAD_URL', '/frest/api/files/image');
 angular.module('fnApp').constant('IMAGE_URL', '/frest/api/files/image/');

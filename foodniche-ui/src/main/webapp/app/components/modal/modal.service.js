@@ -1,6 +1,5 @@
 'use strict';
-
-angular.module('fnApp')
+angular.module('fnAppModal')
   .factory('Modal', function ($rootScope, $uibModal) {
     function openModal(scope, modalClass) {
       var modalScope = $rootScope.$new();
@@ -20,7 +19,6 @@ angular.module('fnApp')
     function openInviteFriendModal(modalClass) {
       modalClass = modalClass || 'modal-small';
 
-
       return $uibModal.open({
         templateUrl: 'app/components/modal/views/invite-friend.modal.html',
         windowClass: modalClass,
@@ -31,11 +29,22 @@ angular.module('fnApp')
     function openRaveModal(modalClass) {
       modalClass = modalClass || 'modal-small';
 
-
       return $uibModal.open({
         templateUrl: 'app/components/modal/views/rave.modal.html',
         windowClass: modalClass,
         backdrop: 'static'
+      });
+    }
+
+    function openCreateProductModal(modalClass) {
+      modalClass = modalClass || 'fn-modal';
+
+      return $uibModal.open({
+        templateUrl: 'app/components/modal/views/create-product.modal.html',
+        windowClass: modalClass,
+        backdrop: 'static',
+        size: 'lg',
+        controller: 'CreateProductModalCtrl'
       });
     }
 
@@ -46,6 +55,9 @@ angular.module('fnApp')
       },
       rave: function(modalClass) {
         var raveModal = openRaveModal(modalClass);
+      },
+      createProduct: function(modalClass) {
+        var createProductModal = openCreateProductModal(modalClass);
       },
       /* Confirmation modals */
       confirm: {
