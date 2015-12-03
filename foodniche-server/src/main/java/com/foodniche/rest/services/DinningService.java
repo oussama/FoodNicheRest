@@ -11,8 +11,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
@@ -51,6 +53,37 @@ public class DinningService {
             @ApiResponse(code = 500, message = "Something wrong in Server")})
     public List<Businesses> getRestaurants(NearRestaurants nearRestaurants) {
         return businessDao.getNearestRestaurants(nearRestaurants.getTypeId(), nearRestaurants.getZipCode());
+    }
+
+    @GET
+    @Path("/all")
+    @Consumes("application/json")
+    @Produces("application/json")
+    @ApiOperation(value = "Get all restaurants")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 500, message = "Something wrong in Server")})
+    public List<Businesses> getAllRestaurants() {
+        return businessDao.getAll();
+    }
+
+    @GET
+    @Path("/{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    @ApiOperation(value = "Get all restaurants")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 204, message = "Business not find"),
+            @ApiResponse(code = 500, message = "Something wrong in Server")})
+    public Response getRestaurant(@PathParam("id") Integer id) {
+        Businesses businesses = businessDao.get(id);
+
+        if (businesses != null) {
+            return Response.ok().entity(businesses).build();
+        } else {
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }
     }
 
 }

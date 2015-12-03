@@ -11,9 +11,9 @@ angular.module('fnApp', [
   'angularFileUpload',
   'angular-growl'
 ]);
-angular.module('fnApp').constant('API_URL', '/frest/');
-angular.module('fnApp').constant('UPLOAD_URL', '/frest/api/files/image');
-angular.module('fnApp').constant('IMAGE_URL', '/frest/api/files/image/');
+angular.module('fnApp').constant('API_URL', 'http://localhost:8080/');
+angular.module('fnApp').constant('UPLOAD_URL', 'http://localhost:8080/api/files/image');
+angular.module('fnApp').constant('IMAGE_URL', 'http://localhost:8080/api/files/image/');
 
 angular.module('fnApp').factory('authInterceptor', function ($rootScope, $q, $cookieStore) {
   return {
