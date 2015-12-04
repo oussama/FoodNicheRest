@@ -80,7 +80,7 @@ public class EmailAPI {
 
         Mail mail = new Mail();
         mail.setMailFrom(from);
-        mail.setMailTo("Niyioyelade@yahoo.com"); //@TODO needs to be replaced by user email!!!!
+        mail.setMailTo(userInfo.getEmail()); //@TODO needs to be replaced by user email!!!!
         mail.setMailSubject("FoodNiche Registration");
         mail.setTemplateName("user_registration.vm");
         Map<String, String> parameters = new HashMap<>();
