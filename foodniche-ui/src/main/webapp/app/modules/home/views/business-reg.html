@@ -13,22 +13,10 @@
                   <div class="help-block" ng-if="form.businessName.$error.required && submitted">Business name is required</div>
                 </div>
                 <div class="form-group radio-business">Which category does your business belong?<br>
-                  <div class="radio">
+                  <div class="radio" ng-repeat="businessType in businessTypes">
                     <label>
-                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="'restaurant'">
-                      Restaurant
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="'bakeries'">
-                      Bakeries
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="'manufacturer'">
-                      Manufacturer
+                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="businessType.businesstypeid">
+                      {{businessType.name}}
                     </label>
                   </div>
                 </div>

@@ -87,11 +87,12 @@ angular.module('fnApp')
   ])
 
   .controller('BusinessRegCtrl',[
-    '$scope','FileUploader',
-    function($scope,FileUploader) {
+    '$scope','businessTypes','FileUploader',
+    function($scope,businessTypes,FileUploader) {
       $scope.submitted = false;
+      $scope.businessTypes = businessTypes;
       $scope.user = {
-        businessCategory: 'restaurant'
+        businessCategory: businessTypes[0].businesstypeid
       };
 
       $scope.submit = function(form) {

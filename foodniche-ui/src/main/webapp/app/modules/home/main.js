@@ -39,7 +39,15 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       url: '/registration/business',
       templateUrl: 'app/modules/home/views/business-reg.html',
       controller: 'BusinessRegCtrl',
-      unauthenticated: true
+      unauthenticated: true,
+      resolve: {
+        businessTypes: [
+          'Business',
+          function(Business) {
+            return Business.getBusinessTypes();
+          }
+        ]
+      }
     })
     .state('logout',{
       url: '/logout',
