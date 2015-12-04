@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,6 +60,19 @@ public class UserService {
                 Response.status(Response.Status.NO_CONTENT).entity("User not found").build();
     }
 
+    @GET
+    @Path("/profile/{id}")
+    @ApiOperation(value = "Get user profile by id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 204, message = "User not found")})
+    public Response getProfile(@PathParam("id") Integer id) {
+        Users user = userDao.get(id);
+
+        return user != null ? Response.ok().entity(user).build() :
+                Response.status(Response.Status.NO_CONTENT).entity("User not found").build();
+    }
+
     @PUT
     @Path("/profile")
     @Consumes({"application/json"})
@@ -86,6 +100,26 @@ public class UserService {
     }
 
     @GET
+    @Path("/connection/{id}")
+    @ApiOperation(value = "User's connections by userId")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 204, message = "User not found"),
+            @ApiResponse(code = 500, message = "Server internal error")})
+    public List<Users> getConnections(@PathParam("id") Integer id) {
+        List<Users> connectedUsers;
+        Users fromUser = userDao.get(id);
+
+        if (fromUser != null) {
+            connectedUsers = connectionsDao.getConnections(fromUser);
+        } else {
+            connectedUsers = new ArrayList<>();
+        }
+
+        return connectedUsers;
+    }
+
+    @GET
     @Path("/my-album")
     @ApiOperation(value = "My album")
     @ApiResponses(value = {
@@ -93,6 +127,34 @@ public class UserService {
             @ApiResponse(code = 500, message = "Server internal error")})
     public List<UploadedFiles> getMyAlbum() {
         return uploadFileDao.getUserImages(securityService.getCurrentUser());
+    }
+
+    @GET
+    @Path("/my-group")
+    @ApiOperation(value = "My groups")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 500, message = "Server internal error")})
+    public List<Groups> getMyGroup() {
+        return userGroupsDao.getUserGroups(securityService.getCurrentUser());
+    }
+
+    @GET
+    @Path("/group/{id}/members")
+    @Produces("application/json")
+    @ApiOperation(value = "Get all users in group")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 204, message = "Group not found"),
+            @ApiResponse(code = 500, message = "Server internal error")})
+    public Response getUserGroups(@PathParam("id") Integer id) {
+        List<Users> users = userGroupsDao.getUsersInGroup(id);
+
+        if (users != null) {
+            return Response.ok().entity(users).build();
+        } else {
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }
     }
 
     @POST
@@ -140,5 +202,15 @@ public class UserService {
         } else {
             return Response.status(Response.Status.NO_CONTENT).entity(new BaseResponse("Failed to find group by id")).build();
         }
+    }
+
+    @POST
+    @Path("/invite-friend/{id}")
+    @ApiOperation(value = "My groups")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 500, message = "Server internal error")})
+    public Response sendInvitation(@PathParam("id") Integer id) {
+        return Response.ok().build();
     }
 }
