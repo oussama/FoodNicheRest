@@ -1,9 +1,12 @@
 angular.module('fnApp')
   .controller('ProfileViewCtrl',[
-    '$scope','FileUploader','$cookieStore','Auth','growl','UPLOAD_URL','IMAGE_URL',
-    function($scope,FileUploader,$cookieStore,Auth,growl,UPLOAD_URL,IMAGE_URL) {
-      Auth.getCurrentUserInAsync(function(user) {
-        $scope.user = user;
+    '$scope','user','FileUploader','$cookieStore','$state','Auth','Connection','growl','UPLOAD_URL','IMAGE_URL',
+    function($scope,user,FileUploader,$cookieStore,$state,Auth,Connection,growl,UPLOAD_URL,IMAGE_URL) {
+      $scope.user = user;
+      Auth.getCurrentUserInAsync(function(currentUser) {
+        $scope.currentUser = currentUser;
+        $scope.isCurrentUser = user.userid === currentUser.userid;
+        $scope.isConnected = false;
       });
       var profileUploader = $scope.profileUploader = new FileUploader({
         url: UPLOAD_URL,
@@ -21,6 +24,7 @@ angular.module('fnApp')
             $scope.user.profilepicture = IMAGE_URL + file.fileId;
             Auth.updateProfile($scope.user).then(function() {
               growl.addSuccessMessage('Profile picture update successfully')
+              $scope.isConnected = true;
             },function() {
               growl.addErrorMessage('Cannot update profile picture')
             })
@@ -28,7 +32,25 @@ angular.module('fnApp')
         }
       });
 
-
+      $scope.connect = function() {
+        var connectObj = {
+          connectionsPK: {
+            fromUser: {
+              userid: $scope.currentUser.userid
+            },
+            toUser: {
+              userid: $scope.user.userid
+            },
+          },
+          status: 0,
+          createddate: new Date().toISOString()
+        };
+        Connection.create(connectObj).then(function() {
+          growl.addSuccessMessage('You have been connected with this user');
+        },function() {
+          growl.addErrorMessage('Fail to connect with this user');
+        });
+      };
 
       $scope.removePhoto = function(index) {
         uploader.queue.splice(index,1);

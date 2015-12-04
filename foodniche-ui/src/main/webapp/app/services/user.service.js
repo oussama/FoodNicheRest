@@ -3,8 +3,8 @@ angular.module('fnApp')
   .factory('User', [
     'Restangular','$resource','API_URL',
     function (Restangular,$resource,API_URL) {
-      return $resource(API_URL + 'api/user/:controller',{
-        id: '@_id'
+      return $resource(API_URL + 'api/user/:controller/:id',{
+        controller: '@_controller'
       },{
         get: {
           method: 'GET',
@@ -20,14 +20,14 @@ angular.module('fnApp')
         },
         getMyAlbum: {
           method: 'GET',
-          isArray:true,
+          isArray: true,
           params: {
-            controller:'my-album'
+            controller:'my-album',
           }
         },
         getMyConnection: {
           method: 'GET',
-          isArray:true,
+          isArray: true,
           params: {
             controller:'my-connection'
           }

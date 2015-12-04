@@ -120,4 +120,19 @@ angular.module('fnApp')
         })
       }
     }
+  }])
+  .directive('fnUserAvatar',[function() {
+    return {
+      restrict: 'A',
+      scope: {
+        user: '=fnUserAvatar'
+      },
+      link: function($scope,element,attrs) {
+        if (!$scope.user.profilepicture) {
+          attrs.$set('src','images/profile.png');
+        } else {
+          attrs.$set("src",$scope.user.profilepicture);
+        }
+      }
+    }
   }]);

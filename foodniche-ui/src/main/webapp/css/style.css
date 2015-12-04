@@ -559,6 +559,8 @@ h6 {
 }
 .profile_image_inn img {
     margin: 10px 0px;
+    height: 230px;
+    object-fit: cover;
 }
 .content .title-width {
     width: 60%;

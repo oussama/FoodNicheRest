@@ -14,10 +14,10 @@ angular.module('fnApp', [
   'fnAppModal'
 ]);
 angular.module('fnAppModal',[]);
-
-angular.module('fnApp').constant('API_URL', '/frest/');
-angular.module('fnApp').constant('UPLOAD_URL', '/frest/api/files/image');
-angular.module('fnApp').constant('IMAGE_URL', '/frest/api/files/image/');
+var baseUrl = 'http://localhost:8080/frest/';
+angular.module('fnApp').constant('API_URL', baseUrl);
+angular.module('fnApp').constant('UPLOAD_URL', baseUrl + 'api/files/image');
+angular.module('fnApp').constant('IMAGE_URL', baseUrl + 'api/files/image/');
 
 angular.module('fnApp').factory('authInterceptor', function ($rootScope, $q, $cookieStore) {
   return {
