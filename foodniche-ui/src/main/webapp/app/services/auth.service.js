@@ -28,9 +28,10 @@ angular.module('fnApp')
           $http.post(API_URL + 'auth/login',user).
             success(function (data) {
               $cookieStore.put('token', data.data.token);
-              currentUser = User.get();
-              deferred.resolve(data);
-              return cb();
+              currentUser = User.get(function() {
+                deferred.resolve(data);
+                return cb();
+              });
             }).
             error(function (err) {
               deferred.reject(err);
@@ -65,15 +66,19 @@ angular.module('fnApp')
         getCurrentUserInAsync: function(callback) {
           var cb = callback || angular.noop;
           if (currentUser.hasOwnProperty('$promise')) {
-            currentUser.$promise.then(function() {
+            currentUser.$promise.then(function(user) {
               cb(currentUser);
-            }). catch (function() {
+              return user
+            }).catch (function() {
               cb(null);
+              return {};
             });
           } else if (currentUser.hasOwnProperty('userid')) {
             cb(currentUser) ;
+            return currentUser
           } else {
             cb(null);
+            return {}
           }
         },
       }

@@ -1,8 +1,18 @@
 angular.module('fnApp')
   .controller('BusinessViewCtrl',[
-    '$scope','FileUploader','UPLOAD_URL','$cookieStore',
-    function($scope,FileUploader,UPLOAD_URL,$cookieStore) {
+    '$scope','$rootScope','FileUploader','Auth','Product','UPLOAD_URL','$cookieStore',
+    function($scope,$rootScope,FileUploader,Auth,Product,UPLOAD_URL,$cookieStore) {
+      Auth.getCurrentUserInAsync(function(user) {
+        $scope.user = user;
+        Product.getAllByBusiness(user.userid)
+          .then(function(res) {
+            $scope.products = res;
+          });
+      });
 
+      $rootScope.$on('Product:Created',function(event,product) {
+        $scope.products.push(product);
+      })
     }
   ])
 
