@@ -17,9 +17,11 @@
        <bean class="com.foodniche.rest.security.TokenAuthenticationFilter"
              id="authenticationTokenProcessingFilter">
               <constructor-arg type="org.springframework.security.authentication.AuthenticationManager" ref="authenticationManager"/>
+              <constructor-arg type="java.lang.String" value="/auth/**"/>
        </bean>
 
        <security:http pattern="/**" use-expressions="true" auto-config="false" entry-point-ref="restAuthenticationEntryPoint" create-session="stateless">
+              <security:intercept-url pattern="/**" access="permitAll()" method="OPTIONS"/>
               <security:intercept-url pattern="/auth/**" access="permitAll()"/>
 
               <security:intercept-url pattern="/api/files/image/**" access="permitAll()"/>
