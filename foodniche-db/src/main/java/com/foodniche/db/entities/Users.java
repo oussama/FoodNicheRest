@@ -57,6 +57,9 @@ public class Users implements Serializable {
     private String profilepicture;
     @Column(name = "accounttype")
     private Short accounttype;
+    @Size(max = 80)
+    @Column(name = "email")
+    private String email;
 
     public Users() {
     }
@@ -135,6 +138,14 @@ public class Users implements Serializable {
 
     public void setAccounttype(Short accounttype) {
         this.accounttype = accounttype;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

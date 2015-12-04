@@ -25,6 +25,8 @@
               <security:intercept-url pattern="/api/files/image/**" access="permitAll()"/>
               <security:intercept-url pattern="/api/**" access="isAuthenticated()"/>
 
+              <security:intercept-url pattern="/test/**" access="permitAll()"/>
+
               <security:logout logout-url="/auth/logout"/>
 
               <security:custom-filter ref="authenticationTokenProcessingFilter" position="FORM_LOGIN_FILTER"/>

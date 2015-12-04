@@ -4,6 +4,6 @@
     <Resource name="jdbc/FoodNiche1" auth="Container"
               type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
               url="jdbc:postgresql://localhost:5432/postgres"
-              username="postgres" password="cr2vnouk" maxActive="20" maxIdle="10" maxWait="-1"/>
+              username="postgres" password="sa" maxActive="20" maxIdle="10" maxWait="-1"/>
 
 </Context>
