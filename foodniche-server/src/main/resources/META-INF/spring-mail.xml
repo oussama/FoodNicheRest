@@ -19,16 +19,16 @@
         <property name="password" value="${smtp.password}"/>
             <property name="javaMailProperties">
                 <props>
-                    <prop key="mail.debug">true</prop>
-                    <prop key="mail.smtp.auth">true</prop>
-                    <prop key="mail.smtp.starttls.enable">true</prop>
-                    <prop key="mail.mime.charset">UTF-8</prop>
-                    <prop key="mail.transport.protocol">smtp</prop>
+                    <prop key="mail.debug">${mail.debug}</prop>
+                    <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                    <prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+                    <prop key="mail.mime.charset">${mail.mime.charset}</prop>
+                    <prop key="mail.transport.protocol">${mail.transport.protocol}</prop>
                 </props>
             </property>
     </bean>
 
-    <bean id="mailer" class="com.foodniche.rest.services.email.EmailAPI">
+    <bean id="emailAPI" class="com.foodniche.rest.services.email.EmailAPI">
         <property name="mailSender" ref="mailSender"/>
         <property name="velocityEngine" ref="velocityEngine"/>
         <property name="from" value="${from.mail.address}"/>

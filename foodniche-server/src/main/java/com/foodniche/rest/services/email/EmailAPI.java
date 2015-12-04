@@ -20,7 +20,7 @@ import java.util.Map;
  * @author Alexey Borschenko
  * @since 01 Dec 2015
  */
-@Component
+@Component("emailAPI")
 public class EmailAPI {
 
     static Logger logger = LoggerFactory.getLogger(EmailAPI.class);
