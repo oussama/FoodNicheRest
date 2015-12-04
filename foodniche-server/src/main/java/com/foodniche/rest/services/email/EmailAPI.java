@@ -1,5 +1,6 @@
 package com.foodniche.rest.services.email;
 
+import com.foodniche.db.entities.Connections;
 import com.foodniche.db.entities.Users;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -88,5 +89,33 @@ public class EmailAPI {
         parameters.put("lastName", userInfo.getLastname());
 
         sendMail(mail, parameters);
+    }
+
+    /**
+     * Sends connections details
+     *
+     * @param connections
+     */
+    public void sendConnectionRequestMail(Connections connections) {
+        logger.debug("Sending Connection Request email: {}", connections);
+
+//        Mail mail = new Mail();
+//        mail.setMailFrom(from);
+//        mail.setMailTo(connections.get); //@TODO how to get details!!!!
+//        mail.setMailSubject("FoodNiche Registration");
+//        mail.setTemplateName("user_registration.vm");
+//        Map<String, String> parameters = new HashMap<>();
+//        parameters.put("firstName", userInfo.getFirstname());
+//        parameters.put("lastName", userInfo.getLastname());
+
+//        sendMail(mail, parameters);
+    }
+
+    public void sendGroupActivityMail() {
+        //TODO what to send here?
+    }
+
+    public void sendContentInteractionMail() {
+        //TODO what to send here?
     }
 }
