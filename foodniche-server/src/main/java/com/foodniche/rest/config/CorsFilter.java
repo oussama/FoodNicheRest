@@ -47,7 +47,7 @@ public class CorsFilter implements ContainerResponseFilter {
             }
             if ("OPTIONS".equals(req.getMethod())) {
                 res.setEntity(null);
-                headers.add("Content-Type", "text/plain");
+                headers.add("ContentModel-Type", "text/plain");
             }
         }
 

@@ -1,9 +1,6 @@
 package com.foodniche.db.dao;
 
-import com.foodniche.db.entities.Businesses;
-import com.foodniche.db.entities.Content;
-import com.foodniche.db.entities.Contenttypes;
-import com.foodniche.db.entities.Product;
+import com.foodniche.db.entities.*;
 import com.foodniche.db.repositories.ContentTypeRepository;
 import com.foodniche.db.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +34,7 @@ public class ProductDao extends BaseDao<Product, Integer> {
         return productRepository.findByBusinesses(businesses);
     }
 
-    public Content addContent(String name, String content, String type, Integer productId) {
+    public Content addContent(Users user, String content, String type, Integer productId) {
         Content cn = null;
         Contenttypes contenttypes = contentTypeRepository.findByName(type);
         Product product = productRepository.getOne(productId);
@@ -46,7 +43,7 @@ public class ProductDao extends BaseDao<Product, Integer> {
             cn = new Content();
             cn.setProduct(product);
             cn.setContenttypeid(contenttypes.getContenttypeid());
-            cn.setName(name);
+            cn.setUserid(user.getUserid());
             cn.setContent(content);
             getEntityManager().persist(cn);
         }
