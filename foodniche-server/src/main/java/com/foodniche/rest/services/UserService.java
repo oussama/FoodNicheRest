@@ -1,10 +1,7 @@
 package com.foodniche.rest.services;
 
 import com.foodniche.db.dao.*;
-import com.foodniche.db.entities.Groups;
-import com.foodniche.db.entities.UploadedFiles;
-import com.foodniche.db.entities.UserGroupStatus;
-import com.foodniche.db.entities.Users;
+import com.foodniche.db.entities.*;
 import com.foodniche.rest.model.BaseResponse;
 import com.foodniche.rest.security.SecurityService;
 import io.swagger.annotations.Api;
@@ -99,8 +96,30 @@ public class UserService {
         return connectionsDao.getConnections(securityService.getCurrentUser());
     }
 
+
     @GET
     @Path("/connection/{id}")
+    @Produces("application/json")
+    @ApiOperation(value = "User's connections by userId")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 204, message = "User not found"),
+            @ApiResponse(code = 500, message = "Server internal error")})
+    public Response getConnection(@PathParam("id") Integer id) {
+        Users userTo = userDao.get(id);
+
+        Connections connections = connectionsDao.getConnection(securityService.getCurrentUser(), userTo);
+
+        if (connections != null) {
+            return Response.ok().entity(connections).build();
+        } else {
+            return Response.status(Response.Status.NO_CONTENT).build();
+        }
+    }
+
+    @GET
+    @Path("/connections/{id}")
+    @Produces("application/json")
     @ApiOperation(value = "User's connections by userId")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),

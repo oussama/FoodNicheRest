@@ -41,6 +41,10 @@ public class ConnectionsDao extends BaseDao<Connections, ConnectionsPK> {
         }).collect(Collectors.toList());
     }
 
+    public Connections getConnection(Users fromUser, Users toUser) {
+        return connectionsRepository.getUsersConnection(fromUser, toUser);
+    }
+
     @Override
     protected JpaRepository<Connections, ConnectionsPK> getRepository() {
         return connectionsRepository;
