@@ -8,5 +8,8 @@ angular.module('fnApp')
         create: function(productObj) {
           return _rest.customPOST(productObj);
         },
+        getAllByBusiness: function(id) {
+          return _rest.get(id);
+        }
       };
     }]);

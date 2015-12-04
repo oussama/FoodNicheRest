@@ -1,7 +1,7 @@
 angular.module('fnAppModal')
   .controller('CreateProductModalCtrl',[
-    '$scope','$uibModalInstance','$cookieStore','FileUploader','growl','Auth','Product','UPLOAD_URL','IMAGE_URL',
-    function($scope,$uibModalInstance,$cookieStore,FileUploader,growl,Auth,Product,UPLOAD_URL,IMAGE_URL) {
+    '$scope','$rootScope','$uibModalInstance','$cookieStore','FileUploader','growl','Auth','Product','UPLOAD_URL','IMAGE_URL',
+    function($scope,$rootScope,$uibModalInstance,$cookieStore,FileUploader,growl,Auth,Product,UPLOAD_URL,IMAGE_URL) {
       Auth.getCurrentUserInAsync(function(user) {
         $scope.user = user;
       });
@@ -25,13 +25,18 @@ angular.module('fnAppModal')
         },
         onCompleteItem: function (fileItem, file, status) {
           if (status === 200) {
-            $scope.product.businessid = $scope.user.userid;
-            $scope.product.photourl = IMAGE_URL + file.fileId;
+            $scope.product.businesses = {
+              businessid: $scope.user.userid
+            };
+            $scope.product.photoUrl = IMAGE_URL + file.fileId;
+            $scope.product.likes = 0;
             Product.create($scope.product)
-              .then(function() {
+              .then(function(res) {
                 growl.addSuccessMessage("Content created successfully");
                 uploader.clearQueue();
                 resetForm();
+                $rootScope.$emit('Product:Created',res);
+                $uibModalInstance.dismiss('cancel');
               },function(err) {
                 growl.addErrorMessage(err)
               })

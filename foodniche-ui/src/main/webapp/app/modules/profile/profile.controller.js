@@ -1,19 +1,55 @@
 angular.module('fnApp')
   .controller('ProfileViewCtrl',[
-    '$scope','FileUploader','$cookieStore','UPLOAD_URL',
-    function($scope,FileUploader,$cookieStore,UPLOAD_URL) {
+    '$scope','user','FileUploader','$cookieStore','$state','Auth','Connection','growl','UPLOAD_URL','IMAGE_URL',
+    function($scope,user,FileUploader,$cookieStore,$state,Auth,Connection,growl,UPLOAD_URL,IMAGE_URL) {
+      $scope.user = user;
+      Auth.getCurrentUserInAsync(function(currentUser) {
+        $scope.currentUser = currentUser;
+        $scope.isCurrentUser = user.userid === currentUser.userid;
+        $scope.isConnected = false;
+      });
       var profileUploader = $scope.profileUploader = new FileUploader({
         url: UPLOAD_URL,
         headers: {
           'X-Auth-Token': $cookieStore.get('token')
+        },
+        onAfterAddingFile: function (file) {
+          if (profileUploader.queue.length > 1) {
+            profileUploader.queue.shift();
+          }
+          file.upload();
+        },
+        onCompleteItem: function(fileItem, file,status) {
+          if (status === 200) {
+            $scope.user.profilepicture = IMAGE_URL + file.fileId;
+            Auth.updateProfile($scope.user).then(function() {
+              growl.addSuccessMessage('Profile picture update successfully')
+              $scope.isConnected = true;
+            },function() {
+              growl.addErrorMessage('Cannot update profile picture')
+            })
+          }
         }
       });
 
-      profileUploader.onAfterAddingFile = function (file) {
-        if (profileUploader.queue.length > 1) {
-          profileUploader.queue.shift();
-        }
-        file.upload();
+      $scope.connect = function() {
+        var connectObj = {
+          connectionsPK: {
+            fromUser: {
+              userid: $scope.currentUser.userid
+            },
+            toUser: {
+              userid: $scope.user.userid
+            },
+          },
+          status: 0,
+          createddate: new Date().toISOString()
+        };
+        Connection.create(connectObj).then(function() {
+          growl.addSuccessMessage('You have been connected with this user');
+        },function() {
+          growl.addErrorMessage('Fail to connect with this user');
+        });
       };
 
       $scope.removePhoto = function(index) {
@@ -23,12 +59,24 @@ angular.module('fnApp')
   ])
 
   .controller('ProfileEditCtrl',[
-    '$scope',
-    function($scope) {
+    '$scope','user','Auth','growl',
+    function($scope,user,Auth,growl) {
       $scope.submitted = false;
-
+      $scope.user = user;
+      $scope.user.fullName = $scope.user.firstname + " " + $scope.user.lastname;
       $scope.submit = function(form) {
         $scope.submitted = true;
+        if (form.$valid) {
+          $scope.user.firstname = user.fullName.split(' ').slice(0, -1).join(' ');
+          $scope.user.lastname = user.fullName.split(' ').slice(-1).join(' ');
+          $scope.user = _.omit($scope.user,'country','vegetarianDiet','fullName');
+          Auth.updateProfile($scope.user)
+            .then(function() {
+              growl.addSuccessMessage("Profile updated successfully");
+            },function() {
+              growl.addErrorMessage("Cannot update profile");
+            })
+        }
       }
     }
   ])

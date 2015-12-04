@@ -13,6 +13,9 @@ angular.module('fnApp')
         },
         getOne: function(id) {
           return _rest.get(id);
-        }
+        },
+        //getMember: function(id) {
+        //  return _rest.
+        //}
       };
     }]);

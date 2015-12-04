@@ -10,7 +10,6 @@ angular.module('fnApp')
         $scope.submitted = true;
         if (form.$valid) {
           $rootScope.tempUser = $scope.user;
-          console.log($rootScope.tempUser);
           $state.go('registration');
         }
       }
@@ -19,31 +18,56 @@ angular.module('fnApp')
 
 
   .controller('IndividualStep2RegCtrl',[
-    '$scope','$rootScope','FileUploader','$state',
-    function($scope,$rootScope,FileUploader,$state) {
+    '$scope','$rootScope','FileUploader','Auth','$state','growl','IMAGE_URL',
+    function($scope,$rootScope,FileUploader,Auth,$state,growl,IMAGE_URL) {
       if (!$rootScope.tempUser) {
         $state.go('home');
       } else {
         $scope.user = $rootScope.tempUser;
         $scope.user.vegetarianDiet = false;
+
       }
       $scope.submitted = false;
 
       var uploader = $scope.uploader = new FileUploader({
-        url: 'upload'
+        url: 'upload',
+        onAfterAddingFile: function () {
+          if (uploader.queue.length > 1) {
+            uploader.queue.shift();
+          }
+        },
+        onCompleteItem: function(fileItem, file, status) {
+          if (status === 200) {
+            $scope.user.profilepicture = IMAGE_URL + file.fileId;
+            createUser($scope.user);
+          }
+        }
       });
 
-      uploader.onAfterAddingFile = function () {
-        if (uploader.queue.length > 1) {
-          uploader.queue.shift();
-        }
-      };
 
       $scope.submit = function(form) {
         $scope.submitted = true;
         if (form.$valid) {
-          $state.go('individualReg.step3')
+          if (uploader.queue.length > 0) {
+            //uploader.uploadAll();
+            createUser($scope.user);
+          } else {
+            createUser($scope.user);
+          }
         }
+      };
+
+      var createUser = function(user) {
+        user.firstname = user.fullName.split(' ').slice(0, -1).join(' ');
+        user.lastname = user.fullName.split(' ').slice(-1).join(' ');
+        user.username = user.email;
+        user = _.omit($scope.user,'fullName','agree','email','vegetarianDiet','country');
+        Auth.register(user,function(err) {
+          if (err) {
+            growl.addErrorMessage(err);
+          }
+          $state.go('individualReg.step3')
+        })
       }
     }
   ])
@@ -53,31 +77,22 @@ angular.module('fnApp')
     function($scope,$rootScope,$state,Auth) {
       if (!$rootScope.tempUser) {
         $state.go('home');
-      } else {
-        var user = $rootScope.tempUser;
-        user.firstname = user.fullName.split(' ').slice(0, -1).join(' ');
-        user.lastname = user.fullName.split(' ').slice(-1).join(' ');
-        user.username = user.email;
-        user = _.omit(user,'fullName','agree','email','vegetarianDiet','country');
       }
 
-      $scope.createUser = function() {
-        Auth.register(user,function(err) {
-          if (err) {
-
-          }
-          $state.go('home')
-        })
+      $scope.skip = function() {
+        $rootScope.tempUser = {};
+        $state.go('home');
       }
     }
   ])
 
   .controller('BusinessRegCtrl',[
-    '$scope','FileUploader',
-    function($scope,FileUploader) {
+    '$scope','businessTypes','FileUploader',
+    function($scope,businessTypes,FileUploader) {
       $scope.submitted = false;
+      $scope.businessTypes = businessTypes;
       $scope.user = {
-        businessCategory: 'restaurant'
+        businessCategory: businessTypes[0].businesstypeid
       };
 
       $scope.submit = function(form) {

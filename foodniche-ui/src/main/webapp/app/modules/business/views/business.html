@@ -50,35 +50,18 @@
       </div>
       <div class="col-sm-9">
         <div class="rslides_container slider-business">
-          <ul class="rslides" id="slider2" fn-responsive-slider>
-            <li>
-              <a href="product-detail.html"><img src="images/food.jpg" alt=""></a>
-              <div class="text-slider-pro"><a href="#">True Food Kitchen</a></div>
-              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 4 likes</a>
-              <div class="price">$100</div>
-            </li>
-            <li>
-              <a href="product-detail.html"><img src="images/food1.jpg" alt=""></a>
-              <div class="text-slider-pro"><a href="#">True Food Kitchen 1</a></div>
-              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 1 likes</a>
-              <div class="price">$200</div>
-            </li>
-            <li>
-              <a href="product-detail.html"><img src="images/food.jpg" alt=""></a>
-              <div class="text-slider-pro"><a href="#">True Food Kitchen 2</a></div>
-              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 6 likes</a>
-              <div class="price">$300</div>
-            </li>
-            <li>
-              <a href="product-detail.html"><img src="images/food1.jpg" alt=""></a>
-              <div class="text-slider-pro"><a href="#">True Food Kitchen 3</a></div>
-              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> 5 likes</a>
-              <div class="price">$400</div>
+          <ul class="rslides" id="slider2" fn-responsive-slider="products">
+
+            <li ng-repeat="product in products">
+              <a href="product-detail.html"><img ng-src="{{product.photoUrl}}" alt=""></a>
+              <div class="text-slider-pro"><a href="#">{{product.description}}</a></div>
+              <a class="like-product" href="#"><i class="fa fa-thumbs-o-up"></i> {{product.likes | fnLike}}</a>
+              <div class="price">{{product.price | currency}}</div>
             </li>
           </ul>
         </div>
 
-        <div fn-create-product></div>
+        <div fn-create-content></div>
 
         <div class="panel panel-grey">
           <div class="panel-body">
