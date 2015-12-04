@@ -5,7 +5,7 @@
       <div class="col-sm-3">
         <div class="profile-left m20">
           <div class="profile_image upload-image">
-            <img ng-if="profileUploader.queue <= 0" src="images/profile.png" alt="0">
+            <img ng-if="profileUploader.queue <= 0" ng-src="{{user.profilepicture}}" alt="0">
             <div ng-repeat="item in profileUploader.queue">
               <img ng-show="profileUploader.isHTML5" ng-thumb="item._file"/>
             </div>

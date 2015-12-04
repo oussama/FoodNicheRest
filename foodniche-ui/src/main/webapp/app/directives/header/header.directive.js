@@ -3,6 +3,7 @@ angular.module('fnApp')
     return {
       restrict: 'AE',
       templateUrl: 'app/directives/header/header.html',
+      scope: false,
       controller: [
         '$scope','Auth',
         function($scope,Auth) {

@@ -14,7 +14,7 @@ angular.module('fnApp')
           var cb = callback || angular.noop;
           $http.post(API_URL + 'auth/register',user)
             .success(function() {
-              return cb(user);
+              return cb();
             })
             .error(function(err) {
               this.logout();
@@ -39,6 +39,18 @@ angular.module('fnApp')
             }.bind(this));
 
           return deferred.promise;
+        },
+        updateProfile: function(user,callback) {
+          var cb = callback || angular.noop;
+          return User.update(user,
+            function (data) {
+              currentUser = User.get(function() {
+                return cb(data);
+              });
+            },
+            function (err) {
+              return cb(err);
+            }.bind(this)).$promise;
         },
         logout: function() {
           $cookieStore.remove('token');

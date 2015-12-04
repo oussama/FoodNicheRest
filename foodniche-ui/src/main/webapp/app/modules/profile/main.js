@@ -9,7 +9,7 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       templateUrl: 'app/modules/profile/views/profile.html',
       controller: 'ProfileViewCtrl',
       authenticate: true,
-      isIndividual: true,
+      isIndividual: true
     })
     .state('profile.edit',{
       url: '/edit',
@@ -17,6 +17,14 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       controller: 'ProfileEditCtrl',
       authenticate: true,
       isIndividual: true,
+      resolve: {
+        user: [
+          'Auth',
+          function(Auth) {
+            return Auth.getCurrentUser();
+          }
+        ]
+      }
     })
     .state('profile.connection',{
       url: '/my-connection',

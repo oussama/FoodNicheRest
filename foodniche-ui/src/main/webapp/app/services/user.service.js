@@ -12,6 +12,12 @@ angular.module('fnApp')
             controller:'profile'
           }
         },
+        update: {
+          method: 'PUT',
+          params: {
+            controller: 'profile'
+          }
+        },
         getMyAlbum: {
           method: 'GET',
           isArray:true,
