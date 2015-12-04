@@ -14,7 +14,7 @@ angular.module('fnApp')
           var cb = callback || angular.noop;
           $http.post(API_URL + 'auth/register',user)
             .success(function() {
-              return cb(user);
+              return cb();
             })
             .error(function(err) {
               this.logout();
@@ -28,9 +28,10 @@ angular.module('fnApp')
           $http.post(API_URL + 'auth/login',user).
             success(function (data) {
               $cookieStore.put('token', data.data.token);
-              currentUser = User.get();
-              deferred.resolve(data);
-              return cb();
+              currentUser = User.get(function() {
+                deferred.resolve(data);
+                return cb();
+              });
             }).
             error(function (err) {
               deferred.reject(err);
@@ -38,6 +39,18 @@ angular.module('fnApp')
             }.bind(this));
 
           return deferred.promise;
+        },
+        updateProfile: function(user,callback) {
+          var cb = callback || angular.noop;
+          return User.update(user,
+            function (data) {
+              currentUser = User.get(function() {
+                return cb(data);
+              });
+            },
+            function (err) {
+              return cb(err);
+            }.bind(this)).$promise;
         },
         logout: function() {
           $cookieStore.remove('token');
@@ -62,18 +75,22 @@ angular.module('fnApp')
         getCurrentUser: function () {
           return currentUser;
         },
-        getCurrentUserInAsync: function(cb) {
-
+        getCurrentUserInAsync: function(callback) {
+          var cb = callback || angular.noop;
           if (currentUser.hasOwnProperty('$promise')) {
-            currentUser.$promise.then(function() {
+            currentUser.$promise.then(function(user) {
               cb(currentUser);
-            }). catch (function() {
+              return user
+            }).catch (function() {
               cb(null);
+              return {};
             });
           } else if (currentUser.hasOwnProperty('userid')) {
-            cb(currentUser);
+            cb(currentUser) ;
+            return currentUser
           } else {
             cb(null);
+            return {}
           }
         },
       }

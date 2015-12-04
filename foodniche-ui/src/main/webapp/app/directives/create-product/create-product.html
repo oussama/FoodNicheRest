@@ -1,0 +1,52 @@
+<form name="form" ng-submit="submit(form)" novalidate>
+  <div class="panel panel-grey">
+    <div class="panel-body">
+      <!--<div class="form-group" ng-class="{'has-error': form.name.$invalid && submitted}">-->
+        <!--<input type="text" class="form-control" placeholder="Name"-->
+               <!--name="name" ng-model="product.name" required>-->
+
+        <!--<div class="help-block" ng-if="form.name.$error.required && submitted">This field is required</div>-->
+      <!--</div>-->
+      <div class="form-group" ng-class="{'has-error': form.description.$invalid && submitted}">
+        <textarea class="form-control" rows="5" placeholder="Description..."
+                  name="description" ng-model="product.description" required></textarea>
+
+        <div class="help-block" ng-if="form.description.$error.required && submitted">This field is required</div>
+      </div>
+      <div class="form-group" ng-class="{'has-error': form.price.$invalid && submitted}">
+        <input type="text" class="form-control" placeholder="Price"
+               name="price" ng-model="product.price" required
+               fn-only-digits>
+
+        <div class="help-block" ng-if="form.price.$error.required && submitted">This field is required</div>
+      </div>
+      <div class="upload-photo">
+        <div class="row">
+          <div class="col-sm-4 p30">
+            Upload Photos/Video:
+          </div>
+          <div class="col-sm-3 p30">
+            <div class="file-upload">
+              <a href="#" class="btn btn-warning btn-grey btn-block">Upload</a>
+              <input type="file" uploader="uploader" nv-file-select multiple>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="row upload_img">
+              <div class="col-xs-4" ng-repeat="item in uploader.queue">
+                <div class="upload_img_loop">
+                  <span class="cross_icon" ng-click="removePhoto($index)"><i class="fa fa-times"></i></span>
+                  <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m20 text-right">
+    <button class="btn btn-warning">Submit</button>
+  </div>
+</form>

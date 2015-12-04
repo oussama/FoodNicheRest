@@ -9,11 +9,15 @@ angular.module('fnApp', [
   'ui.router',
   'angular-loading-bar',
   'angularFileUpload',
-  'angular-growl'
+  'angular-growl',
+  // Our module
+  'fnAppModal'
 ]);
-angular.module('fnApp').constant('API_URL', 'http://localhost:8080/frest/');
-angular.module('fnApp').constant('UPLOAD_URL', 'http://localhost:8080/frest/api/files/image');
-angular.module('fnApp').constant('IMAGE_URL', 'http://localhost:8080/frest/api/files/image/');
+angular.module('fnAppModal',[]);
+var baseUrl = 'http://localhost:8080/frest/';
+angular.module('fnApp').constant('API_URL', baseUrl);
+angular.module('fnApp').constant('UPLOAD_URL', baseUrl + 'api/files/image');
+angular.module('fnApp').constant('IMAGE_URL', baseUrl + 'api/files/image/');
 
 angular.module('fnApp').factory('authInterceptor', function ($rootScope, $q, $cookieStore) {
   return {
@@ -39,7 +43,7 @@ angular.module('fnApp').factory('authInterceptor', function ($rootScope, $q, $co
       }
     }
   };
-})
+});
 
 angular.module('fnApp').config([
   '$urlRouterProvider','$locationProvider','$httpProvider','RestangularProvider','growlProvider','API_URL',
@@ -66,7 +70,6 @@ angular.module('fnApp').run([
       $window.scrollTo(0, 0);
     });
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams,fromState) {
-      console.log(toState);
       if (toState.authenticate) {
         Auth.getCurrentUserInAsync(function(user) {
           if (!user || !user.userid) {

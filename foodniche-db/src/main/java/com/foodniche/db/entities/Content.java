@@ -5,6 +5,8 @@
  */
 package com.foodniche.db.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,8 +35,7 @@ import java.util.Date;
 public class Content implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contentid")
     private Integer contentid;
     @Column(name = "contenttypeid")
@@ -48,6 +49,12 @@ public class Content implements Serializable {
     private Integer businessid;
     @Column(name = "groupid")
     private Integer groupid;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "productid")
+    private Product product;
+
     @Column(name = "contentdate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date contentdate;
@@ -135,6 +142,14 @@ public class Content implements Serializable {
 
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override

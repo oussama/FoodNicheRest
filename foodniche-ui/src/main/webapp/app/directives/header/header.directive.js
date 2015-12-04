@@ -3,10 +3,10 @@ angular.module('fnApp')
     return {
       restrict: 'AE',
       templateUrl: 'app/directives/header/header.html',
+      scope: false,
       controller: [
         '$scope','Auth',
         function($scope,Auth) {
-          console.log(Auth.getCurrentUserInAsync());
           Auth.getCurrentUserInAsync(function(user) {
             $scope.user = user;
           });

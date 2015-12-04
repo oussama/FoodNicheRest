@@ -36,10 +36,10 @@
           </div>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-if="user.accounttype === 0" ui-sref="profile.view">HOME</a></li>
+            <li><a ng-if="user.accounttype === 0" ui-sref="profile.view({id: user.userid})">HOME</a></li>
             <li><a ng-if="user.accounttype === 1" ui-sref="business.view">HOME</a></li>
             <li><a ui-sref="recipe.list">RECIPE</a></li>
-            <li><a ui-sref="dining.list">DINING OUT</a></li>
+            <li><a ui-sref="dinning.list">DINING OUT</a></li>
             <li><a ui-sref="logout">LOG OUT</a></li>
           </ul>
         </div>

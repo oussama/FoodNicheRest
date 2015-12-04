@@ -1,24 +1,32 @@
 angular.module('fnApp')
-  .directive('fnResponsiveSlider',[function() {
+  .directive('fnResponsiveSlider', [function () {
     return {
       restrict: 'AE',
-      link: function($scope,element,attrs) {
-        $(element).responsiveSlides({
-          //auto: false,
-          auto: true,
-          pager: true,
-          nav: true,
-          speed: 1997,
-          maxwidth: 3000,
-          namespace: "transparent-btns"
+      scope: {
+        items: "=fnResponsiveSlider"
+      },
+      link: function ($scope, element, attrs) {
+        $scope.$watchCollection(function () {
+          return $scope.items;
+        }, function () {
+          $(element).responsiveSlides({
+            //auto: false,
+            auto: true,
+            pager: true,
+            nav: true,
+            speed: 1997,
+            maxwidth: 3000,
+            namespace: "transparent-btns"
+          });
+
         });
       }
     }
   }])
-  .directive('fnOwlCarousel',[function() {
+  .directive('fnOwlCarousel', [function () {
     return {
       restrict: 'AE',
-      link: function($scope,element,attrs) {
+      link: function ($scope, element, attrs) {
         var options = {
           margin: 10,
           nav: true,
@@ -51,34 +59,14 @@ angular.module('fnApp')
       }
     }
   }])
-  .directive('fnRaveModal',['Modal',function(Modal) {
-    return {
-      restrict: 'AE',
-      link: function($scope,element) {
-        element.bind('click',function() {
-          Modal.rave();
-        })
-      }
-    }
-  }])
-  .directive('fnInviteFriendModal',['Modal',function(Modal) {
-    return {
-      restrict: 'AE',
-      link: function($scope,element) {
-        element.bind('click',function() {
-          Modal.inviteFriend();
-        })
-      }
-    }
-  }])
-  .directive('fnGoHome',['$state',function($state) {
+  .directive('fnGoHome', ['$state', function ($state) {
     return {
       restrict: 'AE',
       scope: {
         routeName: '@fnGoHome'
       },
-      link: function($scope,element) {
-        element.bind('click',function() {
+      link: function ($scope, element) {
+        element.bind('click', function () {
           $state.go($scope.routeName);
         })
       }
@@ -111,13 +99,40 @@ angular.module('fnApp')
         if (!helper.isImage(file)) {
           return;
         }
-
         var reader = new FileReader();
 
         reader.onload = function (event) {
-          attributes.$set('src',event.target.result);
+          attributes.$set('src', event.target.result);
         };
         reader.readAsDataURL(file);
       }
     };
+  }])
+  .directive('fnOnlyDigits', [function () {
+    return {
+      restrict: 'A',
+      link: function (scope, element, attrs) {
+        element.bind('keypress', function ($event) {
+          console.log($event.keyCode)
+          if ($event.keyCode !== 46 && isNaN(String.fromCharCode($event.keyCode))) {
+            $event.preventDefault();
+          }
+        })
+      }
+    }
+  }])
+  .directive('fnUserAvatar',[function() {
+    return {
+      restrict: 'A',
+      scope: {
+        user: '=fnUserAvatar'
+      },
+      link: function($scope,element,attrs) {
+        if (!$scope.user.profilepicture) {
+          attrs.$set('src','images/profile.png');
+        } else {
+          attrs.$set("src",$scope.user.profilepicture);
+        }
+      }
+    }
   }]);

@@ -24,7 +24,7 @@ import java.util.List;
 
 @Component
 @Path("/content")
-@Api(value = "/content", description = "This Rest Service will contain Content Information")
+@Api(value = "/content", description = "This Rest Service will contain ContentModel Information")
 public class ContentService extends AbstractFacade<Content> {
     @PersistenceContext
     private EntityManager em;
@@ -36,7 +36,7 @@ public class ContentService extends AbstractFacade<Content> {
     @POST
     @Override
     @Consumes({"application/json"})
-    @ApiOperation(value = "Create Content ")
+    @ApiOperation(value = "Create ContentModel ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
@@ -47,7 +47,7 @@ public class ContentService extends AbstractFacade<Content> {
     @PUT
     @Path("/{id}")
     @Consumes({"application/json"})
-    @ApiOperation(value = "Edit Content ")
+    @ApiOperation(value = "Edit ContentModel ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
@@ -57,7 +57,7 @@ public class ContentService extends AbstractFacade<Content> {
 
     @DELETE
     @Path("/{id}")
-    @ApiOperation(value = "Remove Content ")
+    @ApiOperation(value = "Remove ContentModel ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
@@ -68,7 +68,7 @@ public class ContentService extends AbstractFacade<Content> {
     @GET
     @Path("/{id}")
     @Produces({"application/json"})
-    @ApiOperation(value = "Find Content ")
+    @ApiOperation(value = "Find ContentModel ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
@@ -79,7 +79,7 @@ public class ContentService extends AbstractFacade<Content> {
     @GET
     @Override
     @Produces({"application/json"})
-    @ApiOperation(value = "Find All Content ")
+    @ApiOperation(value = "Find All ContentModel ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
@@ -90,7 +90,7 @@ public class ContentService extends AbstractFacade<Content> {
     @GET
     @Path("/{from}/{to}")
     @Produces({"application/json"})
-    @ApiOperation(value = "Find Range of  Content ")
+    @ApiOperation(value = "Find Range of  ContentModel ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})
@@ -101,7 +101,7 @@ public class ContentService extends AbstractFacade<Content> {
     @GET
     @Path("/count")
     @Produces("text/plain")
-    @ApiOperation(value = "Count Content ")
+    @ApiOperation(value = "Count ContentModel ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})

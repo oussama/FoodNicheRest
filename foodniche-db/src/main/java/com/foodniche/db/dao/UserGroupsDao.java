@@ -1,10 +1,13 @@
 package com.foodniche.db.dao;
 
 import com.foodniche.db.entities.*;
+import com.foodniche.db.repositories.GroupsRepository;
 import com.foodniche.db.repositories.UserGroupsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author Alexey Dubrov
@@ -16,9 +19,37 @@ public class UserGroupsDao extends BaseDao<UserGroups, UserGroupsPK> {
     @Autowired
     private UserGroupsRepository userGroupsRepository;
 
+    @Autowired
+    private GroupsRepository groupsRepository;
+
     @Override
     protected JpaRepository<UserGroups, UserGroupsPK> getRepository() {
         return userGroupsRepository;
+    }
+
+    /**
+     * List of users added to group.
+     * @param groupId group id
+     * @return list of users
+     */
+    public List<Users> getUsersInGroup(Integer groupId) {
+
+        Groups group = groupsRepository.getOne(groupId);
+
+        if (group != null) {
+            return userGroupsRepository.getUsersInGroup(group);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * List of user groups.
+     * @param user user
+     * @return list of groups
+     */
+    public List<Groups> getUserGroups(Users user) {
+        return userGroupsRepository.getUserGroups(user);
     }
 
     /**

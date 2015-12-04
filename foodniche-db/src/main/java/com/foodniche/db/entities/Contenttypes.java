@@ -20,13 +20,11 @@ import java.io.Serializable;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Contenttypes.findAll", query = "SELECT c FROM Contenttypes c"),
-    @NamedQuery(name = "Contenttypes.findByContenttypeid", query = "SELECT c FROM Contenttypes c WHERE c.contenttypeid = :contenttypeid"),
-    @NamedQuery(name = "Contenttypes.findByName", query = "SELECT c FROM Contenttypes c WHERE c.name = :name")})
+    @NamedQuery(name = "Contenttypes.findByContenttypeid", query = "SELECT c FROM Contenttypes c WHERE c.contenttypeid = :contenttypeid")})
 public class Contenttypes implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contenttypeid")
     private Integer contenttypeid;
     @Size(max = 80)

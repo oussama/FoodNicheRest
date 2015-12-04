@@ -5,22 +5,22 @@
       <div class="col-sm-3">
         <div class="profile-left m20">
           <div class="profile_image upload-image">
-            <img ng-if="profileUploader.queue <= 0" src="images/profile.png" alt="0">
+            <img ng-if="profileUploader.queue <= 0" fn-user-avatar="user"">
             <div ng-repeat="item in profileUploader.queue">
               <img ng-show="profileUploader.isHTML5" ng-thumb="item._file"/>
             </div>
-            <input type="file" uploader="profileUploader" nv-file-select>
+            <input type="file" uploader="profileUploader" nv-file-select ng-disabled="!isCurrentUser">
           </div>
-          <a href="#" class="btn btn-warning btn-grey">Connect</a>
+          <a href="#" class="btn btn-warning btn-grey" ng-if="!isCurrentUser" ng-click="connect()">{{isConnect ? 'Connected' : 'Connect'}}</a>
         </div>
 
         <div class="left_menu">
           <ul>
-            <li><a href="javascript:;" fn-invite-friend-modal><i class="fa fa-group"></i> Invite Friends</a ng-click="inviteFriend()" href="javascript:;"></li>
-            <li><a ui-sref="profile.connection"><i class="fa fa-link"></i>My connections</a></li>
-            <li><a ui-sref="profile.album"><i class="fa fa-picture-o"></i>My albums</a></li>
-            <li><a ui-sref="profile.edit"><i class="fa fa-edit"></i>Edit Profile</a></li>
-            <li><a ui-sref="logout"><i class="fa fa-sign-out"></i>Log out</a></li>
+            <li ng-if="isCurrentUser"><a href="javascript:;" fn-invite-friend-modal><i class="fa fa-group"></i> Invite Friends</a></li>
+            <li><a ui-sref="profile.connection({id: user.userid})"><i class="fa fa-link"></i>{{isCurrentUser ? 'My connections' : 'Connections'}}</a></li>
+            <li><a ui-sref="profile.album({id: user.userid})"><i class="fa fa-picture-o"></i>{{isCurrentUser ? 'My albums' : 'Albums'}}</a></li>
+            <li ng-if="isCurrentUser"><a ui-sref="profile.edit({id: user.userid})"><i class="fa fa-edit"></i>Edit Profile</a></li>
+            <li ng-if="isCurrentUser"><a ui-sref="logout"><i class="fa fa-sign-out"></i>Log out</a></li>
           </ul>
         </div>
 

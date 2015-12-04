@@ -24,7 +24,7 @@ import java.util.List;
 
 @Component
 @Path("/contenttypes")
-@Api(value = "/contenttypes", description = "This Rest Service will contain Content Types")
+@Api(value = "/contenttypes", description = "This Rest Service will contain ContentModel Types")
 public class ContenttypesService extends AbstractFacade<Contenttypes> {
     @PersistenceContext
     private EntityManager em;
@@ -79,7 +79,7 @@ public class ContenttypesService extends AbstractFacade<Contenttypes> {
     @GET
     @Override
     @Produces({"application/json"})
-    @ApiOperation(value = "Find all Content Types ")
+    @ApiOperation(value = "Find all ContentModel Types ")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Something wrong in Server")})

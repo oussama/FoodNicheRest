@@ -40,6 +40,12 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
           function(Group,$stateParams) {
             return Group.getOne($stateParams.id);
           }
+        ],
+        member: [
+          'Group','$stateParams',
+          function(Group,$stateParams) {
+            return Group.getMember($stateParams.id);
+          }
         ]
       }
     });

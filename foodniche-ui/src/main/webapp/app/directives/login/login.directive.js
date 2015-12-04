@@ -30,7 +30,7 @@ angular.module('fnApp')
                           .then(function(user) {
                             $uibModalInstance.dismiss('cancel');
                             if (user.accounttype === 0) {
-                              $state.go('profile.view');
+                              $state.go('profile.view',{id: user.userid});
                             } else {
                               $state.go('business.view')
                             }

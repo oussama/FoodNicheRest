@@ -43,6 +43,10 @@ public abstract class BaseDao<T, ID extends Serializable> {
         }
     }
 
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
     public T save(T entity) {
         return baseRepository.save(entity);
     }

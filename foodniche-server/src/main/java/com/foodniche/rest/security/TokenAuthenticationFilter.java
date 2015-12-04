@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -40,11 +41,13 @@ public class TokenAuthenticationFilter extends GenericFilterBean {
 
     private AuthenticationFailureHandler failureHandler;
     private TokenSimpleUrlAuthenticationSuccessHandler successHandler;
+    private RequestMatcher requestMatcher;
 
-    public TokenAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public TokenAuthenticationFilter(AuthenticationManager authenticationManager, String authPath) {
         this.authenticationManager = authenticationManager;
         this.successHandler = new TokenSimpleUrlAuthenticationSuccessHandler();
         this.failureHandler = new SimpleUrlAuthenticationFailureHandler();
+        this.requestMatcher = new AntPathRequestMatcher(authPath);
     }
 
 
@@ -64,7 +67,7 @@ public class TokenAuthenticationFilter extends GenericFilterBean {
 
         String token = httpRequest.getHeader(HEADER_SECURITY_TOKEN);
 
-        if (token != null && token.length() > 0) {
+        if (token != null && token.length() > 0 && !requestMatcher.matches(httpRequest)) {
             logger.info("token found:" + token);
 
             AbstractAuthenticationToken userAuthenticationToken = authUserByToken(token);
