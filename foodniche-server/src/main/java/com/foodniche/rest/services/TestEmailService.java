@@ -34,6 +34,6 @@ public class TestEmailService {
         userInfo.setLastname("Doe");
         userInfo.setEmail("aaborschenko@gmail.com");
         emailAPI.sendUserRegistrationMail(userInfo);
-        return new TestBean("test");
+        return new TestBean("aaborschenko@gmail.com");
     }
 }
