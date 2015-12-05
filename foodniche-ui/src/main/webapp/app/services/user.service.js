@@ -32,6 +32,13 @@ angular.module('fnApp')
             controller:'my-connection'
           }
         },
+        getMyGroup: {
+          method: 'GET',
+          isArray: true,
+          params: {
+            controller: 'my-group'
+          }
+        },
         checkConnection: {
           method: 'GET',
           params: {

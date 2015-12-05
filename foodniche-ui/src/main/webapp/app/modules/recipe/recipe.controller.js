@@ -39,7 +39,7 @@ angular.module('fnApp')
           if (status === 200) {
             $scope.recipe.picture = IMAGE_URL + file.fileId;
             $scope.recipe.recipedate = new Date().toISOString();
-            $scope.recipe.userid = $scope.user.userid;  
+            $scope.recipe.userid = $scope.user.userid;
             Recipe.create($scope.recipe)
               .then(function() {
                 growl.addSuccessMessage('Recipe created successfully');

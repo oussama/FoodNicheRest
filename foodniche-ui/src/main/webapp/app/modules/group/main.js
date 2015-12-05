@@ -7,7 +7,7 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       isBusiness: true
     })
     .state('group.list',{
-      url: '/',
+      url: '/:id',
       templateUrl: 'app/modules/group/views/group-list.html',
       controller: 'GroupListCtrl',
       authenticate: true,
@@ -41,12 +41,12 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
             return Group.getOne($stateParams.id);
           }
         ],
-        member: [
-          'Group','$stateParams',
-          function(Group,$stateParams) {
-            return Group.getMember($stateParams.id);
-          }
-        ]
+        //member: [
+        //  'Group','$stateParams',
+        //  function(Group,$stateParams) {
+        //    return Group.getMember($stateParams.id);
+        //  }
+        //]
       }
     });
   }
