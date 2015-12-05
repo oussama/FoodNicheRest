@@ -36,6 +36,10 @@ public class Businesses implements Serializable {
     @JoinColumn(name = "businesstypeid")
     private Businesstypes businessType;
 
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private Users user;
+
     @Size(max = 80)
     @Column(name = "name")
     private String name;
@@ -102,6 +106,14 @@ public class Businesses implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     @Override

@@ -106,6 +106,7 @@
                 <version>${jetty.plugin.version}</version>
 
                 <configuration>
+                    <jvmArgs>-Dspring.profiles.active=DEV</jvmArgs>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <httpConnector>
                         <port>8080</port>

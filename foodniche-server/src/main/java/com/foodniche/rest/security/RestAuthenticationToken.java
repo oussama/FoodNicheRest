@@ -23,6 +23,9 @@ public class RestAuthenticationToken extends AbstractAuthenticationToken {
         super(authorities);
 
         this.user = user;
+
+        getAuthorities().add(new UserRole(user.getRole()));
+
         setAuthenticated(true);
     }
 

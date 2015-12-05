@@ -5,6 +5,8 @@
  */
 package com.foodniche.db.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,6 +40,8 @@ public class Users implements Serializable {
     @Size(max = 80)
     @Column(name = "username")
     private String username;
+
+    @JsonIgnore
     @Size(max = 80)
     @Column(name = "password")
     private String password;
@@ -60,6 +64,8 @@ public class Users implements Serializable {
     @Size(max = 80)
     @Column(name = "email")
     private String email;
+
+    private String role;
 
     public Users() {
     }
@@ -146,6 +152,14 @@ public class Users implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

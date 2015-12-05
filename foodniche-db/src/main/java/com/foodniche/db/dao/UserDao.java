@@ -29,6 +29,17 @@ public class UserDao extends BaseDao<Users, Integer> {
         return userRepo;
     }
 
+    public Users createUser(String name, String pass, boolean isBusiness) {
+        Users users = new Users();
+
+        users.setUsername(name);
+        users.setPassword(pass);
+        users.setRole(isBusiness ? "BUSINESS_ROLE" : "USER_ROLE");
+        save(users);
+
+        return users;
+    }
+
     public Users findUserByName(String name) {
         List<Users> users = em.createNamedQuery("Users.findByUsername", Users.class).setParameter("username", name).getResultList();
 

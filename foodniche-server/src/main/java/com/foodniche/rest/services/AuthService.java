@@ -3,10 +3,7 @@ package com.foodniche.rest.services;
 
 import com.foodniche.db.dao.UserDao;
 import com.foodniche.db.entities.Users;
-import com.foodniche.rest.model.AuthData;
-import com.foodniche.rest.model.BaseResponse;
-import com.foodniche.rest.model.DataResponse;
-import com.foodniche.rest.model.LoginData;
+import com.foodniche.rest.model.*;
 import com.foodniche.rest.security.TokenAuthService;
 import com.foodniche.rest.services.email.EmailAPI;
 import com.foodniche.rest.services.entities.UsersService;
@@ -58,11 +55,13 @@ public class AuthService {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 500, message = "Something wrong in Server")})
-    public BaseResponse register(Users user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userDao.save(user);
+    public BaseResponse register(UserModel userModel) {
+        userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
+
+        Users user = userDao.createUser(userModel.getUsername(), userModel.getPassword(), userModel.isBusiness());
+
         emailAPI.sendUserRegistrationMail(user);
-        return new BaseResponse("Account registered success");
+        return new DataResponse<Users>("Account registered success", user);
     }
 
 
