@@ -5,13 +5,11 @@
       <div class="col-sm-3">
         <div class="profile-left m20">
           <div class="profile_image upload-image">
-            <img ng-if="profileUploader.queue <= 0" fn-user-avatar="user"">
-            <div ng-repeat="item in profileUploader.queue">
-              <img ng-show="profileUploader.isHTML5" ng-thumb="item._file"/>
-            </div>
+            <img ng-if="!user.profilepicture" fn-user-avatar="user">
+            <img ng-if="user.profilepicture" ng-src="{{user.profilepicture}}">
             <input type="file" uploader="profileUploader" nv-file-select ng-disabled="!isCurrentUser">
           </div>
-          <a href="#" class="btn btn-warning btn-grey" ng-if="!isCurrentUser" ng-click="connect()">{{isConnect ? 'Connected' : 'Connect'}}</a>
+          <a href="#" class="btn btn-warning btn-grey" ng-class="{'active': isConnected}" ng-if="!isCurrentUser" ng-click="connect()">{{isConnected ? 'Connected' : 'Connect'}}</a>
         </div>
 
         <div class="left_menu">

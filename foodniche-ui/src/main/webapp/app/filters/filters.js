@@ -9,4 +9,11 @@ angular.module('fnApp')
         return input + " like"
       }
     }
+  })
+  .filter('fnFullName',function() {
+    return function(user) {
+      if (user) {
+        return user.firstname + " " + user.lastname;
+      }
+    }
   });

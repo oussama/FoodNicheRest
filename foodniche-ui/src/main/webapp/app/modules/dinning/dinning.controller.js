@@ -3,10 +3,6 @@ angular.module('fnApp')
     '$scope','types','Dinning','growl',
     function($scope,types,Dinning,growl) {
       $scope.types = types;
-      $scope.selectedType = types[0];
-
-      $scope.restaurents = [];
-
       var getData = function(typeid, zipcode) {
         Dinning.getRestaurants(typeid,zipcode)
           .then(function(data) {
@@ -15,11 +11,19 @@ angular.module('fnApp')
             growl.addErrorMessage(err);
           })
       };
+      if (types.length >= 1) {
+        $scope.selectedType = types[0];
+        getData($scope.selectedType.businesstypeid);
+      }
 
-      getData($scope.selectedType.businesstypeid);
+      $scope.restaurents = [];
+
+
+
+
 
       $scope.search = function() {
-
+        getData($scope.selectedType.businesstypeid,$scope.zipcode);
       }
     }
   ]);

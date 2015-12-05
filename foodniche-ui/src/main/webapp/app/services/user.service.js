@@ -31,6 +31,12 @@ angular.module('fnApp')
           params: {
             controller:'my-connection'
           }
+        },
+        checkConnection: {
+          method: 'GET',
+          params: {
+            controller: 'connection',
+          }
         }
       });
       //var _rest = Restangular.all('users');
