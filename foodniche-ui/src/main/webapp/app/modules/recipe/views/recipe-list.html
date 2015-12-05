@@ -3,7 +3,7 @@
     <ul class="row">
       <li class="col-sm-3" ng-repeat="recipe in recipes">
         <div class="box-recipe">
-          <img src="images/recipe1.jpg" alt="0">
+          <img ng-src="{{recipe.picture}}" alt="0">
 
           <div class="connect_link_full_top"><a ui-sref="recipe.detail({id: recipe.recipeid})">{{recipe.description}}</a></div>
         </div>
