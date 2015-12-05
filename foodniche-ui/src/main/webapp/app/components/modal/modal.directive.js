@@ -29,4 +29,14 @@ angular.module('fnAppModal')
         })
       }
     }
+  }])
+  .directive('fnLoginModal',['Modal', function(Modal) {
+    return {
+      restrict: 'AE',
+      link: function($scope,element) {
+        element.bind('click',function(){
+          Modal.loginModal()
+        })
+      }
+    }
   }]);

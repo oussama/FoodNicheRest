@@ -48,6 +48,17 @@ angular.module('fnAppModal')
       });
     }
 
+    function openLoginModal(modalClass) {
+      modalClass = modalClass || 'modal-small login-modal';
+
+      $uibModal.open({
+        templateUrl: 'app/directives/login/login.modal.html',
+        windowClass: modalClass,
+        backdrop: 'static',
+        controller: 'LoginModalCtrl'
+      })
+    }
+
     // Public API here
     return {
       inviteFriend: function(modalClass) {
@@ -58,6 +69,9 @@ angular.module('fnAppModal')
       },
       createProduct: function(modalClass) {
         var createProductModal = openCreateProductModal(modalClass);
+      },
+      loginModal: function(modalClass) {
+        var loginModal = openLoginModal(modalClass)
       },
       /* Confirmation modals */
       confirm: {
