@@ -9,18 +9,26 @@ angular.module('fnApp')
         id: '=fnCreateContentId'
       },
       controller: [
-        '$scope','$cookieStore','FileUploader','growl','Auth','Content','UPLOAD_URL',
-        function($scope,$cookieStore,FileUploader,growl,Auth,Content,UPLOAD_URL) {
+        '$scope','$cookieStore','FileUploader','growl','Auth','Content','UPLOAD_URL','IMAGE_URL',
+        function($scope,$cookieStore,FileUploader,growl,Auth,Content,UPLOAD_URL,IMAGE_URL) {
           Auth.getCurrentUserInAsync(function(user) {
             $scope.user = user;
           });
 
+          Content.getContentType()
+            .then(function(res) {
+              $scope.contentTypes = res;
+              resetForm();
+            });
+
           var resetForm = function() {
-            $scope.content = {};
+            $scope.content = {
+              contenttypeid: $scope.contentTypes[0].contenttypeid
+            };
             $scope.submitted = false;
           };
 
-          resetForm();
+
 
           var uploader = $scope.uploader = new FileUploader({
             url: UPLOAD_URL,
@@ -32,15 +40,16 @@ angular.module('fnApp')
                 uploader.queue.shift();
               }
             },
-            onCompleteItem: function (fileItem, response, status) {
+            onCompleteItem: function (fileItem, file, status) {
               if (status === 200) {
-                $scope.content.contentid = 3;
-                $scope.content.contenttypeid = 1;
                 $scope.content.userid = $scope.user.userid;
-                $scope.content.filename = response.serverFileName;
+                $scope.content.filename = IMAGE_URL + file.fileId;
                 $scope.content.contentdate = new Date().toISOString();
                 if ($scope.type === 'group') {
                   $scope.content.groupid = $scope.id;
+                }
+                if ($scope.type === 'business') {
+                  $scope.content.businessid = $scope.id;
                 }
                 Content.create($scope.content)
                   .then(function() {
@@ -48,7 +57,7 @@ angular.module('fnApp')
                     uploader.clearQueue();
                     resetForm();
                   },function(err) {
-                    growl.addErrorMessage(err)
+                    growl.addErrorMessage("Fail to create content")
                   })
               }
             }

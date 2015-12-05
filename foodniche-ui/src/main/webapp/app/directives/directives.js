@@ -13,7 +13,7 @@ angular.module('fnApp')
             //auto: false,
             auto: true,
             pager: true,
-            nav: true,
+            nav: false,
             speed: 1997,
             maxwidth: 3000,
             namespace: "transparent-btns"
