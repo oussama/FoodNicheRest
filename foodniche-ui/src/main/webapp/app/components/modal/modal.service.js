@@ -37,7 +37,7 @@ angular.module('fnAppModal')
     }
 
     function openCreateProductModal(modalClass) {
-      modalClass = modalClass || 'fn-modal';
+      modalClass = modalClass || 'modal-small';
 
       return $uibModal.open({
         templateUrl: 'app/components/modal/views/create-product.modal.html',

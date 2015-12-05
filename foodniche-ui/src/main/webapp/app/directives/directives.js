@@ -113,7 +113,6 @@ angular.module('fnApp')
       restrict: 'A',
       link: function (scope, element, attrs) {
         element.bind('keypress', function ($event) {
-          console.log($event.keyCode)
           if ($event.keyCode !== 46 && isNaN(String.fromCharCode($event.keyCode))) {
             $event.preventDefault();
           }

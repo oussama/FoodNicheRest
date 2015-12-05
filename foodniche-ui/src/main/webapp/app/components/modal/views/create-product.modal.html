@@ -3,53 +3,51 @@
   <h4 class="modal-title" id="myModalLabel">Create product</h4>
 </div>
 <div class="modal-body">
-  <form name="form" ng-submit="submit(form)" novalidate>
-    <!--<div class="form-group" ng-class="{'has-error': form.name.$invalid && submitted}">-->
-    <!--<input type="text" class="form-control" placeholder="Name"-->
-    <!--name="name" ng-model="product.name" required>-->
-
-    <!--<div class="help-block" ng-if="form.name.$error.required && submitted">This field is required</div>-->
-    <!--</div>-->
-    <div class="form-group" ng-class="{'has-error': form.description.$invalid && submitted}">
-        <textarea class="form-control" rows="5" placeholder="Description..."
-                  name="description" ng-model="product.description" required></textarea>
-
-      <div class="help-block" ng-if="form.description.$error.required && submitted">This field is required</div>
-    </div>
-    <div class="form-group" ng-class="{'has-error': form.price.$invalid && submitted}">
-      <input type="text" class="form-control" placeholder="Price"
-             name="price" ng-model="product.price" required
-             fn-only-digits>
-
-      <div class="help-block" ng-if="form.price.$error.required && submitted">This field is required</div>
-    </div>
-    <div class="upload-photo">
-      <div class="row">
-        <div class="col-sm-4 p30">
-          Upload Photos/Video:
-        </div>
-        <div class="col-sm-3 p30">
-          <div class="file-upload">
-            <a href="#" class="btn btn-warning btn-grey btn-block">Upload</a>
-            <input type="file" uploader="uploader" nv-file-select multiple>
-          </div>
-        </div>
-        <div class="col-sm-5">
-          <div class="row upload_img">
-            <div class="col-xs-4" ng-repeat="item in uploader.queue">
-              <div class="upload_img_loop">
-                <span class="cross_icon" ng-click="removePhoto($index)"><i class="fa fa-times"></i></span>
-                <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%"/>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="form-grey">
+    <form name="form" ng-submit="submit(form)" novalidate>
+      <div class="form-group" ng-class="{'has-error': form.description.$invalid && submitted}">
+        <input type="text" placeholder="Name" class="form-control input-lg"
+               name="description" ng-model="product.description" required>
+        <div class="help-block" ng-if="form.description.$error.required && submitted">This field is required</div>
       </div>
-    </div>
+      <div class="form-group" ng-class="{'has-error': form.price.$invalid && submitted}">
+        <input type="text" placeholder="Price" class="form-control input-lg"
+               name="price" ng-model="product.price" required
+               fn-only-digits>
+        <div class="help-block" ng-if="form.price.$error.required && submitted">This field is required</div>
+      </div>
+      <!--
+      <div class="form-group">
+          <textarea placeholder="Description" class="form-control input-lg" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+          <textarea name=""  placeholder="Instruction" class="form-control input-lg" rows="4"></textarea>
 
+      </div>
+      <div class="form-group">
+          <textarea name=""  placeholder="Nutrition" class="form-control input-lg" rows="4"></textarea>
+      </div>
+      <div class="form-group">
+          <select class="form-control"><option>Type of Food</option></select>
+      </div>
+      <div class="form-group">
+          <textarea name=""  placeholder="Nutrition" class="form-control input-lg" rows="4"></textarea>
+      </div>
+      -->
+      <div class="form-group text-center">
+        <div class="file-upload">
+          <button class="btn btn-grey">Upload Pictures</button>
+          <input type="file" uploader="uploader" nv-file-select multiple>
+          <div class="img-preview" ng-repeat="item in uploader.queue">
+            <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%" />
+          </div>
+        </div>
 
-    <div class="m20 text-right">
-      <button class="btn btn-warning">Submit</button>
-    </div>
-  </form>
+      </div>
+      <div class="form-group">
+        <input name="" type="submit" value="Submit" class="btn btn-warning btn-block btn-lg">
+      </div>
+    </form>
+
+  </div>
 </div>

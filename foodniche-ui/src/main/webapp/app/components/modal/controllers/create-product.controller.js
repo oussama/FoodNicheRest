@@ -54,6 +54,7 @@ angular.module('fnAppModal')
           if (uploader.queue.length <= 0) {
             growl.addErrorMessage("Please select at least 1 photo to upload")
           } else {
+            console.log(uploader);
             uploader.uploadAll();
           }
         }

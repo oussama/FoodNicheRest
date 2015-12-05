@@ -37,12 +37,14 @@
         <div class="left_menu">
           <ul>
             <li><a href="javascript:;" fn-invite-friend-modal><i class="fa fa-group"></i> Invite Friends</a></li>
-            <li><a href="javascript:;" fn-create-product-modal><i class="fa fa-cutlery"></i>Create product</a></li>
+            <li><a href="javascript:;" fn-create-product-modal><i class="fa fa-cubes"></i>Create product</a></li>
+            <li><a href="javascript:;" fn-create-product-modal><i class="fa fa-cutlery"></i>Create recipe</a></li>
+            <li><a href="javascript:;" fn-create-product-modal><i class="fa fa-tag"></i>Special discount</a></li>
             <li><a ui-sref="group.create"><i class="fa fa-cogs"></i>Create groups</a></li>
             <li><a ui-sref="group.list"><i class="fa fa-th"></i>My Groups</a></li>
-            <li><a ui-sref="business.connection"><i class="fa fa-link"></i>My connections</a></li>
-            <li><a ui-sref="business.album"><i class="fa fa-picture-o"></i>My albums</a></li>
-            <li><a ui-sref="business.edit"><i class="fa fa-edit"></i>Edit Profile</a></li>
+            <li><a ui-sref="business.connection({id: user.userid})"><i class="fa fa-link"></i>My connections</a></li>
+            <li><a ui-sref="business.album({id: user.userid})"><i class="fa fa-picture-o"></i>My albums</a></li>
+            <li><a ui-sref="business.edit({id: user.userid})"><i class="fa fa-edit"></i>Edit Profile</a></li>
             <li><a href="#"><i class="fa fa-money"></i>Account details</a></li>
             <li><a ui-sref="logout"><i class="fa fa-sign-out"></i>Log out</a></li>
           </ul>
