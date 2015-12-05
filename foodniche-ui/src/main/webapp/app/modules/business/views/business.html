@@ -38,8 +38,8 @@
           <ul>
             <li><a href="javascript:;" fn-invite-friend-modal><i class="fa fa-group"></i> Invite Friends</a></li>
             <li><a href="javascript:;" fn-create-product-modal><i class="fa fa-cubes"></i>Create product</a></li>
+            <li><a href="javascript:;" fn-create-coupon-modal><i class="fa fa-tag"></i>Special discount</a></li>
             <li><a ui-sref="recipe.create"><i class="fa fa-cutlery"></i>Create recipe</a></li>
-            <li><a href="javascript:;" fn-create-product-modal><i class="fa fa-tag"></i>Special discount</a></li>
             <li><a ui-sref="group.create"><i class="fa fa-cogs"></i>Create groups</a></li>
             <li><a ui-sref="group.list"><i class="fa fa-th"></i>My Groups</a></li>
             <li><a ui-sref="business.connection({id: user.userid})"><i class="fa fa-link"></i>My connections</a></li>
@@ -49,11 +49,21 @@
             <li><a ui-sref="logout"><i class="fa fa-sign-out"></i>Log out</a></li>
           </ul>
         </div>
+
+        <!--<div class="panel panel-grey">-->
+          <!--<h4 class="panel-heading" style="padding-bottom: 0px;">Special discount</h4>-->
+          <!--<div class="panel-body">-->
+            <!--<ul class="rslides" fn-responsive-slider="coupons">-->
+              <!--<li ng-repeat="coupon in coupons">-->
+                <!--<a href="#"><img src="images/featured_posts_right1.jpg" alt=""></a>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
       <div class="col-sm-9">
         <div class="rslides_container slider-business">
           <ul class="rslides" id="slider2" fn-responsive-slider="products">
-
             <li ng-repeat="product in products">
               <a href="product-detail.html"><img ng-src="{{product.photoUrl}}" alt=""></a>
               <div class="text-slider-pro"><a href="#">{{product.description}}</a></div>

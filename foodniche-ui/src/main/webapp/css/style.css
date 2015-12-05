@@ -185,6 +185,9 @@ h6 {
 .centered-btns_tabs, .transparent-btns_tabs, .large-btns_tabs {
     display: none;
 }
+.transparent-btns_tabs {
+    display: block;
+}
 .page_title {
     margin: 0 auto;
     padding: 40px 0;

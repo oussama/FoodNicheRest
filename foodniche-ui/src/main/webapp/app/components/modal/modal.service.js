@@ -48,6 +48,18 @@ angular.module('fnAppModal')
       });
     }
 
+    function openCreateCouponModal(modalClass) {
+      modalClass = modalClass || 'modal-small';
+
+      return $uibModal.open({
+        templateUrl: 'app/components/modal/views/create-coupon.modal.html',
+        windowClass: modalClass,
+        backdrop: 'static',
+        size: 'lg',
+        controller: 'CreateCouponModalCtrl'
+      });
+    }
+
     function openLoginModal(modalClass) {
       modalClass = modalClass || 'modal-small login-modal';
 
@@ -72,6 +84,9 @@ angular.module('fnAppModal')
       },
       loginModal: function(modalClass) {
         var loginModal = openLoginModal(modalClass)
+      },
+      createCouponModal: function(modalClass) {
+        var createCouponModal = openCreateCouponModal(modalClass);
       },
       /* Confirmation modals */
       confirm: {
