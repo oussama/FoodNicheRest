@@ -53,6 +53,11 @@ public class EmailAPI {
      * @param contentParametersMap parameters map for velocity template
      */
     public void sendMail(Mail mail, Map<String, String> contentParametersMap) {
+        if (notSendEmail) {
+            logger.debug("Skipping mail sending");
+            return;
+        }
+
         logger.debug("Sending mail: {}; parameters: {}", mail, contentParametersMap);
 
         SimpleMailMessage message = new SimpleMailMessage();
@@ -91,9 +96,7 @@ public class EmailAPI {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("firstName", userInfo.getFirstname());
         parameters.put("lastName", userInfo.getLastname());
-
-        if (!notSendEmail)
-            sendMail(mail, parameters);
+        sendMail(mail, parameters);
     }
 
     /**

@@ -3,10 +3,17 @@ angular.module('fnApp')
   .factory('Content', [
     'Restangular',
     function (Restangular) {
-      var _rest = Restangular.all('content');
+      var _contentRest = Restangular.all('content');
+      var _contentTypeRest = Restangular.all('contenttypes');
       return {
+        getContentType: function() {
+          return _contentTypeRest.get("");
+        },
         create: function(contentObj) {
-          return _rest.customPOST(contentObj);
+          return _contentRest.customPOST(contentObj);
+        },
+        getAll: function() {
+          return _contentRest.get("");
         }
       };
     }]);

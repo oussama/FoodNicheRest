@@ -45,7 +45,7 @@ angular.module('fnApp')
           return User.update(user,
             function (data) {
               currentUser = User.get(function() {
-                return cb(data);
+                return cb(null,data);
               });
             },
             function (err) {
