@@ -1,0 +1,91 @@
+<div class="content">
+  <div class="container">
+    <h1 class="page_title title-width"><span class="span_white_bg">New Personal Recipe</span></h1>
+
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+        <div class="form-grey">
+          <form name="form" ng-submit="submit(form)" novalidate>
+            <!--<div class="form-group">-->
+              <!--<label class="label-form">Recipe Title</label>-->
+              <!--<input name="" type="text" class="form-control input-lg">-->
+
+              <!--<div class="text-small">65 characters remaining</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<label class="label-form">Dish Type</label>-->
+              <!--<select class="form-control input-lg">-->
+                <!--<option value="">Select dish type</option>-->
+                <!--<option value="1">APPETIZERS</option>-->
+                <!--<option value="2">BREADS</option>-->
+                <!--<option value="3">BREAKFAST</option>-->
+                <!--<option value="4">CAKES</option>-->
+                <!--<option value="5">ENTREES</option>-->
+                <!--<option value="6">SALADS</option>-->
+                <!--<option value="8">SANDWICH</option>-->
+                <!--<option value="9">SIDE DISHES</option>-->
+                <!--<option value="10">SOUPS/STEWS</option>-->
+              <!--</select>-->
+            <!--</div>-->
+            <div class="form-group" ng-class="{'has-error': form.description.$invalid && submitted}">
+              <label for="description" class="label-form control-label">Description</label>
+              <textarea id="description" class="form-control input-lg" rows="4"
+                        name="description" ng-model="recipe.description" required maxlength="576"></textarea>
+              <div class="help-block text-small">{{576 - recipe.description.length}} characters remaining</div>
+              <div class="help-block" ng-if="form.description.$error.required && submitted">Description is required</div>
+            </div>
+            <!--<div class="form-group">-->
+              <!--<label class="label-form">Ingredients</label>-->
+              <!--<textarea class="form-control input-lg" rows="4"></textarea>-->
+
+              <!--<div class="text-small">1800 characters remaining</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<label class="label-form">Directions</label>-->
+              <!--<textarea class="form-control input-lg" rows="4"></textarea>-->
+
+              <!--<div class="text-small">1800 characters remaining</div>-->
+            <!--</div>-->
+            <div class="form-group" ng-class="{'has-error': form.timetoprepare.$invalid && submitted}">
+              <label for="timetoprepare" class="label-form control-label">Average preparation and cooking time</label>
+
+              <div class="hours-input">
+                <input id="timetoprepare" type="text" class="form-control input-lg"
+                       name="timetoprepare" ng-model="recipe.timetoprepare" maxlength="2" required
+                       fn-only-digits>
+                <div class="help-block" ng-if="form.timetoprepare.$error.required && submitted">Time to prepare is required</div>
+                <label > Hours</label>
+              </div>
+            </div>
+            <!--<div class="form-group">-->
+              <!--<label class="label-form">Number of serving</label>-->
+              <!--<input name="" type="text" class="form-control input-lg">-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<label class="label-form">Share publicly?</label> &nbsp;&nbsp;-->
+              <!--<div class="radio-inline"><label><input type="radio"> Yes</label></div>-->
+              <!--<div class="radio-inline"><label><input type="radio"> No</label></div>-->
+            <!--</div>-->
+
+            <div class="form-group">
+              <label class="label-form">Photo</label> &nbsp;&nbsp;
+              <div class="file-upload">
+                <a href="#" class="btn btn-grey">Upload Photo</a>
+                <input type="file" uploader="uploader" nv-file-select>
+              </div>
+              <div class="img-preview" ng-repeat="item in uploader.queue">
+                <img ng-show="uploader.isHTML5" ng-thumb="item._file" width="100%" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-warning btn-block btn-lg">Submit</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

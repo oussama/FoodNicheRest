@@ -37,7 +37,7 @@ angular.module('fnAppModal')
     }
 
     function openCreateProductModal(modalClass) {
-      modalClass = modalClass || 'fn-modal';
+      modalClass = modalClass || 'modal-small';
 
       return $uibModal.open({
         templateUrl: 'app/components/modal/views/create-product.modal.html',
@@ -46,6 +46,29 @@ angular.module('fnAppModal')
         size: 'lg',
         controller: 'CreateProductModalCtrl'
       });
+    }
+
+    function openCreateCouponModal(modalClass) {
+      modalClass = modalClass || 'modal-small';
+
+      return $uibModal.open({
+        templateUrl: 'app/components/modal/views/create-coupon.modal.html',
+        windowClass: modalClass,
+        backdrop: 'static',
+        size: 'lg',
+        controller: 'CreateCouponModalCtrl'
+      });
+    }
+
+    function openLoginModal(modalClass) {
+      modalClass = modalClass || 'modal-small login-modal';
+
+      $uibModal.open({
+        templateUrl: 'app/directives/login/login.modal.html',
+        windowClass: modalClass,
+        backdrop: 'static',
+        controller: 'LoginModalCtrl'
+      })
     }
 
     // Public API here
@@ -58,6 +81,12 @@ angular.module('fnAppModal')
       },
       createProduct: function(modalClass) {
         var createProductModal = openCreateProductModal(modalClass);
+      },
+      loginModal: function(modalClass) {
+        var loginModal = openLoginModal(modalClass)
+      },
+      createCouponModal: function(modalClass) {
+        var createCouponModal = openCreateCouponModal(modalClass);
       },
       /* Confirmation modals */
       confirm: {

@@ -1,10 +1,10 @@
 <div class="content">
   <div class="container">
     <ul class="row">
-      <li class="col-sm-3" ng-repeat="connection in connections">
+      <li class="col-sm-3" ng-repeat="user in connections">
         <div class="profile_image_inn">
-          <img src="images/profile.png" alt="0">
-          <div class="connect_link_full"><a href="#"> Jessica Alba </a></div>
+          <img fn-user-avatar="user" alt="0">
+          <div class="connect_link_full"><a ui-sref="profile.view({id: user.userid})"> {{user | fnFullName}} </a></div>
         </div>
       </li>
     </ul>

@@ -32,4 +32,10 @@ angular.module('fnApp').config(['$stateProvider', function($stateProvider) {
        ]
      }
    })
+   .state('recipe.create',{
+     url: '/create',
+     templateUrl: 'app/modules/recipe/views/recipe-create.html',
+     controller: 'RecipeCreateCtrl',
+     authenticate: true
+   })
 }]);

@@ -93,5 +93,8 @@ angular.module('fnApp')
             return {}
           }
         },
+        checkConnection: function(userid) {
+          return User.checkConnection(userid);
+        }
       }
     }]);

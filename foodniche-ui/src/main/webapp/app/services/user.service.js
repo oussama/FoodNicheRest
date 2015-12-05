@@ -31,6 +31,19 @@ angular.module('fnApp')
           params: {
             controller:'my-connection'
           }
+        },
+        getMyGroup: {
+          method: 'GET',
+          isArray: true,
+          params: {
+            controller: 'my-group'
+          }
+        },
+        checkConnection: {
+          method: 'GET',
+          params: {
+            controller: 'connection',
+          }
         }
       });
       //var _rest = Restangular.all('users');

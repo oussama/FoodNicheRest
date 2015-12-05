@@ -1,17 +1,25 @@
 angular.module('fnAppModal')
-  .controller('CreateProductModalCtrl',[
-    '$scope','$rootScope','$uibModalInstance','$cookieStore','FileUploader','growl','Auth','Product','UPLOAD_URL','IMAGE_URL',
-    function($scope,$rootScope,$uibModalInstance,$cookieStore,FileUploader,growl,Auth,Product,UPLOAD_URL,IMAGE_URL) {
+  .controller('CreateCouponModalCtrl',[
+    '$scope','$rootScope','$uibModalInstance','$cookieStore','FileUploader','growl','Auth','Coupon','UPLOAD_URL','IMAGE_URL',
+    function($scope,$rootScope,$uibModalInstance,$cookieStore,FileUploader,growl,Auth,Coupon,UPLOAD_URL,IMAGE_URL) {
       Auth.getCurrentUserInAsync(function(user) {
         $scope.user = user;
       });
 
+      Coupon.getCouponType()
+        .then(function(res) {
+          $scope.couponTypes = res;
+          resetForm();
+        });
+
       var resetForm = function() {
-        $scope.product = {};
+        $scope.coupon = {
+          coupontypeid: $scope.couponTypes[0].coupontypeid
+        };
         $scope.submitted = false;
       };
 
-      resetForm();
+
 
       var uploader = $scope.uploader = new FileUploader({
         url: UPLOAD_URL,
@@ -25,12 +33,8 @@ angular.module('fnAppModal')
         },
         onCompleteItem: function (fileItem, file, status) {
           if (status === 200) {
-            $scope.product.businesses = {
-              businessid: $scope.user.userid
-            };
-            $scope.product.photoUrl = IMAGE_URL + file.fileId;
-            $scope.product.likes = 0;
-            Product.create($scope.product)
+            $scope.coupon.businessid = $scope.user.userid;
+            Coupon.create($scope.coupon)
               .then(function(res) {
                 growl.addSuccessMessage("Content created successfully");
                 uploader.clearQueue();
@@ -51,12 +55,17 @@ angular.module('fnAppModal')
       $scope.submit = function(form) {
         $scope.submitted = true;
         if (form.$valid) {
-          if (uploader.queue.length <= 0) {
-            growl.addErrorMessage("Please select at least 1 photo to upload")
-          } else {
-            console.log(uploader);
-            uploader.uploadAll();
-          }
+          $scope.coupon.businessid = $scope.user.userid;
+          Coupon.create($scope.coupon)
+            .then(function(res) {
+              growl.addSuccessMessage("Coupon created successfully");
+              uploader.clearQueue();
+              resetForm();
+              $rootScope.$emit('Coupon:Created',res);
+              $uibModalInstance.dismiss('cancel');
+            },function() {
+              growl.addErrorMessage("Fail to create coupon")
+            })
         }
       }
     }

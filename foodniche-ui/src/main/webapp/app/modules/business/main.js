@@ -5,21 +5,21 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       template: '<ui-view></ui-view>'
     })
     .state('business.view',{
-      url: '/',
+      url: '/:id',
       templateUrl: 'app/modules/business/views/business.html',
       controller: 'BusinessViewCtrl',
       authenticate: true,
       isBusiness: true
     })
     .state('business.edit',{
-      url: '/edit',
+      url: '/:id/edit',
       templateUrl: 'app/modules/business/views/business-edit.html',
       controller: 'BusinessEditCtrl',
       authenticate: true,
       isBusiness: true
     })
     .state('business.connection',{
-      url: '/my-connection',
+      url: '/:id/my-connection',
       templateUrl: 'app/modules/business/views/business-connection.html',
       controller: 'BusinessConnectionCtrl',
       authenticate: true,
@@ -34,7 +34,7 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       }
     })
     .state('business.album',{
-      url: '/my-album',
+      url: '/:id/my-album',
       templateUrl: 'app/modules/business/views/business-album.html',
       controller: 'BusinessAlbumCtrl',
       authenticate: true,

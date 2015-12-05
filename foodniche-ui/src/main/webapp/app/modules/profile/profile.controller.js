@@ -6,7 +6,11 @@ angular.module('fnApp')
       Auth.getCurrentUserInAsync(function(currentUser) {
         $scope.currentUser = currentUser;
         $scope.isCurrentUser = user.userid === currentUser.userid;
-        $scope.isConnected = false;
+        Auth.checkConnection({id: $scope.user.userid}).$promise
+          .then(function(res) {
+            $scope.isConnected = !_.isEmpty(res);
+          });
+
       });
       var profileUploader = $scope.profileUploader = new FileUploader({
         url: UPLOAD_URL,
@@ -28,6 +32,8 @@ angular.module('fnApp')
             },function() {
               growl.addErrorMessage('Cannot update profile picture')
             })
+          } else {
+            growl.addErrorMessage('Cannot update profile picture')
           }
         }
       });
