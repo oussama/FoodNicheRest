@@ -9,15 +9,7 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       url: '/registration',
       templateUrl: 'app/modules/home/views/registration.html',
       unauthenticated: true,
-      controller: ['$rootScope','$scope','$state',function($rootScope,$scope,$state) {
-        if (!$rootScope.tempUser) {
-          $state.go('home');
-        }
-
-        $scope.chooseAccountType = function(type) {
-          $rootScope.tempUser.accounttype = type;
-        }
-      }]
+      controller: 'RegistrationCtrl'
     })
     .state('individualReg',{
       url: '/registration/individual',
@@ -33,7 +25,14 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       url: '/step-3',
       templateUrl: 'app/modules/home/views/individual-reg-step3.html',
       controller: 'IndividualStep3RegCtrl',
-      unauthenticated: true
+      resolve: {
+        groups: [
+          'Group',
+          function(Group) {
+            return Group.getAll();
+          }
+        ]
+      }
     })
     .state('businessReg',{
       url: '/registration/business',
