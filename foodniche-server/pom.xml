@@ -112,6 +112,7 @@
                         <port>8080</port>
                     </httpConnector>
                     <jettyXml>${basedir}/src/main/webapp/META-INF/jetty-env.xml</jettyXml>
+                    <systemPropertiesFile>${basedir}/src/main/resources/dbConfig.${dev.profiles.active}.properties</systemPropertiesFile>
                 </configuration>
 
                 <dependencies>
