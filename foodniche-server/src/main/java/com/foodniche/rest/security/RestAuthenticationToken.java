@@ -19,14 +19,22 @@ public class RestAuthenticationToken extends AbstractAuthenticationToken {
 
     private Users user;
 
+    private List<GrantedAuthority> roles;
+
     public RestAuthenticationToken(Users user, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
 
         this.user = user;
 
-        getAuthorities().add(new UserRole(user.getRole()));
+        roles = new ArrayList<>();
+        roles.add(new UserRole(user.getRole()));
 
         setAuthenticated(true);
+    }
+
+    @Override
+    public Collection<GrantedAuthority> getAuthorities() {
+        return roles;
     }
 
     public Users getUser() {
