@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="container">
+        <div class="row">
+
+            <div class="panel panel-grey">
+                <h3 class="panel-heading">{{ album.name }}</h3>
+                <div class="panel-body">
+                    <ul class="row list-album">
+                        <li class="col-sm-3"  ng-repeat="content in contents">
+                            <a data-lightbox="lightbox"><img ng-src="{{ content.filename }}" alt="0"></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="text-right">
+                <a href="my-album.html" class="btn btn-warning">Back My Albums</a>
+            </div>
+        </div>
+    </div>
+</div>
