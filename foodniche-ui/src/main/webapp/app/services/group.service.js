@@ -4,6 +4,7 @@ angular.module('fnApp')
     'Restangular',
     function (Restangular) {
       var _rest = Restangular.all('api/groups');
+      var _restUserGroup = Restangular.all('api/user/group');
       return {
         create: function(groupObj) {
           return _rest.customPOST(groupObj);
@@ -14,6 +15,10 @@ angular.module('fnApp')
         getOne: function(id) {
           return _rest.get(id);
         },
+        
+        getMembers: function(id){
+          return _restUserGroup.get(id+'/members');
+        }
         //getMember: function(id) {
         //  return _rest.
         //}

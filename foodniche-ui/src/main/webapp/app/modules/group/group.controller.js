@@ -64,9 +64,11 @@ angular.module('fnApp')
     }
   ])
   .controller('GroupDetailCtrl',[
-    '$scope','group','contents',
-    function($scope,group,contents) {
+    '$scope','group','contents','members',
+    function($scope,group,contents,members) {
+      console.log(group);
       $scope.group = group;
       $scope.contents = contents;
+      $scope.members = members;
     }
   ]);

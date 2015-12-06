@@ -6,9 +6,10 @@ angular.module('fnApp')
     }
   ])
   .controller('RecipeDetailCtrl',[
-    '$scope','recipe',
-    function($scope,recipe) {
+    '$scope','recipe','User',
+    function($scope,recipe,User) {
       $scope.recipe = recipe;
+      $scope.owner = User.get({id:recipe.userId});
     }
   ])
   .controller('RecipeCreateCtrl',[
@@ -65,5 +66,7 @@ angular.module('fnApp')
           }
         }
       }
+      
+
     }
   ]);

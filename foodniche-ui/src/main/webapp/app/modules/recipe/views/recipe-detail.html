@@ -15,7 +15,7 @@
           <div class="panel-body">
             <div class="top-detail top-recipe">
               <h3>{{recipe.description}} </h3>
-              Created by : <a href="#">Bola Olayanju</a><br>
+              Created by : <a ui-sref="profile.view({id: owner.id})">{{ owner.firstname }}</a><br>
               <img src="images/rating.png"> Ratings: 0.75
 
             </div>
@@ -35,10 +35,7 @@
               <li class="row">
                 <div class="col-sm-3"><strong>Brief recipe description:</strong></div>
                 <div class="col-sm-9">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                  ever since the 1500s<br><br>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                  ever since the 1500s
+                  {{ recipe.description }}
                 </div>
               </li>
               <li class="row">

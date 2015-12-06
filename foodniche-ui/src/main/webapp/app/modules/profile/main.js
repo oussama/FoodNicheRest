@@ -16,11 +16,14 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
           function(User,$stateParams,$state) {
             return User.get({id: $stateParams.id}).$promise
               .then(function(user) {
+                // accounttype is returing null so suspend this verfication for now.
+                /*
                 if (user.accounttype !== 0) {
                   return $state.go('home')
                 } else {
                   return user;
-                }
+                }*/
+                return user;
               });
           }
         ]

@@ -14,7 +14,8 @@ angular.module('fnApp', [
   'fnAppModal'
 ]);
 angular.module('fnAppModal',[]);
-var baseUrl = 'http://localhost:8080/frest/';
+var baseUrl = 'http://localhost:8080/';
+//baseUrl = 'http://api-qa.foodniche.me/FoodNicheRest/';
 angular.module('fnApp').constant('API_URL', baseUrl);
 angular.module('fnApp').constant('UPLOAD_URL', baseUrl + 'api/files/image');
 angular.module('fnApp').constant('IMAGE_URL', baseUrl + 'api/files/image/');

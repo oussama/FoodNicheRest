@@ -6,6 +6,13 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       authenticate: true,
       isBusiness: true
     })
+    .state('group.create',{
+      url: '/create',
+      templateUrl: 'app/modules/group/views/group-create.html',
+      controller: 'GroupCreateCtrl',
+      authenticate: true,
+      isBusiness: true
+    })
     .state('group.list',{
       url: '/:id',
       templateUrl: 'app/modules/group/views/group-list.html',
@@ -21,13 +28,7 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
         ]
       }
     })
-    .state('group.create',{
-      url: '/create',
-      templateUrl: 'app/modules/group/views/group-create.html',
-      controller: 'GroupCreateCtrl',
-      authenticate: true,
-      isBusiness: true
-    })
+    
     .state('group.detail',{
       url: '/detail/:id',
       templateUrl: 'app/modules/group/views/group-detail.html',
@@ -45,6 +46,12 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
           'Content',
           function(Content) {
             return Content.getAll();
+          }
+        ],
+        members: [
+          'Group','$stateParams',
+          function(Group,$stateParams) {
+            return Group.getMembers($stateParams.id);
           }
         ],
         //member: [
