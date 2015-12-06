@@ -5,7 +5,7 @@
 
 
         <div class="profile-left m20">
-          <div class="profile_image"><img src="{{ group.picture }}" alt="0"></div>
+          <div class="profile_image"><img ng-src="{{ group.profilepicture }}" alt="0"></div>
           Created by: <a ui-sref="profile.view({id: group.owner})>{{  ownerName }}</a>
         </div>
         <div class="panel panel-grey">

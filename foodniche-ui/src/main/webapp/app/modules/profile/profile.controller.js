@@ -1,7 +1,8 @@
 angular.module('fnApp')
   .controller('ProfileViewCtrl',[
-    '$scope','user','FileUploader','$cookieStore','$state','Auth','Connection','growl','UPLOAD_URL','IMAGE_URL',
-    function($scope,user,FileUploader,$cookieStore,$state,Auth,Connection,growl,UPLOAD_URL,IMAGE_URL) {
+    '$scope','user','FileUploader','$cookieStore','$state','Auth','Connection','growl','UPLOAD_URL','IMAGE_URL','contents',
+    function($scope,user,FileUploader,$cookieStore,$state,Auth,Connection,growl,UPLOAD_URL,IMAGE_URL,contents) {
+      $scope.contents = contents;
       $scope.user = user;
       Auth.getCurrentUserInAsync(function(currentUser) {
         $scope.currentUser = currentUser;

@@ -43,9 +43,9 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
           }
         ],
         contents: [
-          'Content',
-          function(Content) {
-            return Content.getAll();
+          'Content','$stateParams',
+          function(Content,$stateParams) {
+            return Content.getGroupContent($stateParams.id);
           }
         ],
         members: [

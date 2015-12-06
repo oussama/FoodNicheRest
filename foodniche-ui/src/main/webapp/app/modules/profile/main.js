@@ -26,7 +26,13 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
                 return user;
               });
           }
-        ]
+        ],
+        contents: [
+          'Content','$stateParams',
+          function(Content,$stateParams) {
+            return Content.getUserContent($stateParams.id);
+          }
+        ],
       }
     })
     .state('profile.edit',{

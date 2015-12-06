@@ -3,7 +3,7 @@
     <ul class="row">
       <li class="col-sm-3" ng-repeat="group in groups">
         <div class="profile_image_inn">
-          <img src="images/group.jpg" alt="0">
+          <img ng-src="{{ group.profilepicture }}" alt="0">
           <div class="connect_link_full"><a ui-sref="group.detail({id: group.groupid})"> {{group.name}} </a></div>
         </div>
       </li>

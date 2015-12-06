@@ -14,6 +14,15 @@ angular.module('fnApp')
         },
         getAll: function() {
           return _contentRest.get("");
+        },
+        getUserContent(id){
+          return _contentRest.getList({userid:id});
+        },
+        getGroupContent(id){
+          return _contentRest.getList({groupid:id});
+        },
+        getBusinessContent(id){
+          return _contentRest.getList({businessid:id});
         }
       };
     }]);
