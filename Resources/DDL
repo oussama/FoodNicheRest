@@ -238,6 +238,7 @@ create table Groups (
    Name                 VARCHAR(80)          null,
    Theme                VARCHAR(255)         null,
    Description          VARCHAR(255)         null,
+   ProfilePicture       VARCHAR(255)         null,
    ApprovedMembership   BOOL                 null,
    constraint PK_GROUPS primary key (GroupID)
 );
