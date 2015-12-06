@@ -1,4 +1,10 @@
-# FoodNiche
+# FoodNiche Project
+
+We may need to add here some words about what we do and where are we going
+
+# Release and deploy
+
+See details on those major steps below
 
 ## Releasing version
 
@@ -41,7 +47,50 @@ Deployment process (automated):
 
 Swagger UI will be available by this link: [QA Swagger UI](http://api-qa.foodniche.me/swagger)
 
-## Future implementations
+# Implementation details
+
+Some service-specific implementation details goes below
+
+## Environment definition
+
+We have declared 3 environments now:
+ 
+* DEV 
+* QA 
+* PROD
+ 
+ Environment is set by providing java option in *Tomcat* script.
+ 
+ For unix systems it's *catalina.sh*. U need to add there as 1st line: **export JAVA_OPTS=-Dspring.profiles.active=DEV**  
+ 
+ For windows systems it's *catalina.bat*. U need to add there as 1st line: **set JAVA_OPTS=-Dspring.profiles.active=DEV**
+   
+   Then it will be resolved by Spring framework like for **dbConfig.*.properties**. 
+   
+   Check *foodniche-server\src\main\resources\META-INF\application-context.xml* and see how it uses **spring.profiles.active** variable.
+
+## EmailAPI
+
+EmailAPI is a java class responsible for sending emails.
+
+It has specific for event methods (like user registration, friend request etc.) and also generic method for sending emails.
+
+Generic method is here: *com.foodniche.rest.services.email.EmailAPI.sendMail*
+
+Service is using Velocity engine for rendering emails. Velocity templates contained here: *foodniche-server\src\main\resources\email* .
+
+Configuration files for **EmailAPI**:
+
+* foodniche-server\src\main\resources\META-INF\spring-mail.xml
+* foodniche-server\src\main\resources\mail.DEV.properties
+* foodniche-server\src\main\resources\mail.PROD.properties
+* foodniche-server\src\main\resources\mail.QA.properties
+* foodniche-server\src\main\resources\javamail.DEV.properties
+* foodniche-server\src\main\resources\javamail.PROD.properties
+* foodniche-server\src\main\resources\javamail.QA.properties
+
+
+# Future implementations
 
 ### Media files storage
 
