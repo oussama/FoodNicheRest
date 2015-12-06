@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>foodnicherest</artifactId>
         <groupId>com.foodniche</groupId>
@@ -14,15 +15,14 @@
     <properties>
         <hibernate.version>4.3.11.Final</hibernate.version>
         <spring.data.version>1.9.1.RELEASE</spring.data.version>
+        <postgresql.version>9.4-1201-jdbc41</postgresql.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4-1201-jdbc41</version>
+            <version>${postgresql.version}</version>
         </dependency>
 
         <dependency>
@@ -59,4 +59,74 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>dev-db-recreate</id>
+            <repositories>
+                <repository>
+                    <id>codehaus-mule-repo</id>
+                    <name>codehaus-mule-repo</name>
+                    <url>https://repository-master.mulesoft.org/nexus/content/groups/public/</url>
+                </repository>
+            </repositories>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>properties-maven-plugin</artifactId>
+                        <version>1.0.0</version>
+                        <executions>
+                            <execution>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>read-project-properties</goal>
+                                </goals>
+                                <configuration>
+                                    <files>
+                                        <file>${basedir}/../foodniche-server/src/main/resources/dbConfig.${dev.profiles.active}.properties</file>
+                                    </files>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>sql-maven-plugin</artifactId>
+                        <version>1.5</version>
+
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.postgresql</groupId>
+                                <artifactId>postgresql</artifactId>
+                                <version>${postgresql.version}</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <driver>org.postgresql.Driver</driver>
+                            <url>${foodniche.jdbc.url}</url>
+                            <username>${foodniche.jdbc.username}</username>
+                            <password>${foodniche.jdbc.password}</password>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>drop-and-create-scema</id>
+                                <phase>process-test-resources</phase>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <configuration>
+                                    <autocommit>true</autocommit>
+                                    <orderFile>ascending</orderFile>
+                                    <fileset>
+                                        <basedir>${basedir}/src/main/sql</basedir>
+                                    </fileset>
+                                    <onError>fail</onError>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

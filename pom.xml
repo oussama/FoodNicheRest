@@ -31,14 +31,22 @@
 
         <project.scm.id>github-scm-server</project.scm.id>
         <maven.deploy.skip>true</maven.deploy.skip>
+
+        <spring.profiles.active>FIXME</spring.profiles.active>
+        <dev.profiles.active>${spring.profiles.active}</dev.profiles.active>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>

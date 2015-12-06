@@ -64,7 +64,7 @@ angular.module('fnAppModal')
       modalClass = modalClass || 'modal-small login-modal';
 
       $uibModal.open({
-        templateUrl: 'app/directives/login/login.modal.html',
+        templateUrl: 'app/components/modal/views/login.modal.html',
         windowClass: modalClass,
         backdrop: 'static',
         controller: 'LoginModalCtrl'

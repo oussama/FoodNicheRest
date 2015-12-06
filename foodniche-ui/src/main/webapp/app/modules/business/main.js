@@ -9,7 +9,27 @@ angular.module('fnApp').config(['$stateProvider',function($stateProvider) {
       templateUrl: 'app/modules/business/views/business.html',
       controller: 'BusinessViewCtrl',
       authenticate: true,
-      isBusiness: true
+      isBusiness: true,
+      resolve: {
+        contents: [
+          'Content',
+          function(Content) {
+            return Content.getAll();
+          }
+        ],
+        products: [
+          'Product','$stateParams',
+          function(Product,$stateParams) {
+            return Product.getAllByBusiness($stateParams.id)
+          }
+        ],
+        coupons: [
+          'Coupon',
+          function(Coupon) {
+            return Coupon.getAll()
+          }
+        ]
+      }
     })
     .state('business.edit',{
       url: '/:id/edit',

@@ -866,6 +866,11 @@ h6 {
     font-size: 15px;
 }
 
+.slider-special {
+    height: 325px;
+    overflow: hidden;
+}
+
 .slider-business {
     margin-bottom: 20px;
     position: relative;

@@ -8,7 +8,7 @@
 
     <Resource name="jdbc/FoodNiche1" auth="Container"
               type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
-              url="jdbc:postgresql://localhost:5432/food_niche"
-              username="fniche" password="fniche" maxActive="20" maxIdle="10" maxWait="-1"/>
+              url="${foodniche.jdbc.url}"
+              username="${foodniche.jdbc.username}" password="${foodniche.jdbc.password}" maxActive="20" maxIdle="10" maxWait="-1"/>
 
 </Context>

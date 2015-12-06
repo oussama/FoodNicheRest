@@ -7,9 +7,9 @@
         <Arg>jdbc/FoodNiche1</Arg>
         <Arg>
             <New class="org.postgresql.ds.PGSimpleDataSource">
-                <Set name="User">fniche</Set>
-                <Set name="Password">fniche</Set>
-                <Set name="DatabaseName">food_niche</Set>
+                <Set name="User"><SystemProperty name="foodniche.jdbc.username"/></Set>
+                <Set name="Password"><SystemProperty name="foodniche.jdbc.password"/></Set>
+                <Set name="DatabaseName"><SystemProperty name="foodniche.jdbc.database.name"/></Set>
                 <Set name="ServerName">localhost</Set>
                 <Set name="PortNumber">5432</Set>
             </New>

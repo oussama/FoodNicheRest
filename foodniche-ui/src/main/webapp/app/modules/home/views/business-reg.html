@@ -7,28 +7,32 @@
           <div class="col-sm-offset-2 col-sm-8">
             <div class="form-grey">
               <form name="form" ng-submit="submit(form)" novalidate>
-                <div class="form-group" ng-class="{'has-error': form.businessName.$invalid && submitted}">
+                <div class="form-group" ng-class="{'has-error': form.name.$invalid && submitted}">
                   <input type="text" placeholder="Business name" class="form-control input-lg"
-                         name="businessName" ng-model="user.businessName" required>
-                  <div class="help-block" ng-if="form.businessName.$error.required && submitted">Business name is required</div>
+                         name="name" ng-model="business.name" required>
+                  <div class="help-block" ng-if="form.name.$error.required && submitted">Business name is required</div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.description.$invalid && submitted}">
+                  <textarea rows="4" placeholder="Business description" class="form-control input-lg"
+                         name="description" ng-model="business.description"></textarea>
                 </div>
                 <div class="form-group radio-business">Which category does your business belong?<br>
                   <div class="radio" ng-repeat="businessType in businessTypes">
                     <label>
-                      <input name="" type="radio" ng-model="user.businessCategory" ng-value="businessType.businesstypeid">
+                      <input name="" type="radio" ng-model="business.businessType.businesstypeid" ng-value="businessType.businesstypeid">
                       {{businessType.name}}
                     </label>
                   </div>
                 </div>
                 <div class="form-group" ng-class="{'has-error': form.address.$invalid && submitted}">
-                  <input type="text" placeholder="Address" class="form-control input-lg"
-                         name="address" ng-model="user.address" required>
-                  <div class="help-block" ng-if="form.address.$error.required && submitted">Address is required</div>
+                  <input type="text" placeholder="Website" class="form-control input-lg"
+                         name="website" ng-model="business.website" required>
+                  <div class="help-block" ng-if="form.website.$error.required && submitted">Address is required</div>
                 </div>
-                <div class="form-group" ng-class="{'has-error': form.zipCode.$invalid && submitted}">
+                <div class="form-group" ng-class="{'has-error': form.zipcode.$invalid && submitted}">
                   <input type="text" placeholder="Zip Code" class="form-control input-lg"
-                         name="zipCode" ng-model="user.zipCode" required>
-                  <div class="help-block" ng-if="form.zipCode.$error.required && submitted">Zip code is required</div>
+                         name="zipcode" ng-model="business.zipCode" required>
+                  <div class="help-block" ng-if="form.zipcode.$error.required && submitted">Zip code is required</div>
                 </div>
                 <div class="form-group" ng-class="{'has-error': form.hours.$invalid && submitted}">
                   <input type="text" placeholder="Hours" class="form-control input-lg"
