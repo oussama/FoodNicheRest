@@ -23,6 +23,7 @@ import java.io.Serializable;
     @NamedQuery(name = "Groups.findByName", query = "SELECT g FROM Groups g WHERE g.name = :name"),
     @NamedQuery(name = "Groups.findByTheme", query = "SELECT g FROM Groups g WHERE g.theme = :theme"),
     @NamedQuery(name = "Groups.findByDescription", query = "SELECT g FROM Groups g WHERE g.description = :description"),
+        @NamedQuery(name = "Users.findByProfilepicture", query = "SELECT g FROM Groups g WHERE g.profilePicture = :profilePicture"),
     @NamedQuery(name = "Groups.findByApprovedmembership", query = "SELECT g FROM Groups g WHERE g.approvedmembership = :approvedmembership")})
 public class Groups implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -40,10 +41,21 @@ public class Groups implements Serializable {
     @Size(max = 255)
     @Column(name = "description")
     private String description;
+    @Size(max = 255)
+    @Column(name = "profilePicture")
+    private String profilePicture;
     @Column(name = "approvedmembership")
     private Boolean approvedmembership;
 
     public Groups() {
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     public Groups(Integer groupid) {
